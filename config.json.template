@@ -1,3 +1,5 @@
 {
+	"inputPath":"data/",
+	"cachePath":"cache/",
 	"myNumber":"49123456789"
 }
