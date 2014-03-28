@@ -3,14 +3,15 @@ var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 
 var vds, events = [];
 
-var usingCache = false;
+var usingCache = true;
 
 // VDS einlesen
-if (usingCache) {
-	vds = JSON.parse(fs.readFileSync('../vds-data/vds.json', 'utf8'));
+var vdsJSON = config.cachePath + 'vds.json';
+if (usingCache && fs.existsSync(vdsJSON)) {
+	vds = JSON.parse(fs.readFileSync(vdsJSON, 'utf8'));
 } else {
-	vds = require('vds').import('../vds-data/vds/vds.tsv', config);
-	fs.writeFileSync('../vds-data/vds.json', JSON.stringify(vds, null, '\t'), 'utf8');
+	vds = require('vds').import(config.inputPath + 'vds/vds.tsv', config);
+	fs.writeFileSync(vdsJSON, JSON.stringify(vds, null, '\t'), 'utf8');
 }
 
 
