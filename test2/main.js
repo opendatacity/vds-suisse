@@ -166,6 +166,10 @@ function Player() {
 		return timeIndex;
 	}
 
+	me.getDateTime = function () {
+		return (timeIndex*timeIndexMinutes*60 + data.timeStart)*1000;
+	}
+
 	me.setTimeIndex = function (index) {
 		if (index < 0) index = 0;
 		if (index > maxTimeIndex) index = maxTimeIndex;

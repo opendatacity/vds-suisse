@@ -37,13 +37,15 @@
 					bottom: 0px;
 					width: 144px;
 				}
-				
+
 					#infoText {
 						position: absolute;
 						top: 0px;
 						left: 0px;
 						bottom: 0px;
 						width: 96px;
+						text-align: center;
+						font-family: 'Courier New';
 					}
 
 					#playPauseButtons {
@@ -146,6 +148,10 @@
 				})
 
 				player.on('change', function () {
+					$('#infoText').html(formatDate(player.getDateTime()));
+				})
+
+				player.on('change', function () {
 					var intervalSize = 12;
 
 					var timeIndex = player.getTimeIndex();
@@ -205,6 +211,17 @@
 
 				player.start();
 			})
+
+			function formatDate(value) {
+				var d = new Date(value);
+				d = ''+
+					d.getDay() + '.' +
+					(d.getMonth()+1) + '.' +
+					d.getFullYear() + '<br>' +
+					d.getHours() + ':' +
+					d.getMinutes();
+				return d;
+			}
 		</script>
 	</head>
 	<body class="unselectable">
