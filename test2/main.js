@@ -141,13 +141,17 @@ function Player() {
 	var paused = false;
 
 	me.start = function () {
-		if (!interval) interval = setInterval(me.step, 50);
+		if (!interval) {
+			interval = setInterval(me.step, 50);
+			me.trigger('start');
+		}
 	}
 
 	me.stop = function () {
 		if (interval) {
 			clearInterval(interval);
 			interval = false;
+			me.trigger('stop');
 		}
 	}
 

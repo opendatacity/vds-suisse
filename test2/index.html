@@ -5,34 +5,96 @@
 		<link rel="stylesheet" href="leaflet/leaflet.css" />
 		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<style type="text/css">
+			html {
+				height: 100%;
+			}
 			body {
 				margin: 0;
+				position: relative;
+				height: 100%;
 			}
 			#map {
-				width: 100%;
-				height: 540px;
-				background: #fee;
-			}
-			#scrollContainer {
-				width: 100%;
-				height: 48px;
-				overflow: hidden;
-				position: relative;
-			}
-			#scrollCanvas {
-				position: absolute;
 				left: 0px;
 				top: 0px;
-				cursor: pointer;
-			}
-			#scrollHairLine {
+				right: 0px;
+				bottom: 48px;
 				position: absolute;
-				left: 50%;
-				top: 0px;
-				width: 1px;
-				height: 48px;
-				background: rgba(0,0,0,0.3);
+				background: #fee;
 			}
+
+			#bottomControls {
+				position: absolute;
+				left: 0px;
+				right: 0px;
+				height: 48px;
+				bottom: 0px;
+			}
+
+				#bottomLeftControls {
+					position: absolute;
+					top: 0px;
+					left: 0px;
+					bottom: 0px;
+					width: 144px;
+				}
+				
+					#infoText {
+						position: absolute;
+						top: 0px;
+						left: 0px;
+						bottom: 0px;
+						width: 96px;
+					}
+
+					#playPauseButtons {
+						position: absolute;
+						top: 0px;
+						left: 96px;
+						bottom: 0px;
+						right: 0px;
+						text-align: 'right';
+					}
+
+						#playPauseButtons i {
+							position: absolute;
+							top: 9px;
+							left: 11px;
+						}
+
+						#playPauseButtons #pauseButton {
+							display: none;
+						}
+
+						#playPauseButtons.paused #playButton {
+							display: none;
+						}
+
+						#playPauseButtons.paused #pauseButton {
+							display: inline-block;
+						}
+
+				#scrollContainer {
+					top: 0px;
+					left: 144px;
+					right: 0px;
+					bottom: 0px;
+					position: absolute;
+					overflow: hidden;
+				}
+					#scrollCanvas {
+						position: absolute;
+						left: 0px;
+						top: 0px;
+						cursor: pointer;
+					}
+						#scrollHairLine {
+							position: absolute;
+							left: 50%;
+							top: 0px;
+							width: 1px;
+							height: 48px;
+							background: rgba(0,0,0,0.3);
+						}
 			.unselectable {
 				-webkit-user-select: none;
 				-moz-user-select: none;
@@ -125,15 +187,41 @@
 
 				})
 
+				player.on('start', function () {
+					$('#playPauseButtons').addClass('paused');
+				})
+
+				player.on('stop', function () {
+					$('#playPauseButtons').removeClass('paused');
+				})
+
+				$('#playButton').click(function () {
+					player.start();
+				})
+
+				$('#pauseButton').click(function () {
+					player.stop();
+				})
+
 				player.start();
 			})
 		</script>
 	</head>
 	<body class="unselectable">
 		<div id="map"></div>
-		<div id="scrollContainer">
-			<canvas id="scrollCanvas"></canvas>
-			<div id="scrollHairLine"></div>
+		<div id="bottomControls">
+			<div id="bottomLeftControls">
+				<div id="infoText">
+				</div>
+				<div id="playPauseButtons">
+					<i id="playButton" class="fa fa-play fa-2x"></i>
+					<i id="pauseButton" class="fa fa-pause fa-2x"></i>
+				</div>
+			</div>
+			<div id="scrollContainer">
+				<canvas id="scrollCanvas"></canvas>
+				<div id="scrollHairLine"></div>
+			</div>
 		</div>
 	</body>
 </html>
