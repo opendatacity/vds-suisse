@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" >
+		<link rel="stylesheet" href="leaflet/leaflet.css" />
+		<style type="text/css">
+			body {
+				margin: 0;
+			}
+			#map {
+				width: 100%;
+				height: 540px;
+				background: #fee;
+			}
+			#scrollContainer {
+				width: 100%;
+				height: 48px;
+				overflow: hidden;
+				position: relative;
+			}
+			#scrollCanvas {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				cursor: pointer;
+			}
+			#scrollHairLine {
+				position: absolute;
+				left: 50%;
+				top: 0px;
+				width: 1px;
+				height: 48px;
+				background: rgba(0,0,0,0.3);
+			}
+			.unselectable {
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				user-select: none;
+			}
+		</style>
+		<script src="../data/positions.js"></script>
+		<script src="main.js"></script>
+		<script src="jquery-1.11.0.min.js"></script>
+		<script src="leaflet/leaflet.js"></script>
+		<script>
+			$(function () {
+				var scrollBar = new ScrollBar();
+				var player = new Player();
+
+				var positionList = [];
+				positions.forEach(function (position) {
+					positionList[position.index] = position;
+				})
+				var index = 100;
+
+				// create a map in the "map" div, set the view to a given place and zoom
+				var map = L.map('map').setView([47.2, 8.3], 9);
+
+				// add an OpenStreetMap tile layer
+				L.tileLayer('http://tiles.odcdn.de/europe2/{z}/{x}/{y}.png', {
+				}).addTo(map);
+
+				var cellLayer = L.layerGroup();
+				cellLayer.addTo(map);
+
+				scrollBar.on('drag', function () {
+					player.setTimeIndex(scrollBar.getTimeIndex());
+				})
+
+				scrollBar.on('dragStart', function () {
+					player.pause();
+				})
+
+				scrollBar.on('dragEnd', function () {
+					player.unpause();
+				})
+
+				player.on('change', function () {
+					scrollBar.setTimeIndex(player.getTimeIndex());
+				})
+
+				player.on('change', function () {
+					var intervalSize = 12;
+
+					var timeIndex = player.getTimeIndex();
+					var i0 = timeIndex - intervalSize;
+					var i1 = timeIndex + intervalSize;
+
+					cellLayer.clearLayers();
+
+					var used = {};
+					for (var i = i0; i <= i1; i++) {
+						var position = positionList[i];
+						if (position) {
+							var value = 1-Math.abs(position.index-timeIndex)/(intervalSize+1);
+							position.cells.forEach(function (cell) {
+								if (used[cell.id]) {
+									if (used[cell.id].value < value) used[cell.id].value = value;
+								} else {
+									used[cell.id] = { value:value, cell:cell };
+								}
+							})
+						}
+					}
+
+					Object.keys(used).forEach(function (id) {
+						var color = used[id].value;
+						color = 'rgba(255,'+Math.round(255*(1-color))+',0,'+color+')';
+						var cell = used[id].cell;
+						L.circle(
+							[cell.y, cell.x],
+							cell.acc,
+							{
+								weight: 1,
+								color: color,
+								fillColor: color,
+								fillOpacity: 0.5
+							}
+						).addTo(cellLayer);
+					});
+
+				})
+
+				player.start();
+			})
+		</script>
+	</head>
+	<body class="unselectable">
+		<div id="map"></div>
+		<div id="scrollContainer">
+			<canvas id="scrollCanvas"></canvas>
+			<div id="scrollHairLine"></div>
+		</div>
+	</body>
+</html>
