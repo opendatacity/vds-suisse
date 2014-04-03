@@ -40,7 +40,7 @@ function ScrollBar() {
 		var v = [];
 		var maxV = 0;
 		for (var x = 0; x < scrollBarWidth; x++) v[x] = 0;
-		positions.forEach(function (entry) {
+		data.activities.forEach(function (entry) {
 			var x = Math.floor(entry.index/timeIndexZoom);
 			v[x] += entry.cells.length;
 			if (maxV < v[x]) maxV = v[x];
