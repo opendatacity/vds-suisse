@@ -203,6 +203,14 @@ function Player() {
 function Map() {
 	var me = this;
 
+	var activityList = [];
+	data.activities.forEach(function (activity) {
+		activity.cells = activity.cells.map(function (index) {
+			return data.cells[index];
+		})
+		activityList[activity.index] = activity;
+	})
+
 	// create a map in the "map" div, set the view to a given place and zoom
 	var map = L.map('map').setView([47.2, 8.3], 9);
 

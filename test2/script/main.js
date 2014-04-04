@@ -1,28 +1,21 @@
-var scrollBar = new ScrollBar();
-var player = new Player();
-var map = new Map();
+var scrollBar, player, map;
 
 
 $(function () {
-
-	var activityList = [];
-	data.activities.forEach(function (activity) {
-		activity.cells = activity.cells.map(function (index) {
-			return data.cells[index];
-		})
-		activityList[activity.index] = activity;
-	})
+	scrollBar = new ScrollBar();
+	player = new Player();
+	map = new Map();
 
 	scrollBar.on('drag', function () {
 		player.setTimeIndex(scrollBar.getTimeIndex());
 	})
 
 	scrollBar.on('dragStart', function () {
-		player.pause();
+		player.stop();
 	})
 
 	scrollBar.on('dragEnd', function () {
-		player.unpause();
+		player.stop();
 	})
 
 	player.on('change', function () {
@@ -59,10 +52,10 @@ $(function () {
 function formatDate(value) {
 	var d = new Date(value);
 	d = ''+
-		d.getDay() + '.' +
+		d.getDate() + '.' +
 		(d.getMonth()+1) + '.' +
 		d.getFullYear() + '<br>' +
 		d.getHours() + ':' +
-		d.getMinutes();
+		(100+d.getMinutes()).toFixed().substr(1);
 	return d;
 }
