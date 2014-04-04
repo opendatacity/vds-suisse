@@ -11,7 +11,7 @@ $(function () {
 	scrollBar.on('dragEnd',   function () { player.stop(); })
 
 	player.on('change', function () { scrollBar.setTimeIndex(player.getTimeIndex()); })
-	player.on('change', function () { $('#infoText').html(formatDate(player.getDateTime())); })
+	player.on('change', function () { $('#infoText').html(formatDate(player.getTimeStamp())); })
 	player.on('change', function () { map.redraw(); })
 
 	player.on('start', function () { $('#playPauseButtons').addClass(   'paused'); })

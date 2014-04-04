@@ -167,8 +167,12 @@ function Player() {
 		return timeIndex;
 	}
 
-	me.getDateTime = function () {
+	me.getTimeStamp = function () {
 		return (timeIndex*timeIndexMinutes*60 + data.timeStart)*1000;
+	}
+
+	me.getTime = function () {
+		return (timeIndex*timeIndexMinutes*60 + data.timeStart);
 	}
 
 	me.setTimeIndex = function (index) {
