@@ -288,9 +288,10 @@ function EventList() {
 			return a.start - b.start;
 		})
 
-		if (lastEventStart == html[0].start) return;
+		var start = html[0] ? html[0].start : 0;
+		if (lastEventStart == start) return;
 
-		lastEventStart = html[0].start;
+		lastEventStart = start;
 
 		if (html.length > 20) html.length = 20;
 
