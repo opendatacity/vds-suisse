@@ -6,45 +6,19 @@ $(function () {
 	player = new Player();
 	map = new Map();
 
-	scrollBar.on('drag', function () {
-		player.setTimeIndex(scrollBar.getTimeIndex());
-	})
+	scrollBar.on('drag',      function () { player.setTimeIndex(scrollBar.getTimeIndex()); })
+	scrollBar.on('dragStart', function () { player.stop(); })
+	scrollBar.on('dragEnd',   function () { player.stop(); })
 
-	scrollBar.on('dragStart', function () {
-		player.stop();
-	})
+	player.on('change', function () { scrollBar.setTimeIndex(player.getTimeIndex()); })
+	player.on('change', function () { $('#infoText').html(formatDate(player.getDateTime())); })
+	player.on('change', function () { map.redraw(); })
 
-	scrollBar.on('dragEnd', function () {
-		player.stop();
-	})
+	player.on('start', function () { $('#playPauseButtons').addClass(   'paused'); })
+	player.on('stop',  function () { $('#playPauseButtons').removeClass('paused'); })
 
-	player.on('change', function () {
-		scrollBar.setTimeIndex(player.getTimeIndex());
-	})
-
-	player.on('change', function () {
-		$('#infoText').html(formatDate(player.getDateTime()));
-	})
-
-	player.on('change', function () {
-		map.redraw();
-	})
-
-	player.on('start', function () {
-		$('#playPauseButtons').addClass('paused');
-	})
-
-	player.on('stop', function () {
-		$('#playPauseButtons').removeClass('paused');
-	})
-
-	$('#playButton').click(function () {
-		player.start();
-	})
-
-	$('#pauseButton').click(function () {
-		player.stop();
-	})
+	$('#playButton' ).click(function () { player.start(); })
+	$('#pauseButton').click(function () { player.stop();  })
 
 	player.start();
 })
