@@ -272,6 +272,7 @@ function Map() {
 
 function EventList() {
 	var me = this;
+	var lastEventStart = -1e10;
 
 	me.redraw = function () {
 		var html = [];
@@ -287,14 +288,28 @@ function EventList() {
 			return a.start - b.start;
 		})
 
+		if (lastEventStart == html[0].start) return;
+
+		lastEventStart = html[0].start;
+
 		if (html.length > 20) html.length = 20;
 
 		html = html.map(function (event) {
 			var duration = event.dur || '';
-			return '<tr><th>'+formatTime(event.start*1000)+'</th><td>'+duration+'</td><td>'+event.type+'</td></tr>'
+			var inout = event.incoming ? 'in' : 'out';
+			var line =
+				'<tr>'+
+					'<td>'+formatTime(event.start*1000)+'</td>'+
+					'<td>'+duration+'</td>'+
+					'<td>'+event.type+'</td>'+
+					'<td>'+inout+'</td>'+
+				'</tr>';
+
+			return line;
 		})
 
-		html.unshift('<tr><th>Zeit</th><th>Dauer</th><th>Typ</th></tr>');
+
+		html.unshift('<tr><th>Zeit</th><th>Dauer</th><th>Typ</th><th>In/Out</th></tr>');
 		html = html.join('\n');
 
 		$('#rightList').html('<table>'+html+'</table>');
