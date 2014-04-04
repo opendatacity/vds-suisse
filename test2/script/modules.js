@@ -24,6 +24,7 @@ function ScrollBar() {
 	var scrollBarWidth = maxDays*1440/(timeIndexZoom*timeIndexMinutes);
 	var container = $('#scrollContainer');
 	var canvas = $('#scrollCanvas');
+	var context;
 
 	var timeIndex = 0;
 	
@@ -194,6 +195,63 @@ function Player() {
 		if (eventCallbacks[event] !== undefined) {
 			eventCallbacks[event].forEach(function (func) { func() });
 		}
+	}
+
+	return me;
+}
+
+function Map() {
+	var me = this;
+
+	// create a map in the "map" div, set the view to a given place and zoom
+	var map = L.map('map').setView([47.2, 8.3], 9);
+
+	// add an OpenStreetMap tile layer
+	L.tileLayer('http://tiles.odcdn.de/europe2/{z}/{x}/{y}.png', {
+	}).addTo(map);
+
+	var cellLayer = L.layerGroup();
+	cellLayer.addTo(map);
+
+	me.redraw = function () {
+		var intervalSize = 12;
+
+		var timeIndex = player.getTimeIndex();
+		var i0 = timeIndex - intervalSize;
+		var i1 = timeIndex + intervalSize;
+
+		cellLayer.clearLayers();
+
+		var used = {};
+		for (var i = i0; i <= i1; i++) {
+			var activity = activityList[i];
+			if (activity) {
+				var value = 1-Math.abs(activity.index-timeIndex)/(intervalSize+1);
+				activity.cells.forEach(function (cell) {
+					if (used[cell.id]) {
+						if (used[cell.id].value < value) used[cell.id].value = value;
+					} else {
+						used[cell.id] = { value:value, cell:cell };
+					}
+				})
+			}
+		}
+
+		Object.keys(used).forEach(function (id) {
+			var color = used[id].value;
+			color = 'rgba(255,'+Math.round(255*(1-color))+',0,'+color+')';
+			var cell = used[id].cell;
+			L.circle(
+				[cell.y, cell.x],
+				cell.acc,
+				{
+					weight: 1,
+					color: color,
+					fillColor: color,
+					fillOpacity: 0.5
+				}
+			).addTo(cellLayer);
+		});
 	}
 
 	return me;
