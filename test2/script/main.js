@@ -41,6 +41,7 @@ function formatTime(value) {
 	var d = new Date(value);
 	d = ''+
 		d.getHours() + ':' +
-		(100+d.getMinutes()).toFixed().substr(1);
+		(100+d.getMinutes()).toFixed().substr(1) + ':' +
+		(100+d.getSeconds()).toFixed().substr(1);
 	return d;
 }
