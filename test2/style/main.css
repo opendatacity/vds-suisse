@@ -6,6 +6,7 @@ body {
 	margin: 0;
 	position: relative;
 	height: 100%;
+	font-family: Arial;
 }
 
 #upperControls {
@@ -32,6 +33,16 @@ body {
 		position: absolute;
 		overflow-y: scroll;
 	}
+
+		#rightList table {
+			border-collapse: collapse;
+		}
+
+			#rightList th, #rightList td {
+				border: 1px solid #eee;
+				padding: 1px 5px;
+				text-align: right;
+			}
 
 #bottomControls {
 	position: absolute;

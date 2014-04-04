@@ -5,7 +5,8 @@ var scrollBarHeight = 48;
 
 var maxMinutes = maxDays*1440;
 var maxTimeIndex = maxMinutes/timeIndexMinutes;
-var dayWidth = 1440/(timeIndexMinutes*timeIndexZoom);
+var dayLength = 1440/timeIndexMinutes;
+var dayWidth = dayLength/timeIndexZoom;
 
 var weekDayOffset = 2;
 var weekDays = [
@@ -271,6 +272,33 @@ function Map() {
 
 function EventList() {
 	var me = this;
+
+	me.redraw = function () {
+		var html = [];
+
+		var index = player.getTimeStamp();
+		var i0 = (index - 0*60*60*1000)/1000;
+		var i1 = (index + 48*60*60*1000)/1000;
+		data.events.forEach(function (event) {
+			if ((event.start < i1) && (event.end > i0)) html.push(event)
+		})
+
+		html.sort(function (a,b) {
+			return a.start - b.start;
+		})
+
+		if (html.length > 20) html.length = 20;
+
+		html = html.map(function (event) {
+			var duration = event.dur || '';
+			return '<tr><th>'+formatTime(event.start*1000)+'</th><td>'+duration+'</td><td>'+event.type+'</td></tr>'
+		})
+
+		html.unshift('<tr><th>Zeit</th><th>Dauer</th><th>Typ</th></tr>');
+		html = html.join('\n');
+
+		$('#rightList').html('<table>'+html+'</table>');
+	}
 
 	return me;
 }
