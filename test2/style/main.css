@@ -7,14 +7,31 @@ body {
 	position: relative;
 	height: 100%;
 }
-#map {
+
+#upperControls {
 	left: 0px;
 	top: 0px;
 	right: 0px;
 	bottom: 48px;
 	position: absolute;
-	background: #fee;
 }
+
+	#map {
+		left: 0px;
+		top: 0px;
+		right: 300px;
+		bottom: 0px;
+		position: absolute;
+	}
+
+	#leftList {
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		width: 300px;
+		position: absolute;
+		overflow-y: scroll;
+	}
 
 #bottomControls {
 	position: absolute;

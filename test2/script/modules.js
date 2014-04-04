@@ -264,3 +264,9 @@ function Map() {
 
 	return me;
 }
+
+function EventList() {
+	var me = this;
+
+	return me;
+}
