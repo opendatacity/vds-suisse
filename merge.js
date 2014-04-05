@@ -35,9 +35,9 @@ var telephoneEvents = vds.map(function (entry) {
 	return {
 		type: entry.type,
 		subtype: entry.subtype,
-		timeDuration: entry.timeDuration,
-		timeStart: entry.timeStart,
-		timeEnd: entry.timeEnd,
+		dur: entry.timeDuration,
+		start: entry.timeStart,
+		end: entry.timeEnd,
 		incoming: entry.data.incoming
 	}
 }).filter(function (entry) { return entry });
