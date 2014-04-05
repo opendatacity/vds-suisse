@@ -278,11 +278,14 @@ function EventList() {
 		var html = [];
 
 		var index = player.getTimeStamp();
-		var i0 = (index - 0*60*60*1000)/1000;
-		var i1 = (index + 48*60*60*1000)/1000;
-		data.events.forEach(function (event) {
-			if ((event.start < i1) && (event.end > i0)) html.push(event)
-		})
+		var time0 = (index - 0*60*60*1000)/1000;
+		var time1 = (index + 48*60*60*1000)/1000;
+
+		for (var i = 0; i < data.events.length; i++) {
+			var event = data.events[i];
+			if ((event.start < time1) && (event.end > time0)) html.push(event)
+			if (html.length > 20) break;
+		}
 
 		html.sort(function (a,b) {
 			return a.start - b.start;
