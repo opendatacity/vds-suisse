@@ -43,6 +43,16 @@ if (usingCache && fs.existsSync(activityJSON)) {
 
 
 
+// Position ausrechnen
+var positionJSON = config.cachePath + 'position.json';
+if (usingCache && fs.existsSync(positionJSON)) {
+	console.log('Load position from cache');
+	positions = JSON.parse(fs.readFileSync(positionJSON, 'utf8'));
+} else {
+	console.log('Calculate position');
+	positions = require('position').import(activities, config);
+	//fs.writeFileSync(positionJSON, JSON.stringify(positions, null, '\t'), 'utf8');
+}
 
 
 
@@ -75,9 +85,7 @@ cells.forEach(function (cell) {
 	};
 })
 
-
-
-data.activities = activities.activities.map(function (activity) {
+data.activities = activities.map(function (activity) {
 	return {
 		index: activity.index,
 		time: activity.time,
@@ -85,7 +93,10 @@ data.activities = activities.activities.map(function (activity) {
 	}
 })
 
-data.timeStart = config.timeStart;
+data.positions = positions;
+
+data.timeStart  = config.timeStart;
+data.indexCount = config.indexCount;
 
 data.events = events;
 
