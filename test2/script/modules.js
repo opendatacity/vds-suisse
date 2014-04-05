@@ -233,6 +233,9 @@ function Map() {
 		var i0 = timeIndex - intervalSize;
 		var i1 = timeIndex + intervalSize;
 
+		if (i0 < 0) i0 = 0;
+		if (i1 >= data.indexCount) i1 = data.indexCount - 1;
+
 		cellLayer.clearLayers();
 
 		var used = {};
@@ -240,15 +243,17 @@ function Map() {
 			var activity = activityList[i];
 			if (activity) {
 				var value = 1-Math.abs(activity.index-timeIndex)/(intervalSize+1);
+				//console.log(value, activity.index, i, timeIndex);
 				activity.cells.forEach(function (cell) {
-					if (used[cell.id]) {
-						if (used[cell.id].value < value) used[cell.id].value = value;
+					if (used[cell.index]) {
+						if (used[cell.index].value < value) used[cell.index].value = value;
 					} else {
-						used[cell.id] = { value:value, cell:cell };
+						used[cell.index] = { value:value, cell:cell };
 					}
 				})
 			}
 		}
+
 
 		Object.keys(used).forEach(function (id) {
 			var color = used[id].value;
@@ -265,6 +270,27 @@ function Map() {
 				}
 			).addTo(cellLayer);
 		});
+
+		var path = [];
+		for (var i = i0; i <= i1; i++) {
+			path.push([data.positions[i].y, data.positions[i].x]);
+		}
+		L.polyline(path, {color:'rgba(127,0,0,0.2)'}).addTo(cellLayer);
+
+		var position = data.positions[timeIndex];
+		L.circle(
+			[position.y, position.x],
+			position.r,
+			{
+				fill:false,
+				weight:2,
+				color: '#000',
+				opacity: 0.5*Math.min(1, sqr(4000/position.r))
+			}
+		).addTo(cellLayer);
+
+
+
 	}
 
 	return me;
@@ -320,4 +346,8 @@ function EventList() {
 	}
 
 	return me;
+}
+
+function sqr(x) {
+	return x*x;
 }
