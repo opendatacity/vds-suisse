@@ -1,9 +1,16 @@
 var fs = require('fs');
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 
+config.timeEnd    = config.timeStart + config.days*86400;
+config.indexStart = Math.round(config.timeStart / config.timeInterval);
+config.indexEnd   = Math.round(config.timeEnd   / config.timeInterval);
+config.indexCount = config.indexEnd - config.indexStart + 1;
+
 var vds, activities, events = [];
 
 var usingCache = true;
+
+
 
 // VDS einlesen
 var vdsJSON = config.cachePath + 'vds.json';
@@ -16,8 +23,12 @@ if (usingCache && fs.existsSync(vdsJSON)) {
 	fs.writeFileSync(vdsJSON, JSON.stringify(vds, null, '\t'), 'utf8');
 }
 
+
+
 var cells = JSON.parse(fs.readFileSync(config.inputPath + 'cells.json', 'utf8'));
 cells.forEach(function (cell, index) { cell.index = index })
+
+
 
 // cell-Aktivitäten ausrechnen
 var activityJSON = config.cachePath + 'activity.json';
@@ -29,6 +40,11 @@ if (usingCache && fs.existsSync(activityJSON)) {
 	activities = require('cellActivity').import(cells, vds, config);
 	//fs.writeFileSync(activityJSON, JSON.stringify(activities, null, '\t'), 'utf8');
 }
+
+
+
+
+
 
 var telephoneEvents = vds.map(function (entry) {
 	if (entry.type == 'internet') return false;
@@ -45,7 +61,6 @@ events = events.concat(telephoneEvents);
 
 
 
-
 var data = {};
 
 data.cells = [];
@@ -59,6 +74,8 @@ cells.forEach(function (cell) {
 		index: cell.index
 	};
 })
+
+
 
 data.activities = activities.activities.map(function (activity) {
 	return {
