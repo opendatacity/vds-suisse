@@ -1,7 +1,7 @@
 var fs = require('fs');
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 
-var vds, positions, events = [];
+var vds, activities, events = [];
 
 var usingCache = true;
 
@@ -19,15 +19,15 @@ if (usingCache && fs.existsSync(vdsJSON)) {
 var cells = JSON.parse(fs.readFileSync(config.inputPath + 'cells.json', 'utf8'));
 cells.forEach(function (cell, index) { cell.index = index })
 
-// Positionen ausrechnen
-var positionJSON = config.cachePath + 'position.json';
-if (usingCache && fs.existsSync(positionJSON)) {
-	console.log('Load Position from cache');
-	positions = JSON.parse(fs.readFileSync(positionJSON, 'utf8'));
+// cell-Aktivitäten ausrechnen
+var activityJSON = config.cachePath + 'activity.json';
+if (usingCache && fs.existsSync(activityJSON)) {
+	console.log('Load cellActivity from cache');
+	activities = JSON.parse(fs.readFileSync(activityJSON, 'utf8'));
 } else {
-	console.log('Calculate Position');
-	positions = require('position').import(cells, vds, config);
-	//fs.writeFileSync(positionJSON, JSON.stringify(positions, null, '\t'), 'utf8');
+	console.log('Calculate cellActivity');
+	activities = require('cellActivity').import(cells, vds, config);
+	//fs.writeFileSync(activityJSON, JSON.stringify(activities, null, '\t'), 'utf8');
 }
 
 var telephoneEvents = vds.map(function (entry) {
@@ -60,7 +60,7 @@ cells.forEach(function (cell) {
 	};
 })
 
-data.activities = positions.activities.map(function (activity) {
+data.activities = activities.activities.map(function (activity) {
 	return {
 		index: activity.index,
 		time: activity.time,
