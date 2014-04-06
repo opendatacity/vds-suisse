@@ -1,2 +1,10 @@
 
 web/data/
+
+parser/node_modules/moment-timezone/
+parser/node_modules/moment/
+
+parser/config.json
+
+parser/data/
+parser/cache/
