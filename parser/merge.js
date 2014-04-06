@@ -110,7 +110,7 @@ data.config = {
 	timeStepSeconds: config.timeStepSeconds
 }
 
-fs.writeFileSync('../vds-vis/data/data.js', 'var data = ' + JSON.stringify(data, null, '\t'), 'utf8')
+fs.writeFileSync('../web/data/data.js', 'var data = ' + JSON.stringify(data, null, '\t'), 'utf8')
 
 
 
