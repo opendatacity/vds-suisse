@@ -2,8 +2,8 @@ var fs = require('fs');
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 
 config.timeEnd    = config.timeStart + config.days*86400;
-config.indexStart = Math.round(config.timeStart / config.timeInterval);
-config.indexEnd   = Math.round(config.timeEnd   / config.timeInterval);
+config.indexStart = Math.round(config.timeStart / config.timeStepSeconds);
+config.indexEnd   = Math.round(config.timeEnd   / config.timeStepSeconds);
 config.indexCount = config.indexEnd - config.indexStart + 1;
 
 var vds, activities, events = [];
@@ -93,12 +93,22 @@ data.activities = activities.map(function (activity) {
 	}
 })
 
+
+
 data.positions = positions;
 
-data.timeStart  = config.timeStart;
-data.indexCount = config.indexCount;
-
 data.events = events;
+
+
+data.config = {
+	days:            config.days,
+	indexCount:      config.indexCount,
+	indexEnd:        config.indexEnd,
+	indexStart:      config.indexStart,
+	timeEnd:         config.timeEnd,
+	timeStart:       config.timeStart,
+	timeStepSeconds: config.timeStepSeconds
+}
 
 fs.writeFileSync('../vds-vis/data/data.js', 'var data = ' + JSON.stringify(data, null, '\t'), 'utf8')
 
