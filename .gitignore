@@ -1,8 +1,8 @@
 
-node_modules/moment-timezone/
-node_modules/moment/
+parser/node_modules/moment-timezone/
+parser/node_modules/moment/
 
-config.json
+parser/config.json
 
-data/
-cache/
+parser/data/
+parser/cache/
