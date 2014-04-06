@@ -2,6 +2,8 @@ var scrollBar, player, map, eventList;
 
 
 $(function () {
+	initModules();
+
 	scrollBar = new ScrollBar();
 	player = new Player();
 	map = new Map();

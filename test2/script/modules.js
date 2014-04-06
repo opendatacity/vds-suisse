@@ -1,12 +1,18 @@
-var maxDays = 181;
 var timeIndexZoom = 6;
-var timeIndexMinutes = 5;
 var scrollBarHeight = 48;
 
-var maxMinutes = maxDays*1440;
-var maxTimeIndex = maxMinutes/timeIndexMinutes;
-var dayLength = 1440/timeIndexMinutes;
-var dayWidth = dayLength/timeIndexZoom;
+var maxDays, timeStepMinutes, timeStepSecondes, maxMinutes, maxTimeIndex, dayLength, dayWidth;
+
+function initModules() {
+	maxDays = data.config.days;
+	timeStepSecondes = data.config.timeStepSeconds;
+	timeStepMinutes = data.config.timeStepSeconds/60;
+
+	maxMinutes = maxDays*1440;
+	maxTimeIndex = maxMinutes/timeStepMinutes;
+	dayLength = 1440/timeStepMinutes;
+	dayWidth = dayLength/timeIndexZoom;
+}
 
 var weekDayOffset = 2;
 var weekDays = [
@@ -22,7 +28,7 @@ var weekDays = [
 function ScrollBar() {
 	var me = this;
 
-	var scrollBarWidth = maxDays*1440/(timeIndexZoom*timeIndexMinutes);
+	var scrollBarWidth = maxDays*1440/(timeIndexZoom*timeStepMinutes);
 	var container = $('#scrollContainer');
 	var canvas = $('#scrollCanvas');
 	var context;
@@ -169,11 +175,12 @@ function Player() {
 	}
 
 	me.getTimeStamp = function () {
-		return (timeIndex*timeIndexMinutes*60 + data.timeStart)*1000;
+
+		return (timeIndex*timeStepSecondes + data.config.timeStart)*1000;
 	}
 
 	me.getTime = function () {
-		return (timeIndex*timeIndexMinutes*60 + data.timeStart);
+		return (timeIndex*timeStepSecondes + data.config.timeStart);
 	}
 
 	me.setTimeIndex = function (index) {
@@ -305,11 +312,10 @@ function EventList() {
 
 		var index = player.getTimeStamp();
 		var time0 = (index - 0*60*60*1000)/1000;
-		var time1 = (index + 48*60*60*1000)/1000;
 
 		for (var i = 0; i < data.events.length; i++) {
 			var event = data.events[i];
-			if ((event.start < time1) && (event.end > time0)) html.push(event)
+			if (event.end > time0) html.push(event)
 			if (html.length > 20) break;
 		}
 
