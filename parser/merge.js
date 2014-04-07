@@ -55,7 +55,8 @@ if (usingCache && fs.existsSync(positionJSON)) {
 }
 
 
-require('heatmap').generate(positions, '../print/heatmap');
+//require('heatmap').generateHeatmap(positions, '../print/heatmap');
+//require('heatmap').generateInkmap(positions, '../print/inkmap');
 
 
 
