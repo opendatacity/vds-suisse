@@ -55,6 +55,10 @@ if (usingCache && fs.existsSync(positionJSON)) {
 }
 
 
+require('heatmap').generate(positions, '../print/heatmap');
+
+
+
 
 var telephoneEvents = vds.map(function (entry) {
 	if (entry.type == 'internet') return false;
