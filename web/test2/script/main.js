@@ -1,4 +1,4 @@
-var scrollBar, player, map, eventList;
+var scrollBar, player, map, comList;
 
 
 $(function () {
@@ -7,7 +7,7 @@ $(function () {
 	scrollBar = new ScrollBar();
 	player = new Player();
 	map = new Map();
-	eventList = new EventList();
+	comList = new CommunicationList();
 
 	scrollBar.on('drag',      function () { player.setTimeIndex(scrollBar.getTimeIndex()); })
 	scrollBar.on('dragStart', function () { player.stop(); })
@@ -16,7 +16,7 @@ $(function () {
 	player.on('change', function () { scrollBar.setTimeIndex(player.getTimeIndex()); })
 	player.on('change', function () { $('#infoText').html(formatDate(player.getTimeStamp())); })
 	player.on('change', function () { map.redraw(); })
-	player.on('change', function () { eventList.redraw(); })
+	player.on('change', function () { comList.redraw(); })
 
 	player.on('start', function () { $('#playPauseButtons').addClass(   'paused'); })
 	player.on('stop',  function () { $('#playPauseButtons').removeClass('paused'); })

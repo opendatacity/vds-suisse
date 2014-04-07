@@ -285,7 +285,7 @@ function Map() {
 	return me;
 }
 
-function EventList() {
+function CommunicationList() {
 	var me = this;
 	var lastEventStart = -1e10;
 
@@ -343,6 +343,7 @@ function makeEventListener(object) {
 		if (eventCallbacks[event] === undefined) eventCallbacks[event] = [];
 		eventCallbacks[event].push(f);
 	}
+
 	object.trigger = function (event) {
 		if (eventCallbacks[event] !== undefined) {
 			eventCallbacks[event].forEach(function (func) { func() });
