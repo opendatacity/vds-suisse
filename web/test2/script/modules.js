@@ -277,12 +277,39 @@ function Map() {
 				opacity: 0.5*Math.min(1, sqr(4000/position.r))
 			}
 		).addTo(cellLayer);
-
-
-
 	}
 
 	return me;
+}
+
+function TabBar() {
+	var me = this;
+	makeEventListener(me);
+
+	var buttons = $('.tabButton');
+	var buttonList = [];
+	var activeButtonIndex = 0;
+
+	buttons.each(function (index, button) {
+		button = $(button);
+		buttonList[index] = button;
+		if (button.hasClass('active')) activeButtonIndex = index;
+		button.click(function () {
+			var button;
+
+			button = buttonList[activeButtonIndex];
+			button.removeClass('active');
+			me.trigger('deactivate', button.attr('id'));
+
+			activeButtonIndex = index;
+
+			button = buttonList[activeButtonIndex];
+			button.addClass('active');
+			me.trigger('activate', button.attr('id'));
+		})
+	})
+
+	return me;	
 }
 
 function CommunicationList() {
@@ -344,9 +371,9 @@ function makeEventListener(object) {
 		eventCallbacks[event].push(f);
 	}
 
-	object.trigger = function (event) {
+	object.trigger = function (event, param) {
 		if (eventCallbacks[event] !== undefined) {
-			eventCallbacks[event].forEach(function (func) { func() });
+			eventCallbacks[event].forEach(function (func) { func(param) });
 		}
 	}
 }

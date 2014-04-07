@@ -4,10 +4,19 @@ var scrollBar, player, map, comList;
 $(function () {
 	initModules();
 
+	tabBar = new TabBar();
 	scrollBar = new ScrollBar();
 	player = new Player();
 	map = new Map();
 	comList = new CommunicationList();
+
+	tabBar.on('activate', function (id) {
+		var section = $('#middleSection');
+		switch (id) {
+			case 'tabList':     section.removeClass('calendarView'); break;
+			case 'tabCalendar': section.addClass(   'calendarView'); break;
+		}
+	})
 
 	scrollBar.on('drag',      function () { player.setTimeIndex(scrollBar.getTimeIndex()); })
 	scrollBar.on('dragStart', function () { player.stop(); })

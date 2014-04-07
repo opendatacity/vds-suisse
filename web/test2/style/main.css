@@ -56,6 +56,14 @@ body {
 		position: absolute;
 	}
 
+	#rightCalendar {
+		top: 0px;
+		left: 50%;
+		right: 0px;
+		bottom: 0px;
+		display: none;
+	}
+
 	#rightList {
 		top: 0px;
 		right: 0px;
@@ -75,6 +83,18 @@ body {
 				text-align: right;
 				font-size: 12px;
 			}
+
+	#middleSection.calendarView #map {
+		right: 50%;
+	}
+	
+	#middleSection.calendarView #rightList {
+		display: none;
+	}
+	
+	#middleSection.calendarView #rightCalendar {
+		display: block;
+	}
 
 #bottomSection {
 	position: absolute;
