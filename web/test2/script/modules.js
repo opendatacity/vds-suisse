@@ -74,7 +74,7 @@ function ScrollBar() {
 			context.fill();
 		}
 
-		context.strokeStyle = '#000';
+		context.strokeStyle = 'rgba(0,0,0,0.3)';
 		context.lineWidth = 1;
 		for (var x = 0; x < scrollBarWidth; x++) {
 			y = (scrollBarHeight)*(1-1.5*v[x]/maxV);
@@ -233,7 +233,7 @@ function Map() {
 			var activity = activityList[i];
 			if (activity) {
 				var value = 1-Math.abs(activity.index-timeIndex)/(intervalSize+1);
-				//console.log(value, activity.index, i, timeIndex);
+
 				activity.cells.forEach(function (cell) {
 					if (used[cell.index]) {
 						if (used[cell.index].value < value) used[cell.index].value = value;
@@ -277,6 +277,21 @@ function Map() {
 				opacity: 0.5*Math.min(1, sqr(4000/position.r))
 			}
 		).addTo(cellLayer);
+	}
+
+	var townLayer = L.layerGroup();
+	townLayer.addTo(map);
+	me.addTown = function (town) {
+		L.circle(
+			[town.y, town.x],
+			10000,
+			{
+				fillcolor: 'rgb('+town.color.join(',')+')',
+				fillOpacity: 0.5,
+				color: 'rgb('+town.color.join(',')+')',
+				weight: 2
+			}
+		).addTo(townLayer);
 	}
 
 	return me;
@@ -363,6 +378,116 @@ function CommunicationList() {
 	return me;
 }
 
+function Calendar() {
+	var me = this;
+
+	var towns = [
+		{ x:8.54, y:47.38, color:[255,230,  0], title:'Zürich'   },
+		{ x:7.44, y:46.95, color:[255,  0, 23], title:'Bern'     },
+		{ x:7.59, y:47.56, color:[206,  0,186], title:'Basel'    },
+		{ x:6.15, y:46.20, color:[  5,  0,170], title:'Genf'     },
+		{ x:8.30, y:47.05, color:[  0,133,211], title:'Luzern'   },
+		{ x:6.63, y:46.52, color:[  0,166, 81], title:'Lausanne' }
+	]
+
+	var initialized = false;
+
+	me.show = function () {
+		if (!initialized) {
+			towns.forEach(function (town) {
+				map.addTown(town);
+			})
+
+			var hours = [];
+
+			var blockMinutes = 60;
+			var blockCount = blockMinutes/timeStepMinutes;
+			var blocksPerDay = 1440/blockMinutes;
+
+			data.positions.forEach(function (position, timeIndex) {
+				var hourIndex = Math.floor(timeIndex/blockCount);
+				if (hours[hourIndex] == undefined) hours[hourIndex] = [0,0,0,0,0,0];
+
+				towns.forEach(function (town, townIndex) {
+					var dx = position.x - town.x;
+					var dy = position.y - town.y;
+					var d = Math.sqrt(sqr(dx*0.68) + sqr(dy));
+					var geoConf = d*30;
+					var posConf = position.r/10000;
+					geoConf = Math.min(1, Math.max(0, 2-geoConf));
+					posConf = Math.min(1, Math.max(0, 2-posConf));
+					hours[hourIndex][townIndex] += geoConf*(posConf*0.7+0.3);
+				})
+			});
+
+			var calendar = [];
+
+			hours.forEach(function (townConf, hourIndex) {
+				var time = (data.config.timeStart + hourIndex*blockMinutes*60)*1000;
+				var blockInDay = hourIndex % blocksPerDay;
+				var day = Math.floor(hourIndex / blocksPerDay);
+				var weekDay = (day + weekDayOffset) % 7;
+				var week = Math.floor((day - weekDay)/7 + 1);
+
+				var bestTownIndex = -1;
+				var bestTownValue = 1;
+				townConf.forEach(function (value, townIndex) {
+					if (value > bestTownValue) {
+						bestTownValue = value;
+						bestTownIndex = townIndex;
+					}
+				});
+				bestTownValue /= blockCount;
+
+				if (calendar[week]             === undefined) calendar[week]             = [];
+				if (calendar[week][blockInDay] === undefined) calendar[week][blockInDay] = [];
+
+				calendar[week][blockInDay][weekDay] = [bestTownIndex, bestTownValue];
+
+			})
+
+			calendar.forEach(function (week, weekIndex) {
+				var html = [];
+
+				var row = weekDays.map(function (weekDay) {
+					return '<th>'+weekDay.label+'</th>';
+				})
+
+				html.push('<tr>'+row.join('')+'</tr>');
+
+				var block = week.map(function (timeRow, blockInDay) {
+					var row = [];
+					for (var weekDay = 0; weekDay < 7; weekDay++) {
+						var block = timeRow[weekDay];
+						if (block === undefined) {
+							row.push('<td></td>');
+						} else {
+							var color = [255,255,255];
+							if (block[0] >= 0) color = towns[block[0]].color;
+							var opacity = block[1];
+							color = color.map(function (value) {
+								return (value*opacity + 255*(1-opacity)).toFixed(0);
+							}).join(',');
+							row.push('<td style="background:rgb('+color+')"></td>');
+						}
+					}
+					return '<tr>'+row.join('')+'</tr>';
+				})
+
+				html.push(block.join('\n'));
+
+				html = '<div class="week"><table>'+html.join('\n')+'</table></div>';
+
+				$('#rightCalendar').append(html);
+			})
+
+			initialized = true;
+		}
+	}
+
+	return me;
+}
+
 function makeEventListener(object) {
 	var eventCallbacks = {};
 
@@ -373,7 +498,9 @@ function makeEventListener(object) {
 
 	object.trigger = function (event, param) {
 		if (eventCallbacks[event] !== undefined) {
-			eventCallbacks[event].forEach(function (func) { func(param) });
+			setTimeout(function () {
+				eventCallbacks[event].forEach(function (func) { func(param) });
+			}, 0);
 		}
 	}
 }

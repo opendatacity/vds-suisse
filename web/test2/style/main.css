@@ -57,12 +57,35 @@ body {
 	}
 
 	#rightCalendar {
+		position: absolute;
 		top: 0px;
-		left: 50%;
+		width: 50%;
 		right: 0px;
 		bottom: 0px;
 		display: none;
+		overflow-y: scroll;
 	}
+
+		.week {
+			float: left;
+			margin-top: 20px;
+			margin-right: 20px;
+		}
+
+		#rightCalendar table {
+			border-spacing: 1px;
+		}
+
+		#rightCalendar th {
+			font-size: 10px;
+			color: #aaa;
+			width: 16px;
+			font-weight: normal;
+		}
+
+		#rightCalendar td {
+			height: 3px;
+		}
 
 	#rightList {
 		top: 0px;
@@ -173,7 +196,7 @@ body {
 				top: 0px;
 				width: 1px;
 				height: 48px;
-				background: rgba(0,0,0,0.3);
+				background: rgba(255,0,0,1);
 			}
 
 .unselectable {

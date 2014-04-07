@@ -8,13 +8,19 @@ $(function () {
 	scrollBar = new ScrollBar();
 	player = new Player();
 	map = new Map();
+	calendar = new Calendar();
 	comList = new CommunicationList();
 
 	tabBar.on('activate', function (id) {
 		var section = $('#middleSection');
 		switch (id) {
-			case 'tabList':     section.removeClass('calendarView'); break;
-			case 'tabCalendar': section.addClass(   'calendarView'); break;
+			case 'tabList':
+				section.removeClass('calendarView');
+			break;
+			case 'tabCalendar':
+				section.addClass(   'calendarView');
+				calendar.show();
+			break;
 		}
 	})
 
