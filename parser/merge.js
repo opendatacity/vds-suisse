@@ -38,7 +38,7 @@ if (usingCache && fs.existsSync(activityJSON)) {
 } else {
 	console.log('Calculate cellActivity');
 	activities = require('cellActivity').import(cells, vds, config);
-	//fs.writeFileSync(activityJSON, JSON.stringify(activities, null, '\t'), 'utf8');
+	fs.writeFileSync(activityJSON, JSON.stringify(activities, null, '\t'), 'utf8');
 }
 
 
@@ -51,7 +51,7 @@ if (usingCache && fs.existsSync(positionJSON)) {
 } else {
 	console.log('Calculate position');
 	positions = require('position').import(activities, config);
-	//fs.writeFileSync(positionJSON, JSON.stringify(positions, null, '\t'), 'utf8');
+	fs.writeFileSync(positionJSON, JSON.stringify(positions, null, '\t'), 'utf8');
 }
 
 
