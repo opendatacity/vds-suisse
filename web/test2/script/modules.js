@@ -27,6 +27,7 @@ var weekDays = [
 
 function ScrollBar() {
 	var me = this;
+	makeEventListener(me);
 
 	var scrollBarWidth = maxDays*1440/(timeIndexZoom*timeStepMinutes);
 	var container = $('#scrollContainer');
@@ -124,17 +125,6 @@ function ScrollBar() {
 			pressed = false;
 			me.trigger('dragEnd');
 		}
-	} 
-
-	var eventCallbacks = {};
-	me.on = function (event, f) {
-		if (eventCallbacks[event] === undefined) eventCallbacks[event] = [];
-		eventCallbacks[event].push(f);
-	}
-	me.trigger = function (event) {
-		if (eventCallbacks[event] !== undefined) {
-			eventCallbacks[event].forEach(function (func) { func() });
-		}
 	}
 
 	init()
@@ -144,6 +134,7 @@ function ScrollBar() {
 
 function Player() {
 	var me = this;
+	makeEventListener(me);
 
 	var timeIndex = 100;
 
@@ -200,22 +191,12 @@ function Player() {
 		paused = false;
 	}
 
-	var eventCallbacks = {};
-	me.on = function (event, f) {
-		if (eventCallbacks[event] === undefined) eventCallbacks[event] = [];
-		eventCallbacks[event].push(f);
-	}
-	me.trigger = function (event) {
-		if (eventCallbacks[event] !== undefined) {
-			eventCallbacks[event].forEach(function (func) { func() });
-		}
-	}
-
 	return me;
 }
 
 function Map() {
 	var me = this;
+	makeEventListener(me);
 
 	var activityList = [];
 	data.activities.forEach(function (activity) {
@@ -262,7 +243,6 @@ function Map() {
 				})
 			}
 		}
-
 
 		Object.keys(used).forEach(function (id) {
 			var color = used[id].value;
@@ -354,6 +334,20 @@ function EventList() {
 	}
 
 	return me;
+}
+
+function makeEventListener(object) {
+	var eventCallbacks = {};
+
+	object.on = function (event, f) {
+		if (eventCallbacks[event] === undefined) eventCallbacks[event] = [];
+		eventCallbacks[event].push(f);
+	}
+	object.trigger = function (event) {
+		if (eventCallbacks[event] !== undefined) {
+			eventCallbacks[event].forEach(function (func) { func() });
+		}
+	}
 }
 
 function sqr(x) {
