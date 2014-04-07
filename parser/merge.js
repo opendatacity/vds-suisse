@@ -59,11 +59,11 @@ if (usingCache && fs.existsSync(positionJSON)) {
 var telephoneEvents = vds.map(function (entry) {
 	if (entry.type == 'internet') return false;
 	return {
-		type: entry.type,
-		subtype: entry.subtype,
-		dur: entry.timeDuration,
-		start: entry.timeStart,
-		end: entry.timeEnd,
+		type:     entry.type,
+		subtype:  entry.subtype,
+		dur:      entry.timeDuration,
+		start:    entry.timeStart,
+		end:      entry.timeEnd,
 		incoming: entry.data.incoming
 	}
 }).filter(function (entry) { return entry });
@@ -76,11 +76,11 @@ var data = {};
 data.cells = [];
 cells.forEach(function (cell) {
 	data.cells[cell.index] = {
-		x0: cell.x0,
-		y0: cell.y0,
-		x: cell.x,
-		y: cell.y,
-		acc: cell.acc,
+		x0:    cell.x0,
+		y0:    cell.y0,
+		x:     cell.x,
+		y:     cell.y,
+		acc:   cell.acc,
 		index: cell.index
 	};
 })
@@ -88,7 +88,7 @@ cells.forEach(function (cell) {
 data.activities = activities.map(function (activity) {
 	return {
 		index: activity.index,
-		time: activity.time,
+		time:  activity.time,
 		cells: activity.cells.map(function (cell) { return cell.index })
 	}
 })
