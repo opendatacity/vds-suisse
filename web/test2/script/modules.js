@@ -120,8 +120,10 @@ function ScrollBar() {
 	} 
 
 	function mouseUp(event) {
-		pressed = false;
-		me.trigger('dragEnd');
+		if (pressed) {
+			pressed = false;
+			me.trigger('dragEnd');
+		}
 	} 
 
 	var eventCallbacks = {};
