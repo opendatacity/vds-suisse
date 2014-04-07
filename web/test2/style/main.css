@@ -9,9 +9,40 @@ body {
 	font-family: Arial;
 }
 
-#upperControls {
+#topSection {
 	left: 0px;
 	top: 0px;
+	right: 0px;
+	height: 48px;
+	position: absolute;
+}
+
+	.tabButton {
+		display: inline-block;
+		border: 1px solid #357ebd;
+		background: #428bca;
+		border-radius: 4px;
+		padding: 7px 9px 6px 9px;
+		color: #fff;
+		cursor: pointer;
+		white-space: nowrap;
+		font-size: 14px;
+	}
+
+		.tabButton.active {
+			border-color: #285e8e;
+			background: #3276b1;
+			-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+			box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+		}
+
+		.tabButton:hover {
+			background: #3276b1;
+		}
+
+#middleSection {
+	left: 0px;
+	top: 48px;
 	right: 0px;
 	bottom: 48px;
 	position: absolute;
@@ -45,7 +76,7 @@ body {
 				font-size: 12px;
 			}
 
-#bottomControls {
+#bottomSection {
 	position: absolute;
 	left: 0px;
 	right: 0px;
@@ -108,12 +139,14 @@ body {
 		position: absolute;
 		overflow: hidden;
 	}
+
 		#scrollCanvas {
 			position: absolute;
 			left: 0px;
 			top: 0px;
 			cursor: pointer;
 		}
+
 			#scrollHairLine {
 				position: absolute;
 				left: 50%;
@@ -122,6 +155,7 @@ body {
 				height: 48px;
 				background: rgba(0,0,0,0.3);
 			}
+
 .unselectable {
 	-webkit-user-select: none;
 	-moz-user-select: none;
