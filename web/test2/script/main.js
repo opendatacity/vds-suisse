@@ -38,6 +38,9 @@ $(function () {
 
 	$('#playButton' ).click(function () { player.start(); })
 	$('#pauseButton').click(function () { player.stop();  })
+	$('#showNewsletters').click(function () {
+		comList.showNewsletters($('#showNewsletters').prop('checked'));
+	});
 
 	player.start();
 })

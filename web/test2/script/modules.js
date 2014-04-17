@@ -336,12 +336,13 @@ function CommunicationList() {
 	var me = this;
 	var lastEventStart = -1e10;
 	var maxEntries = 20;
+	var showNewsletters = true;
 
 	for (var i = 0; i < data.events.length; i++) {
 		data.events[i].index = i;
 	}
 
-	me.redraw = function () {
+	me.redraw = function (force) {
 		var html = [];
 
 		var index = player.getTimeStamp();
@@ -349,7 +350,12 @@ function CommunicationList() {
 
 		for (var i = 0; i < data.events.length; i++) {
 			var event = data.events[i];
-			if (event.end > time0) html.push(event)
+			if (event.end > time0) {
+				var newsletter = ((''+event.from.org).toLowerCase().substr(0,4) == 'news');
+				if (!newsletter || showNewsletters) {
+					html.push(event)
+				}
+			}
 			if (html.length > maxEntries) break;
 		}
 
@@ -358,7 +364,7 @@ function CommunicationList() {
 		})
 
 		var start = html[0] ? html[0].start : 0;
-		if (lastEventStart == start) return;
+		if (!force && (lastEventStart == start)) return;
 
 		lastEventStart = start;
 
@@ -389,6 +395,11 @@ function CommunicationList() {
 		html = html.join('\n');
 
 		$('#comList').html('<table>'+html+'</table>');
+	}
+
+	me.showNewsletters = function (checked) {
+		showNewsletters = checked;
+		me.redraw(true);
 	}
 
 	return me;
