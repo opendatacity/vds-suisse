@@ -330,6 +330,7 @@ function TabBar() {
 function CommunicationList() {
 	var me = this;
 	var lastEventStart = -1e10;
+	var maxEntries = 30;
 
 	me.redraw = function () {
 		var html = [];
@@ -340,7 +341,7 @@ function CommunicationList() {
 		for (var i = 0; i < data.events.length; i++) {
 			var event = data.events[i];
 			if (event.end > time0) html.push(event)
-			if (html.length > 30) break;
+			if (html.length > maxEntries) break;
 		}
 
 		html.sort(function (a,b) {
@@ -352,11 +353,16 @@ function CommunicationList() {
 
 		lastEventStart = start;
 
-		if (html.length > 20) html.length = 20;
+		if (html.length > maxEntries) html.length = maxEntries;
 
 		html = html.map(function (event) {
 			var duration = event.dur || '';
-			var inout = event.incoming ? 'in' : 'out';
+			
+			var inout = [];
+			if (event.inBound ) inout.push('in');
+			if (event.outBound) inout.push('out');
+			inout = inout.join('/');
+
 			var line =
 				'<tr>'+
 					'<td>'+formatTime(event.start*1000)+'</td>'+
