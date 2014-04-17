@@ -6,7 +6,7 @@ config.indexStart = Math.round(config.timeStart / config.timeStepSeconds);
 config.indexEnd   = Math.round(config.timeEnd   / config.timeStepSeconds);
 config.indexCount = config.indexEnd - config.indexStart + 1;
 
-var vds, activities, events = [];
+var vds, activities;
 
 var usingCache = true;
 
@@ -57,22 +57,10 @@ if (usingCache && fs.existsSync(positionJSON)) {
 
 //require('heatmap').generateHeatmap(positions, '../print/heatmap');
 //require('heatmap').generateInkmap(positions, '../print/inkmap');
-
-
-
-
-var telephoneEvents = vds.map(function (entry) {
-	if (entry.type == 'internet') return false;
-	return {
-		type:     entry.type,
-		subtype:  entry.subtype,
-		dur:      entry.timeDuration,
-		start:    entry.timeStart,
-		end:      entry.timeEnd,
-		incoming: entry.data.incoming
-	}
-}).filter(function (entry) { return entry });
-events = events.concat(telephoneEvents);
+var events = require('contacts').import(vds, config);
+events.sort(function (a,b) {
+	return a.start - b.start;
+})
 
 
 
