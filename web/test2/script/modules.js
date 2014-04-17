@@ -335,7 +335,7 @@ function TabBar() {
 function CommunicationList() {
 	var me = this;
 	var lastEventStart = -1e10;
-	var maxEntries = 30;
+	var maxEntries = 20;
 
 	me.redraw = function () {
 		var html = [];
