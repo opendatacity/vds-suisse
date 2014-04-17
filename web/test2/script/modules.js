@@ -261,10 +261,15 @@ function Map() {
 		});
 
 		var path = [];
+		var avgR = 0;
 		for (var i = i0; i <= i1; i++) {
 			path.push([data.positions[i].y, data.positions[i].x]);
+			avgR += data.positions[i].r;
 		}
-		L.polyline(path, {color:'rgba(127,0,0,0.2)'}).addTo(cellLayer);
+		avgR /= (i1-i0+1);
+		var alpha = 0.3/Math.max(1, avgR/5000);
+		var weight = Math.min(10, Math.max(3, avgR/3000));
+		L.polyline(path, {color:'rgba(127,0,0,'+alpha+')', weight:weight}).addTo(cellLayer);
 
 		var position = data.positions[timeIndex];
 		L.circle(
