@@ -58,6 +58,9 @@ if (usingCache && fs.existsSync(positionJSON)) {
 //require('heatmap').generateHeatmap(positions, '../print/heatmap');
 //require('heatmap').generateInkmap(positions, '../print/inkmap');
 var events = require('contacts').import(vds, config);
+
+events = events.concat(require('tweets').import(config));
+
 events.sort(function (a,b) {
 	return a.start - b.start;
 })
