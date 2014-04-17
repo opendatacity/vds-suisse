@@ -337,6 +337,10 @@ function CommunicationList() {
 	var lastEventStart = -1e10;
 	var maxEntries = 20;
 
+	for (var i = 0; i < data.events.length; i++) {
+		data.events[i].index = i;
+	}
+
 	me.redraw = function () {
 		var html = [];
 
@@ -374,19 +378,40 @@ function CommunicationList() {
 					'<td>'+duration+'</td>'+
 					'<td>'+event.type+'</td>'+
 					'<td>'+inout+'</td>'+
+					'<td><a href="javascript:showCom('+event.index+')">?</a></td>'+
 				'</tr>';
 
 			return line;
 		})
 
 
-		html.unshift('<tr><th>Zeit</th><th>Dauer</th><th>Typ</th><th>In/Out</th></tr>');
+		html.unshift('<tr><th>Zeit</th><th>Dauer</th><th>Typ</th><th>In/Out</th><th></th></tr>');
 		html = html.join('\n');
 
-		$('#rightList').html('<table>'+html+'</table>');
+		$('#comList').html('<table>'+html+'</table>');
 	}
 
 	return me;
+}
+
+function showCom(eventIndex) {
+	var event = data.events[eventIndex];
+
+	var html = [
+		'<b>Subject:</b> '+event.subject,
+		'<b>From:</b> '   +formatAddress(event.from),
+		'<b>To:</b> '     +event.to.map(function (a) { return formatAddress(a) }).join(', ')
+	];
+
+	$('#comDetails').html('<p>'+html.join('</p><p>')+'</p>');
+
+	function formatAddress(a) {
+		if (a.address == a.contact) {
+			return a.address;
+		} else {
+			return a.contact+' ('+a.address+')';
+		}
+	}
 }
 
 function Calendar() {

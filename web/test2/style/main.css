@@ -108,6 +108,11 @@ body {
 				font-size: 12px;
 			}
 
+		#rightList #comDetails p {
+			font-size: 12px;
+			margin-bottom: 5px;
+		}
+
 	#middleSection.calendarView #map {
 		right: 50%;
 	}
