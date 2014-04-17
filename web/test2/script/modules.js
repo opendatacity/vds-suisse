@@ -340,7 +340,7 @@ function CommunicationList() {
 		for (var i = 0; i < data.events.length; i++) {
 			var event = data.events[i];
 			if (event.end > time0) html.push(event)
-			if (html.length > 20) break;
+			if (html.length > 30) break;
 		}
 
 		html.sort(function (a,b) {
