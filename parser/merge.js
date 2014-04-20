@@ -6,53 +6,40 @@ config.indexStart = Math.round(config.timeStart / config.timeStepSeconds);
 config.indexEnd   = Math.round(config.timeEnd   / config.timeStepSeconds);
 config.indexCount = config.indexEnd - config.indexStart + 1;
 
-var vds, activities;
+
 
 var usingCache = true;
 
 
 
-// VDS einlesen
-var vdsJSON = config.cachePath + 'vds.json';
-if (usingCache && fs.existsSync(vdsJSON)) {
-	console.log('Load VDS from cache');
-	vds = JSON.parse(fs.readFileSync(vdsJSON, 'utf8'));
-} else {
-	console.log('Import VDS');
-	vds = require('vds').import(config.inputPath + 'vds/vds.tsv', config);
-	fs.writeFileSync(vdsJSON, JSON.stringify(vds, null, '\t'), 'utf8');
-}
+console.log('Get VDS');
+var vds = cache(
+	'vds.json',
+	function () { return require('vds').import(config.inputPath + 'vds/vds.tsv', config); }
+)
 
 
 
+console.log('Read Cells');
 var cells = JSON.parse(fs.readFileSync(config.inputPath + 'cells.json', 'utf8'));
 cells.forEach(function (cell, index) { cell.index = index })
 
 
 
-// cell-Aktivitäten ausrechnen
-var activityJSON = config.cachePath + 'activity.json';
-if (usingCache && fs.existsSync(activityJSON)) {
-	console.log('Load cellActivity from cache');
-	activities = JSON.parse(fs.readFileSync(activityJSON, 'utf8'));
-} else {
-	console.log('Calculate cellActivity');
-	activities = require('cellActivity').import(cells, vds, config);
-	fs.writeFileSync(activityJSON, JSON.stringify(activities, null, '\t'), 'utf8');
-}
+console.log('Get CellActivity');
+var activities = cache(
+	'activity.json',
+	function () { return require('cellActivity').import(cells, vds, config); }
+)
 
 
 
-// Position ausrechnen
-var positionJSON = config.cachePath + 'position.json';
-if (usingCache && fs.existsSync(positionJSON)) {
-	console.log('Load position from cache');
-	positions = JSON.parse(fs.readFileSync(positionJSON, 'utf8'));
-} else {
-	console.log('Calculate position');
-	positions = require('position').import(activities, config);
-	fs.writeFileSync(positionJSON, JSON.stringify(positions, null, '\t'), 'utf8');
-}
+console.log('Get Position');
+var positions = cache(
+	'position.json',
+	function () { return require('position').import(activities, config); }
+)
+
 
 
 //require('heatmap').generateHeatmap(positions, '../print/heatmap');
@@ -115,3 +102,17 @@ fs.writeFileSync('../web/data/data.js', 'var data = ' + JSON.stringify(data, nul
 
 
 
+
+function cache(file, func) {
+	file = config.cachePath + file;
+	if (usingCache && fs.existsSync(file)) {
+		console.log('   - load from cache');
+		return JSON.parse(fs.readFileSync(file, 'utf8'));
+	} else {
+		console.log('   - calculate');
+		var data = func();
+		console.log('   - save to cache');
+		fs.writeFileSync(file, JSON.stringify(data), 'utf8');
+		return data;
+	}	
+}
