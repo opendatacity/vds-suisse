@@ -41,6 +41,9 @@ var positions = cache(
 )
 
 
+var statistics = new require('statistics').Statistics(config);
+statistics.calculateSpeed(positions);
+
 
 //require('heatmap').generateHeatmap(positions, '../print/heatmap');
 //require('heatmap').generateInkmap(positions, '../print/inkmap');
