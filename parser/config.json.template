@@ -4,5 +4,5 @@
 	"myNumber":"49123456789",
 	"timeStart":1358290800,
 	"days":179,
-	"timeInterval":300
+	"timeStepSeconds":300
 }
