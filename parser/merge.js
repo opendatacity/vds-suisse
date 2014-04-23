@@ -15,13 +15,13 @@ var usingCache = true;
 console.log('Get VDS');
 var vds = cache(
 	'vds.json',
-	function () { return require('vds').import(config.inputPath + 'vds/vds.tsv', config); }
+	function () { return require('vds').import(config.inputPath + 'vds/vds_erik.tsv', config); }
 )
 
 
 
 console.log('Read Cells');
-var cells = JSON.parse(fs.readFileSync(config.inputPath + 'cells.json', 'utf8'));
+var cells = JSON.parse(fs.readFileSync(config.inputPath + 'vds/cells_erik.json', 'utf8'));
 cells.forEach(function (cell, index) { cell.index = index })
 
 
@@ -47,8 +47,8 @@ var events = require('contacts').import(vds, config);
 
 
 var statistics = new require('statistics').Statistics(config);
-//statistics.calculateSpeed(positions);
-statistics.calculateGraph(events);
+statistics.calculateSpeed(positions);
+//statistics.calculateGraph(events);
 
 events = events.concat(require('tweets').import(config));
 
