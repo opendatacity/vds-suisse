@@ -49,6 +49,7 @@ var events = require('contacts').import(vds, config);
 var statistics = new require('statistics').Statistics(config);
 statistics.calculateSpeed(positions);
 //statistics.calculateGraph(events);
+//statistics.analyseMails(events);
 
 events = events.concat(require('tweets').import(config));
 
