@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" >
+		<link rel="stylesheet" href="lib/leaflet/leaflet.css" />
+		<script src="lib/leaflet/leaflet.js"></script>
+		<style type="text/css">
+			html, body, #map {
+				height: 100%;
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+		<script type="text/javascript">
+			function init() {
+				var map = L.map('map').setView([47.2, 8.3], 7);
+
+				// add an OpenStreetMap tile layer
+				L.tileLayer('http://tiles.odcdn.de/europe2/{z}/{x}/{y}.png', {
+				}).addTo(map);
+			}
+		</script>
+	</head>
+	<body onload="init()">
+		<div id="map"></div>
+	</body>
+</html>
