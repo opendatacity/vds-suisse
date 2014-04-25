@@ -388,7 +388,6 @@ function CommunicationList() {
 
 		if (entries[0] && (entries[0].y === undefined)) {
 
-			console.log(entries[0]);
 			entries.forEach(function (entry) {
 				entry.y0 = dayHeight*(entry.start - time0)/86400;
 				entry.y1 = dayHeight*(entry.end   - time0)/86400;
@@ -478,45 +477,10 @@ function CommunicationList() {
 
 		dayNodes[dayIndex] = node;
 
-/*
-		lastEventStart = start;
-
-		if (html.length > maxEntries) html.length = maxEntries;
-
-		html = html.map(function (event) {
-			var duration = event.dur || '';
-			
-			var inout = [];
-			if (event.inBound ) inout.push('in');
-			if (event.outBound) inout.push('out');
-			inout = inout.join('/');
-
-			var line =
-				'<tr>'+
-					'<td>'+formatTime(event.start*1000)+'</td>'+
-					'<td>'+duration+'</td>'+
-					'<td>'+event.type+'</td>'+
-					'<td>'+inout+'</td>'+
-					'<td><a href="javascript:showCom('+event.index+')">?</a></td>'+
-				'</tr>';
-
-			return line;
-		})
-
-
-		html.unshift('<tr><th>Zeit</th><th>Dauer</th><th>Typ</th><th>In/Out</th><th></th></tr>');
-		html = html.join('\n');
-
-		$('#comList').html('<table>'+html+'</table>');
-		*/
 	}
 
 	me.redraw = function (force) {
-		//var index = player.getTimeStamp();
-		//var time0 = (index - 0*60*60*1000)/1000;
-
 		if (dayNodes[0] === undefined) {
-			//for (var i = 0; i <= 179; i++) drawDay(i);
 			drawDay(0);
 		}
 	}
