@@ -354,35 +354,105 @@ function CommunicationList() {
 	var lastEventStart = -1e10;
 	var maxEntries = 20;
 	var showNewsletters = true;
+	
+	var lineHeight = 16;
+	var dayFullHeight = 7200;
+	var dayTinyHeight = 2400;
 
 	for (var i = 0; i < data.events.length; i++) {
 		data.events[i].index = i;
 	}
 
-	me.redraw = function (force) {
-		var html = [];
+	var dayNodes = [];
+	function drawDay(dayIndex) {
+		var date = new Date(data.config.timeStart*1000);
+		date.setDate(date.getDate()+dayIndex);
+		var time0 = Math.round(date.getTime()/1000);
+		var time1 = time0 + 86400;
 
-		var index = player.getTimeStamp();
-		var time0 = (index - 0*60*60*1000)/1000;
+		var entries = data.events.filter(function (event) {
+			if (event.start <  time0) return false;
+			if (event.start >= time1) return false;
+			var newsletter = ((''+event.from.org).toLowerCase().substr(0,4) == 'news');
+			if (newsletter && !showNewsletters) return false;
+			if ((event.type == 'mail') && (!event.outBound || event.inBound)) return false;
+			return true;
+		})
 
-		for (var i = 0; i < data.events.length; i++) {
-			var event = data.events[i];
-			if (event.end > time0) {
-				var newsletter = ((''+event.from.org).toLowerCase().substr(0,4) == 'news');
-				if (!newsletter || showNewsletters) {
-					html.push(event)
-				}
-			}
-			if (html.length > maxEntries) break;
-		}
-
-		html.sort(function (a,b) {
+		entries.sort(function (a,b) {
 			return a.start - b.start;
 		})
 
-		var start = html[0] ? html[0].start : 0;
-		if (!force && (lastEventStart == start)) return;
+		dayHeight = dayTinyHeight;
 
+		if (entries[0] && (entries[0].y === undefined)) {
+
+			console.log(entries[0]);
+			entries.forEach(function (entry) {
+				entry.y0 = dayHeight*(entry.start - time0)/86400;
+				entry.y1 = dayHeight*(entry.end   - time0)/86400;
+				entry.y  = entry.y0;
+			})
+			for (var i = 0; i < entries.length; i++) {
+				var ySoll = ((i == 0) ? 0 : entries[i-1].yDown) + lineHeight;
+				entries[i].yDown = (entries[i].y < ySoll) ? ySoll : entries[i].y;
+			}
+			for (var i = entries.length-1; i >= 0; i--) {
+				var ySoll = ((i == entries.length-1) ? dayHeight : entries[i+1].yUp) - lineHeight;
+				entries[i].yUp = (entries[i].y > ySoll) ? ySoll : entries[i].y;
+			}
+			for (var i = 0; i < entries.length; i++) {
+				entries[i].y = (entries[i].yUp + entries[i].yDown)/2;
+			}
+		}
+
+		var node = $('#comList').append('<div class="comDay" id="day'+dayIndex+'"></div>');
+
+		var paper = Raphael(node.get(0), 300, dayHeight);
+
+
+		entries.forEach(function (entry) {
+			var color, label;
+			switch (entry.type) {
+				case 'facebook': color = '#3c5a96'; label = 'Facebook-Post'; break;
+				case 'tweet':    color = '#59adeb'; label = 'Tweet';         break;
+				case 'sms':      color = '#22cc22'; label = 'SMS';           break;
+				case 'call':     color = '#cc2222'; label = 'Anruf';         break;
+				case 'mail':     color = '#cccccc'; label = 'E-Mail';        break;
+				default:
+					console.error('Unknown type "'+entry.type+'"');
+			}
+
+			if (entry.start == entry.end) {
+				paper.path('M40,'+entry.y0+'C60,'+entry.y0+',60,'+entry.y+',80,'+entry.y).attr({stroke:color});
+			} else {
+				paper.path('M40,'+entry.y0+'C60,'+entry.y0+',60,'+entry.y+',80,'+entry.y+'C60,'+entry.y+',60,'+entry.y1+',40,'+entry.y1).attr({stroke:color, fill:color, 'fill-opacity':0.2});
+			}
+			paper.path(iconSVG[entry.type]).attr({
+				stroke:false,
+				fill:color,
+				transform:'S0.75T78,'+(entry.y - lineHeight/2)
+			});
+		})
+
+		var quarterHeight = dayHeight/96;
+		for (var i = 0; i < 96; i++) {
+			var hour = Math.floor(i/4);
+			var y = i*quarterHeight;
+			switch (i % 4) {
+				case 0:
+					paper.path('M0,'+y+'L40,'+y).attr({stroke:'#ccc'});
+					paper.text(35, y+7, hour+':00').attr({fill:'#ccc', 'text-anchor':'end', 'font-family':'sans-serif', 'font-size':12});
+				break;
+				default:
+					paper.path('M30,'+y+'L40,'+y).attr({stroke:'#ccc'});
+			}
+		}
+		paper.path('M40,0L40,'+dayHeight).attr({stroke:'#ccc'});
+
+		dayNodes[dayIndex] = node;
+
+/*
 		lastEventStart = start;
 
 		if (html.length > maxEntries) html.length = maxEntries;
@@ -412,6 +482,17 @@ function CommunicationList() {
 		html = html.join('\n');
 
 		$('#comList').html('<table>'+html+'</table>');
+		*/
+	}
+
+	me.redraw = function (force) {
+		//var index = player.getTimeStamp();
+		//var time0 = (index - 0*60*60*1000)/1000;
+
+		if (dayNodes[0] === undefined) {
+			//for (var i = 0; i <= 179; i++) drawDay(i);
+			drawDay(0);
+		}
 	}
 
 	me.showNewsletters = function (checked) {
@@ -576,4 +657,12 @@ function makeEventListener(object) {
 
 function sqr(x) {
 	return x*x;
+}
+
+var iconSVG = {
+	facebook: 'M11.8,8.2v6.6H9.1V8.2H7.7V5.9h1.4V4.6c0-1.9,1.1-3,3-3h1.8v2.3h-1.1c-0.7,0-0.9,0.3-0.9,0.9v1.1h2.1l-0.2,2.3H11.8z M15.1,0.9C14.5,0.3,13.8,0,13,0H3C1.4,0,0,1.4,0,3v10c0,0.8,0.3,1.5,0.9,2.1C1.5,15.7,2.2,16,3,16h10c1.6,0,3-1.4,3-3V3C16,2.2,15.7,1.5,15.1,0.9C14.5,0.3,15.7,1.5,15.1,0.9z',
+	tweet:'M12.2,6.2c0.6,5.1-5.6,8.1-9.6,5.5c1.2,0.1,2.3-0.2,3.2-0.9c-0.5,0-0.9-0.2-1.3-0.4S4,9.7,3.9,9.3c0.3,0.1,0.6,0.1,0.9,0C3.8,9,3,8.1,3,7.1v0c0.4,0.2,0.7,0.3,1,0.3c-1-0.6-1.2-1.9-0.6-2.9c1.1,1.4,2.8,2.2,4.5,2.3c-0.6-2.1,2.3-3.6,3.7-2c0.5-0.1,0.9-0.3,1.4-0.5c-0.2,0.5-0.5,0.9-1,1.2c0.5-0.1,0.9-0.2,1.3-0.4C13,5.5,12.7,5.8,12.2,6.2C12.2,6.2,12.7,5.8,12.2,6.2z M15.1,0.9C14.5,0.3,13.8,0,13,0H3C1.4,0,0,1.4,0,3v10c0,0.8,0.3,1.5,0.9,2.1C1.5,15.7,2.2,16,3,16h10c1.6,0,3-1.4,3-3V3C16,2.2,15.7,1.5,15.1,0.9C14.5,0.3,15.7,1.5,15.1,0.9z',
+	sms:'M15.1,0.9C14.5,0.3,13.8,0,13,0H3C1.4,0,0,1.4,0,3v10c0,1.6,1.4,3,3,3h10c1.6,0,3-1.4,3-3V3C16,2.2,15.7,1.5,15.1,0.9C14.5,0.3,15.7,1.5,15.1,0.9z M13.2,10c-1.5,1.9-4.4,2.4-6.7,2c-0.9,0.7-2,1.1-3.1,1.2h0c-0.1,0-0.2-0.1-0.3-0.2c0-0.1,0-0.1,0-0.2l0,0c0,0,0.1-0.1,0.1-0.2c0.4-0.5,0.8-0.8,1-1.4c-4.3-2.5-1.5-7.1,2.5-7.7C10.1,3,16.5,5.8,13.2,10C12.7,10.6,13.7,9.3,13.2,10z',
+	call:'M13.1,12.1c-0.8,1.7-3,1.1-4.3,0.7c-1.1-0.4-2.3-1.2-3.3-2.3C4.4,9.5,3.6,8.4,3.2,7.2c-0.4-1.3-1-3.5,0.7-4.3c1.5-0.6,1.7,0.5,2.3,1.7C7.1,6,4.6,6.1,5.5,7.4c0.7,1.3,1.8,2.4,3.1,3.1c1.3,0.9,1.4-1.6,2.9-0.7l0.6,0.3c0.4,0.2,0.7,0.4,0.9,0.5c0.2,0.1,0.4,0.3,0.4,0.3C13.4,11.3,13.2,11.9,13.1,12.1C13,12.5,13.3,11.8,13.1,12.1z M15.1,0.9C14.5,0.3,13.8,0,13,0H3C1.4,0,0,1.4,0,3v10c0,0.8,0.3,1.5,0.9,2.1C1.5,15.7,2.2,16,3,16h10c1.6,0,3-1.4,3-3V3C16,2.2,15.7,1.5,15.1,0.9C14.5,0.3,15.7,1.5,15.1,0.9z',
+	mail:'M15.1,0.9C14.5,0.3,13.8,0,13,0H3C1.4,0,0,1.4,0,3v10c0,1.6,1.4,3,3,3h10c1.6,0,3-1.4,3-3V3C16,2.2,15.7,1.5,15.1,0.9C14.5,0.3,15.7,1.5,15.1,0.9z M13.7,11.5c0,0.6-0.5,1-1,1H3.3c-0.6,0-1-0.5-1-1V6.4c0.9,1,2.2,1.6,3.3,2.4C6.3,9.3,7.1,10,8,10h0h0c1,0,1.8-0.8,2.5-1.3c1-0.7,2.4-1.4,3.2-2.3V11.5z M13.4,5.5c-0.7,1.1-2.1,1.7-3.2,2.5C9.6,8.4,8.8,9.2,8,9.2h0h0c-1.2,0-2.9-1.8-3.8-2.4C3.6,6.5,3,6.1,2.6,5.5c-0.5-0.7-0.5-2,0.7-2h9.4C13.8,3.5,13.9,4.8,13.4,5.5C13.2,5.8,13.6,5.2,13.4,5.5z'
 }
