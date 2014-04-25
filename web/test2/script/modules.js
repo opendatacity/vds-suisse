@@ -466,8 +466,8 @@ function CommunicationList() {
 			var y = i*quarterHeight;
 			switch (i % 4) {
 				case 0:
-					paper.path('M0,'+y+'L40,'+y).attr({stroke:'#ccc'});
-					paper.text(35, y+7, hour+':00').attr({fill:'#ccc', 'text-anchor':'end', 'font-family':'sans-serif', 'font-size':12});
+					paper.path('M10,'+y+'L40,'+y).attr({stroke:'#ccc'});
+					paper.text(35, y+7, hour+':00').attr({fill:'#ccc', 'text-anchor':'end', 'font-family':'sans-serif', 'font-size':10});
 				break;
 				default:
 					paper.path('M30,'+y+'L40,'+y).attr({stroke:'#ccc'});
