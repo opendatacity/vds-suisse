@@ -207,10 +207,10 @@ function Map() {
 	})
 
 	// create a map in the "map" div, set the view to a given place and zoom
-	var map = L.map('map').setView([47.2, 8.3], 9);
+	var map = L.map('map').setView([47, 8.3], 8);
 
 	// add an OpenStreetMap tile layer
-	L.tileLayer('http://tiles.odcdn.de/europe2/{z}/{x}/{y}.png', {
+	L.tileLayer('http://odcdn.de:7773/suisse/{z}/{x}/{y}.png', {
 	}).addTo(map);
 
 	var cellLayer = L.layerGroup();
