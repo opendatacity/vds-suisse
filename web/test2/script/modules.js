@@ -140,6 +140,7 @@ function Player() {
 
 	var interval = false;
 	var paused = false;
+	var speed = 0.2
 
 	me.start = function () {
 		if (!interval) {
@@ -158,7 +159,7 @@ function Player() {
 
 	me.step = function () {
 		if (paused) return;
-		timeIndex++;
+		timeIndex += speed;
 		me.trigger('change');
 		if (timeIndex >= maxTimeIndex) me.stop();
 	}
@@ -237,8 +238,8 @@ function Map() {
 		var intervalSize = 12;
 
 		var timeIndex = player.getTimeIndex();
-		var i0 = timeIndex - intervalSize;
-		var i1 = timeIndex + intervalSize;
+		var i0 = Math.floor(timeIndex - intervalSize);
+		var i1 = Math.ceil(timeIndex + intervalSize);
 
 		if (i0 < 0) i0 = 0;
 		if (i1 >= data.indexCount) i1 = data.indexCount - 1;
@@ -287,7 +288,7 @@ function Map() {
 		var weight = Math.min(10, Math.max(3, avgR/3000));
 		L.polyline(path, {color:'rgba(127,0,0,'+alpha+')', weight:weight}).addTo(cellLayer);
 
-		var position = data.positions[timeIndex];
+		var position = data.positions[Math.floor(timeIndex)];
 		dotLayer.setLatLng([position.y, position.x])
 		var iconId = Math.max(0, Math.min(8, Math.floor((position.r-10000)/3000)))+1;
 		dotLayer.setIcon(icons[iconId]);
