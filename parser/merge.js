@@ -47,12 +47,15 @@ var events = require('contacts').import(vds, config);
 
 
 var statistics = new require('statistics').Statistics(config);
-statistics.calculateSpeed(positions);
+//statistics.calculateSpeed(positions);
+//statistics.analyseMails(events);
 
+/*
 var graph = new require('graph').Graph();
 graph.calculateEdges(events);
 
-//statistics.analyseMails(events);
+var contacts = graph.updateEvents(events);
+*/
 
 events = events.concat(require('tweets').import(config));
 
