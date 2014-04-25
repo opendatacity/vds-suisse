@@ -289,7 +289,7 @@ function Map() {
 
 		var position = data.positions[timeIndex];
 		dotLayer.setLatLng([position.y, position.x])
-		var iconId = Math.max(0, Math.min(8, Math.floor(position.r/5000)))+1;
+		var iconId = Math.max(0, Math.min(8, Math.floor((position.r-10000)/3000)))+1;
 		dotLayer.setIcon(icons[iconId]);
 	}
 
