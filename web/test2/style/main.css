@@ -162,10 +162,10 @@ body {
 			text-align: 'right';
 		}
 
-			#playPauseButtons i {
+			#playPauseButtons img {
 				position: absolute;
-				top: 9px;
-				left: 11px;
+				top: 0px;
+				left: 0px;
 			}
 
 			#playPauseButtons #pauseButton {
@@ -177,7 +177,7 @@ body {
 			}
 
 			#playPauseButtons.paused #pauseButton {
-				display: inline-block;
+				display: inline;
 			}
 
 	#scrollContainer {
