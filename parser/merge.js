@@ -70,12 +70,12 @@ var statistics = new require('statistics').Statistics(config);
 //statistics.calculateSpeed(positions);
 //statistics.analyseMails(events);
 
-/*
+
 var graph = new require('graph').Graph();
-graph.calculateEdges(events);
+//graph.calculateEdges(events);
 
 var contacts = graph.updateEvents(events);
-*/
+
 
 
 
@@ -106,6 +106,8 @@ data.activities = activities.map(function (activity) {
 data.positions = positions;
 
 data.events = events;
+
+data.contacts = contacts;
 
 
 data.config = {
