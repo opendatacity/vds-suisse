@@ -43,7 +43,26 @@ var positions = cache(
 
 //require('heatmap').generateHeatmap(positions, '../print/heatmap');
 //require('heatmap').generateInkmap(positions, '../print/inkmap');
+
 var events = require('contacts').import(vds, config);
+
+events = events.concat(require('tweets').import(config));
+events = events.concat(require('facebook').import(config));
+
+console.log('Sort and Filter Events');
+
+events.sort(function (a,b) {
+	return a.start - b.start;
+})
+
+var startDate = config.timeStart;
+var endDate   = config.timeStart + config.days*86400;
+
+events = events.filter(function (event) {
+	if (event.end < startDate) return false;
+	if (event.start > endDate) return false;
+	return true;
+})
 
 
 var statistics = new require('statistics').Statistics(config);
@@ -56,12 +75,6 @@ graph.calculateEdges(events);
 
 var contacts = graph.updateEvents(events);
 */
-
-events = events.concat(require('tweets').import(config));
-
-events.sort(function (a,b) {
-	return a.start - b.start;
-})
 
 
 
