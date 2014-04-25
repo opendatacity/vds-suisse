@@ -416,9 +416,9 @@ function CommunicationList() {
 			switch (entry.type) {
 				case 'facebook': color = '#3c5a96'; label = 'Facebook-Post'; break;
 				case 'tweet':    color = '#59adeb'; label = 'Tweet';         break;
-				case 'sms':      color = '#22cc22'; label = 'SMS';           break;
-				case 'call':     color = '#cc2222'; label = 'Anruf';         break;
-				case 'mail':     color = '#cccccc'; label = 'E-Mail';        break;
+				case 'sms':      color = '#22aa22'; label = 'SMS %';          break;
+				case 'call':     color = '#cc2222'; label = 'Anruf %';        break;
+				case 'mail':     color = '#cccccc'; label = 'E-Mail %';       break;
 				default:
 					console.error('Unknown type "'+entry.type+'"');
 			}
@@ -439,6 +439,7 @@ function CommunicationList() {
 					fill:color,
 					transform:'S0.75T80,'+(entry.y - lineHeight/2)
 				});
+				label = label.replace(/%/, 'von ' + addresses2Text([entry.from]));
 			}
 			if (entry.outBound) {
 				paper.path(iconSVG.arrow).attr({
@@ -446,8 +447,18 @@ function CommunicationList() {
 					fill:color,
 					transform:'S0.75T105,'+(entry.y - lineHeight/2)
 				});
+				label = label.replace(/%/, 'an ' + addresses2Text(entry.to));
 			}
+			if (label.length > 28) label = label.substr(0,25)+'…';
+			paper.text(125, entry.y, label).attr({fill:color, 'text-anchor':'start', 'font-family':'sans-serif', 'font-size':12});
 		})
+
+		function addresses2Text(addresses) {
+			return addresses.map(function (contactId) {
+				var contact = data.contacts[contactId];
+				return contact.label + (contact.nr ? ' Nr. '+contact.nr : '');
+			}).join(', ');
+		}
 
 		var quarterHeight = dayHeight/96;
 		for (var i = 0; i < 96; i++) {
