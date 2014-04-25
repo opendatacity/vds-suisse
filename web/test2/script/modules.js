@@ -288,9 +288,20 @@ function Map() {
 		var weight = Math.min(10, Math.max(3, avgR/3000));
 		L.polyline(path, {color:'rgba(127,0,0,'+alpha+')', weight:weight}).addTo(cellLayer);
 
-		var position = data.positions[Math.floor(timeIndex)];
-		dotLayer.setLatLng([position.y, position.x])
-		var iconId = Math.max(0, Math.min(8, Math.floor((position.r-10000)/3000)))+1;
+		var i0 = Math.floor(timeIndex);
+		var i1 = Math.min(i0+1, data.positions.length-1);
+		
+		var p0 = data.positions[i0];
+		var p1 = data.positions[i1];
+		
+		var a = timeIndex - i0;
+		
+		var x = p0.x*(1-a) + a*p1.x;
+		var y = p0.y*(1-a) + a*p1.y;
+		var r = p0.r*(1-a) + a*p1.r;
+
+		dotLayer.setLatLng([y, x])
+		var iconId = Math.max(0, Math.min(8, Math.floor((r-10000)/3000)))+1;
 		dotLayer.setIcon(icons[iconId]);
 	}
 
