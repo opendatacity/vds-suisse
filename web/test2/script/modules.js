@@ -216,6 +216,23 @@ function Map() {
 	var cellLayer = L.layerGroup();
 	cellLayer.addTo(map);
 
+	var icons = [];
+	for (var i = 1; i <= 10; i++) {
+		icons.push(L.icon({
+			iconUrl: 'graphics/dot'+i+'.png',
+			iconRetinaUrl: 'graphics/dot'+i+'retina.png',
+			iconSize: [48, 48],
+			iconAnchor: [20, 28],
+			popupAnchor: [20, 28]
+		}))
+	}
+
+	var dotLayer = L.marker([0,0],{
+		icon: icons[1],
+		clickable: false,
+		keyboard: false
+	}).addTo(map);
+
 	me.redraw = function () {
 		var intervalSize = 12;
 
@@ -252,8 +269,7 @@ function Map() {
 				[cell.y, cell.x],
 				cell.acc,
 				{
-					weight: 1,
-					color: color,
+					weight: 0,
 					fillColor: color,
 					fillOpacity: 0.5
 				}
@@ -272,16 +288,9 @@ function Map() {
 		L.polyline(path, {color:'rgba(127,0,0,'+alpha+')', weight:weight}).addTo(cellLayer);
 
 		var position = data.positions[timeIndex];
-		L.circle(
-			[position.y, position.x],
-			position.r,
-			{
-				fill:false,
-				weight:2,
-				color: '#000',
-				opacity: 0.5*Math.min(1, sqr(4000/position.r))
-			}
-		).addTo(cellLayer);
+		dotLayer.setLatLng([position.y, position.x])
+		var iconId = Math.max(0, Math.min(8, Math.floor(position.r/5000)))+1;
+		dotLayer.setIcon(icons[iconId]);
 	}
 
 	var townLayer = L.layerGroup();
