@@ -16,6 +16,7 @@ $(function () {
 		switch (id) {
 			case 'tabList':
 				section.removeClass('calendarView');
+				calendar.hide();
 			break;
 			case 'tabCalendar':
 				section.addClass(   'calendarView');

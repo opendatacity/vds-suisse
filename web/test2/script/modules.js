@@ -294,7 +294,7 @@ function Map() {
 	}
 
 	var townLayer = L.layerGroup();
-	townLayer.addTo(map);
+
 	me.addTown = function (town) {
 		L.circle(
 			[town.y, town.x],
@@ -306,6 +306,14 @@ function Map() {
 				weight: 2
 			}
 		).addTo(townLayer);
+	}
+
+	me.showTownLayer = function () {
+		townLayer.addTo(map);
+	}
+
+	me.hideTownLayer = function () {
+		map.removeLayer(townLayer);
 	}
 
 	return me;
@@ -448,6 +456,10 @@ function Calendar() {
 
 	var initialized = false;
 
+	me.hide = function () {
+		map.hideTownLayer();
+	}
+
 	me.show = function () {
 		if (!initialized) {
 			towns.forEach(function (town) {
@@ -472,7 +484,7 @@ function Calendar() {
 					var posConf = position.r/10000;
 					geoConf = Math.min(1, Math.max(0, 2-geoConf));
 					posConf = Math.min(1, Math.max(0, 2-posConf));
-					hours[hourIndex][townIndex] += geoConf*(posConf*0.7+0.3);
+					hours[hourIndex][townIndex] += geoConf*(posConf*0.8+0.2);
 				})
 			});
 
@@ -539,6 +551,7 @@ function Calendar() {
 
 			initialized = true;
 		}
+		map.showTownLayer();
 	}
 
 	return me;
