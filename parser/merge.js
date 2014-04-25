@@ -61,6 +61,7 @@ var endDate   = config.timeStart + config.days*86400;
 events = events.filter(function (event) {
 	if (event.end < startDate) return false;
 	if (event.start > endDate) return false;
+	if (event.inBound == event.outBound) return false;
 	return true;
 })
 
