@@ -84,11 +84,13 @@ var data = {};
 data.cells = [];
 cells.forEach(function (cell) {
 	data.cells[cell.index] = {
+		/*
 		x0:    cell.x0,
 		y0:    cell.y0,
-		x:     cell.x,
-		y:     cell.y,
-		acc:   cell.acc,
+		*/
+		x:     Math.round(cell.x*10000)/10000,
+		y:     Math.round(cell.y*10000)/10000,
+		acc:   Math.round(cell.acc),
 		index: cell.index
 	};
 })
@@ -105,9 +107,28 @@ data.activities = activities.map(function (activity) {
 
 data.positions = positions;
 
-data.events = events;
+data.events = events.map(function (event) {
+	return {
+		from: event.from,
+		to: event.to,
+		start: event.start,
+		end: event.end,
+		url: event.url,
+		type: event.type,
+		inBound: event.inBound,
+		outBound: event.outBound
+	}
+});
 
-data.contacts = contacts;
+data.contacts = contacts.map(function (contact) {
+	return {
+		label: contact.label,
+		index: contact.index,
+		nr: contact.nr,
+		org: contact.org,
+		size: Math.round(contact.size*10)/10
+	}
+});
 
 
 data.config = {
@@ -122,7 +143,10 @@ data.config = {
 
 fs.writeFileSync('../web/data/data.js', 'var data = ' + JSON.stringify(data, null, '\t'), 'utf8')
 
-
+console.log('Analyse data.js');
+Object.keys(data).forEach(function (key) {
+	console.log('   ' + key + ': ' + JSON.stringify(data[key]).length);
+})
 
 
 
