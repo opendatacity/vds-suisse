@@ -13,7 +13,7 @@ body {
 	box-shadow: 0px 0px 40px -20px rgba(0,0,0,0.4);
 	background: #fff;
 	padding: 30px;
-	max-width: 862px;
+	max-width: 860px;
 
 }
 
@@ -26,7 +26,6 @@ body {
 
 	#container .content {
 	
-		border: 1px solid #fcfcfc;
 		margin-bottom: 20px;
 		
 	}
