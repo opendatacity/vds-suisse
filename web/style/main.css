@@ -148,7 +148,7 @@ body {
 				float: left;
 				margin-bottom: 20px;
 				margin-left: 20px;
-				border: 1px solid #aaa;
+				border: 1px solid #eee;
 				border-radius: 4px;
 				padding: 4px;
 			}
@@ -160,26 +160,38 @@ body {
 					color: #aaa;
 				}
 
-			#rightCalendar table {
-				border-spacing: 0px;
-			}
-
-			#rightCalendar th {
-				font-size: 10px;
-				color: #aaa;
-				width: 14px;
-				font-weight: normal;
-			}
-
-			#rightCalendar td {
-				border: 1px solid #fff;
-				height: 3px;
-				cursor: pointer;
-			}
-
-				#rightCalendar td.active {
-					border-color: #000;
+				.week table {
+					border-spacing: 0px;
 				}
+
+				.week th {
+					font-size: 10px;
+					color: #aaa;
+					width: 14px;
+					font-weight: normal;
+				}
+
+				.week td {
+					border: 1px solid #fff;
+					height: 3px;
+					cursor: pointer;
+				}
+
+					.week td.active {
+						border-color: #000;
+					}
+
+				.week.active {
+					border: 1px solid #444;
+				}
+
+					.week.active h2 {
+						color: #444;
+					}
+
+					.week.active th {
+						color: #444;
+					}
 
 		#rightList {
 			top: 0px;
@@ -208,12 +220,12 @@ body {
 				padding: 0px;
 				border-bottom: 1px solid #000;
 				background: rgba(255,255,255,0.9);
-				background: -moz-linear-gradient(top,  rgba(255,255,255,1) 50%, rgba(255,255,255,0.5) 100%);
-				background: -webkit-gradient(linear, left top, left bottom, color-stop( 50%,rgba(255,255,255,1)), color-stop( 100%,rgba(255,255,255,0.5)));
-				background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 50%,rgba(255,255,255,0.5) 100%);
-				background: -o-linear-gradient(top,  rgba(255,255,255,1) 50%,rgba(255,255,255,0.5) 100%);
-				background: -ms-linear-gradient(top,  rgba(255,255,255,1) 50%,rgba(255,255,255,0.5) 100%);
-				background: linear-gradient(to bottom,  rgba(255,255,255,1) 50%,rgba(255,255,255,0.5) 100%);
+				background: -moz-linear-gradient(top,  rgba(255,255,255,1) 70%, rgba(255,255,255,0.5) 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop( 70%,rgba(255,255,255,1)), color-stop( 100%,rgba(255,255,255,0.5)));
+				background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 70%,rgba(255,255,255,0.5) 100%);
+				background: -o-linear-gradient(top,  rgba(255,255,255,1) 70%,rgba(255,255,255,0.5) 100%);
+				background: -ms-linear-gradient(top,  rgba(255,255,255,1) 70%,rgba(255,255,255,0.5) 100%);
+				background: linear-gradient(to bottom,  rgba(255,255,255,1) 70%,rgba(255,255,255,0.5) 100%);
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#80ffffff',GradientType=0 );
 			}
 			
@@ -239,7 +251,7 @@ body {
 				right: 0px;
 				bottom: 0px;
 				overflow: hidden;
-				padding-top: 100px;
+				padding-top: 140px;
 			}
 
 				#comList {
