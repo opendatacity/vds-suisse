@@ -82,7 +82,6 @@ body {
 	position: absolute;
 	border: 2px solid #000;
 	border-radius: 8px;
-	overflow: hidden;
 }
 	#middleSection {
 		left: 0px;
@@ -97,9 +96,13 @@ body {
 			top: 0px;
 			right: 300px;
 			bottom: 0px;
-			z-index: -1;
 			position: absolute;
+			background: none;
 		}
+
+			.leaflet-map-pane {
+				z-index:-1;
+			}
 
 		#rightCalendar {
 			position: absolute;
