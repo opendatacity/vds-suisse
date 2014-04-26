@@ -126,7 +126,7 @@ body {
 
 			.week {
 				float: left;
-				margin-top: 20px;
+				margin-bottom: 20px;
 				margin-left: 20px;
 				border: 1px solid #aaa;
 				border-radius: 4px;
@@ -175,7 +175,7 @@ body {
 
 			#comWrapper {
 				position: absolute;
-				top: 0px;
+				top: 55px;
 				left: 0px;
 				right: 0px;
 				bottom: 0px;

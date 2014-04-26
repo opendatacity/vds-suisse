@@ -449,6 +449,7 @@ function CommunicationList() {
 	var lineHeight = 16;
 	var dayFullHeight = 7200;
 	var dayTinyHeight = 2400;
+	var dayBottomBuffer = 600;
 
 	for (var i = 0; i < data.events.length; i++) {
 		data.events[i].index = i;
@@ -501,7 +502,7 @@ function CommunicationList() {
 
 		var node = $('#comList').html('<div class="comDay" id="day'+dayIndex+'"></div>');
 
-		var paper = Raphael(node.get(0), 300, dayHeight);
+		var paper = Raphael(node.get(0), 300, dayHeight + dayBottomBuffer);
 
 
 		entries.forEach(function (entry) {
