@@ -29,7 +29,8 @@ function ScrollBar() {
 	var me = this;
 	makeEventListener(me);
 
-	var useCanvas = true;
+	var useCanvas = false;
+	var scale = 2;
 
 	var scrollBarWidth = maxDays*1440/(timeIndexZoom*timeStepMinutes);
 	var container = $('#scrollContainer');
@@ -40,14 +41,14 @@ function ScrollBar() {
 	
 	function initCanvas() {
 		canvas.css({display:'block'});
-		canvas.attr({width:scrollBarWidth, height:scrollBarHeight});
+		canvas.attr({width:scrollBarWidth*scale, height:scrollBarHeight*scale});
 
 		canvas.mousedown(mouseDown);
 		$(document).mousemove(mouseMove);
 		$(document).mouseup(  mouseUp  );
 
 		context = canvas.get(0).getContext('2d');
-		context.clearRect(0, 0, scrollBarWidth, scrollBarHeight);
+		context.clearRect(0, 0, scrollBarWidth*scale, scrollBarHeight*scale);
 
 		var v = [];
 		var maxV = 0;
@@ -59,18 +60,20 @@ function ScrollBar() {
 		})
 		
 		for (var weekDayIndex = 0; weekDayIndex < 7; weekDayIndex++) {
-			var maxWeeks = Math.ceil((maxDays - weekDayIndex)/7);
+			var maxWeeks = Math.ceil((maxDays - weekDayIndex + weekDayOffset)/7);
 
 			context.fillStyle = weekDays[weekDayIndex % 7].bgColor;
 			for (var week = 0; week < maxWeeks; week++) {
 				var x = (weekDayIndex - weekDayOffset + 7*week)*dayWidth;
-				context.fillRect(x, 0, dayWidth, scrollBarHeight);
+				context.fillRect(x*scale, 0, dayWidth*scale, scrollBarHeight*scale);
 			}
 			context.fill();
 
 			context.fillStyle = weekDays[weekDayIndex % 7].color;
-			context.font = '8px Verdana';
+			context.font = (8*scale)+'px Verdana';
+			
 			var text = weekDays[weekDayIndex % 7].label;
+
 			for (var week = 0; week < maxWeeks; week++) {
 				var day = weekDayIndex - weekDayOffset + 7*week;
 				var date = new Date(data.config.timeStart*1000 + (day+0.5)*86400000);
@@ -78,37 +81,39 @@ function ScrollBar() {
 				
 				var x = (day + 0.5)*dayWidth;
 
-				var label = text + ' ' + date+'.';
+				var label = text + ' ' + date + '.';
+
 				var w = context.measureText(label).width;
-				context.fillText(label, x + 2 - w/2, 10);
+				context.fillText(label, x*scale + 2 - w/2, 10*scale);
 			}
 			context.fill();
 		}
 		
 		for (var weekDayIndex = 0; weekDayIndex < 7; weekDayIndex++) {
-			var maxWeeks = Math.ceil((maxDays - weekDayIndex)/7);
+			var maxWeeks = Math.ceil((maxDays - weekDayIndex + weekDayOffset)/7);
 
 			context.beginPath();
 			context.strokeStyle = weekDays[weekDayIndex % 7].lColor;
+			context.lineWidth = scale;
 			for (var week = 0; week < maxWeeks; week++) {
 				var x = (weekDayIndex - weekDayOffset + 7*week)*dayWidth + 0.5;
-				context.moveTo(x, 0)
-				context.lineTo(x, scrollBarHeight);
+				context.moveTo(x*scale, 0)
+				context.lineTo(x*scale, scrollBarHeight*scale);
 
 				x += dayWidth;
-				context.moveTo(x, 0)
-				context.lineTo(x, scrollBarHeight);
+				context.moveTo(x*scale, 0)
+				context.lineTo(x*scale, scrollBarHeight*scale);
 			}
 			context.stroke();
 		}
 
 		context.strokeStyle = 'rgba(0,0,0,0.8)';
-		context.lineWidth = 1;
+		context.lineWidth = scale;
 		for (var x = 0; x < scrollBarWidth; x++) {
 			y = (scrollBarHeight)*(1-1.5*v[x]/maxV);
 			if (y < 0) y = 0;
-			context.moveTo(x-0.5,scrollBarHeight);
-			context.lineTo(x-0.5,y);
+			context.moveTo((x-0.5)*scale, scrollBarHeight*scale);
+			context.lineTo((x-0.5)*scale, y*scale);
 		}
 		context.stroke();
 
