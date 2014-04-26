@@ -47,6 +47,31 @@ $(function () {
 	$('#speedButton2').click(function () { $('.speedButton').removeClass('active'); $('#speedButton2').addClass('active'); player.setSpeed(1000) });
 	$('#speedButton3').click(function () { $('.speedButton').removeClass('active'); $('#speedButton3').addClass('active'); player.setSpeed(5000) });
 
+	$('#topFullscreen').click(function () {
+		var element = $('html').get(0);
+		var me = this;
+		
+		var isFullScreen;
+
+		if (element.requestFullScreen) isFullScreen = function () { return document.fullScreen; };
+		if (element.mozRequestFullScreen) isFullScreen = function () { return document.mozFullScreen; };
+		if (element.webkitRequestFullScreen) isFullScreen = function () { return document.webkitIsFullScreen; };
+
+		if (isFullScreen()) {
+			if (document.exitFullScreen)   document.exitFullScreen();   else if (document.mozCancelFullScreen) document.mozCancelFullScreen(); else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
+		} else {
+			if (element.requestFullscreen) element.requestFullscreen(); else if (element.mozRequestFullScreen) element.mozRequestFullScreen(); else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen();
+		}
+
+		setTimeout(function () {
+			if (isFullScreen()) {
+				$('#topFullscreen').addClass('active');
+			} else {
+				$('#topFullscreen').removeClass('active');
+			}
+		}, 100);
+	})
+
 	player.start();
 })
 
