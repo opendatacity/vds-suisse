@@ -215,7 +215,7 @@ exports.Graph = function () {
 
 
 		var contacts = [
-			{label: 'Unbekannt', lookup:''},
+			{label: 'Sonstiger Kontakt', lookup:''},
 			{label: 'Balthasar Glättli', lookup:'Balthasar Glättli'}
 		];
 
