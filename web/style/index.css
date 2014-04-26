@@ -1,0 +1,182 @@
+
+body {
+
+    background: #F5F5F5;
+
+}
+
+#container {
+
+    display: block;
+    position: relative;
+    margin: 0px auto;
+    box-shadow: 0px 0px 40px -20px rgba(0,0,0,0.4);
+    width: 950px;
+    background: #fff;
+    padding: 30px;
+
+}
+
+#social {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 90px;
+    margin: 0px;
+    padding: 0px;
+    width: 100px;
+    z-index: 100;
+}
+
+    .share-buttons ul {
+
+        display: block;
+        position: relative;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+
+    }
+
+    .share-buttons ul li {
+
+        display: block;
+        position: relative;
+
+    }
+
+    .share-buttons ul li+li {
+
+        margin-top: 8px;
+
+    }
+
+    .share-buttons ul li a {
+
+        display: block;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 30px;
+        color: #fff;
+        border-radius: 7px;
+
+    }
+
+    .share-buttons ul li a i {
+
+        margin-top: 5px;
+
+    }
+
+    .share-buttons ul li a span {
+
+        display: none;
+
+    }
+
+    .share-buttons ul li a:hover,
+    .share-buttons ul li a:focus,
+    .share-buttons ul li a:active {
+
+        text-decoration: none;
+
+    }
+
+    .share-buttons ul li a.twitter {
+
+        background-color: #00aced;
+
+    }
+
+    .share-buttons ul li a.twitter:hover {
+
+        background-color: #4bc5f2;
+
+    }
+
+    .share-buttons ul li a.facebook {
+
+        background-color: #3B5998;
+
+    }
+
+    .share-buttons ul li a.facebook:hover {
+
+        background-color: #5a73a8;
+
+    }
+
+    .share-buttons ul li a.google {
+
+        background-color: #dd4b39;
+
+    }
+
+    .share-buttons ul li a.google:hover {
+
+        background-color: #e26758;
+
+    }
+
+    .share-buttons ul li a.adn {
+
+        background-color: #444;
+
+    }
+
+    .share-buttons ul li a.adn:hover {
+
+        background-color: #555;
+
+    }
+
+
+    .share-buttons ul li a.embed {
+
+        background-color: #444;
+
+    }
+
+    .share-buttons ul li a.adn:embed {
+
+        background-color: #555;
+
+    }
+
+
+.overlay {
+
+    display: none;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: #fff;
+    z-index: 1500;
+    padding: 5% 10% 10% 10%;
+    overflow-x: auto;
+
+}
+
+    .show-info #info, .show-share #share {
+        display: block;
+    }
+
+    .show-info, .show-share {
+        z-index: 1000;
+    }
+
+    .overlay code {
+
+        display: block;
+        color: #333333;
+        margin-bottom: 10px;
+        padding: 10px;
+        white-space: normal;
+        overflow: auto;
+
+    }
