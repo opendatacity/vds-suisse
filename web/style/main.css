@@ -256,21 +256,22 @@ body {
 		overflow: hidden;
 	}
 
-		#scrollCanvas {
+		#scrollCanvas, #scrollImage {
+			display: none;
 			position: absolute;
 			left: 0px;
 			top: 0px;
 			cursor: pointer;
 		}
 
-			#scrollHairLine {
-				position: absolute;
-				left: 50%;
-				top: 0px;
-				width: 1px;
-				height: 48px;
-				background: rgba(255,0,0,1);
-			}
+		#scrollHairLine {
+			position: absolute;
+			left: 50%;
+			top: 0px;
+			width: 1px;
+			height: 48px;
+			background: rgba(255,0,0,1);
+		}
 
 .unselectable {
 	-webkit-user-select: none;

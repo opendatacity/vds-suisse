@@ -29,14 +29,17 @@ function ScrollBar() {
 	var me = this;
 	makeEventListener(me);
 
+	var useCanvas = false;
+
 	var scrollBarWidth = maxDays*1440/(timeIndexZoom*timeStepMinutes);
 	var container = $('#scrollContainer');
-	var canvas = $('#scrollCanvas');
+	var canvas = useCanvas ? $('#scrollCanvas') : $('#scrollImage');
 	var context;
 
 	var timeIndex = 0;
 	
-	function init() {
+	function initCanvas() {
+		canvas.css({display:'block'});
 		canvas.attr({width:scrollBarWidth, height:scrollBarHeight});
 
 		canvas.mousedown(mouseDown);
@@ -84,22 +87,35 @@ function ScrollBar() {
 		}
 		context.stroke();
 
-		me.setTimeIndex = function (index) {
-			timeIndex = index;
-			redraw();
-		}
-
-		me.getTimeIndex = function () {
-			return timeIndex;
-		}
-
-		function redraw() {
-			var x = container.width() / 2;
-			x -= timeIndex/timeIndexZoom;
-			canvas.css('left', Math.round(x));
-		}
+		console.log(canvas.get(0).toDataURL().substr(22));
 
 		redraw();
+	}
+
+	function initImage() {
+		canvas.css({display:'block'});
+		canvas.attr({width:scrollBarWidth, height:scrollBarHeight});
+
+		canvas.mousedown(mouseDown);
+		$(document).mousemove(mouseMove);
+		$(document).mouseup(  mouseUp  );
+
+		canvas.on('dragstart', function(event) { event.preventDefault(); });
+	}
+
+	me.setTimeIndex = function (index) {
+		timeIndex = index;
+		redraw();
+	}
+
+	me.getTimeIndex = function () {
+		return timeIndex;
+	}
+
+	function redraw() {
+		var x = container.width() / 2;
+		x -= timeIndex/timeIndexZoom;
+		canvas.css('left', Math.round(x));
 	}
 
 	var pressed = false;
@@ -127,7 +143,11 @@ function ScrollBar() {
 		}
 	}
 
-	init()
+	if (useCanvas) {
+		initCanvas()
+	} else {
+		initImage()
+	}
 
 	return me;
 }
