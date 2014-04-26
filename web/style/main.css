@@ -339,6 +339,7 @@ body {
 				position: absolute;
 				left: 0px;
 				top: 0px;
+				cursor: ew-resize;
 			}
 
 			#scrollHairLine {
