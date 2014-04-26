@@ -562,7 +562,7 @@ function CommunicationList() {
 					html = '<p>' + html.join('</p><p>') + '</p>';
 
 					$('#comDetails')
-						.css({display:'block', top:entry.y + lineHeight/2, color:color})
+						.css({display:'block', top:entry.y + lineHeight/2 + 100, color:color})
 						.html(html);
 				},
 				function () {
