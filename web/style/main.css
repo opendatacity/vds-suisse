@@ -187,7 +187,7 @@ body {
 				background: -o-linear-gradient(top,  rgba(255,255,255,1) 50%,rgba(255,255,255,0.5) 100%);
 				background: -ms-linear-gradient(top,  rgba(255,255,255,1) 50%,rgba(255,255,255,0.5) 100%);
 				background: linear-gradient(to bottom,  rgba(255,255,255,1) 50%,rgba(255,255,255,0.5) 100%);
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#80ffffff',GradientType=0 );
 			}
 
 			#comWrapper {
@@ -331,6 +331,7 @@ body {
 			border: 2px solid #000;
 			border-radius: 8px;
 			overflow: hidden;
+			cursor: pointer;
 		}
 
 			#scrollCanvas, #scrollImage {
@@ -338,16 +339,27 @@ body {
 				position: absolute;
 				left: 0px;
 				top: 0px;
+<<<<<<< HEAD
 				cursor: ew-resize;
+=======
+>>>>>>> 01c590c6117db3b127b7c746c6712308b601fc61
 			}
 
 			#scrollHairLine {
 				position: absolute;
-				left: 50%;
 				top: 0px;
-				width: 1px;
+				left: 0px;
+				width: 50%;
 				height: 48px;
-				background: rgba(255,0,0,1);
+				border-right: 1px solid #A00;
+				background: rgba(255,255,255,0.9);
+				background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 100%);
+				background: -webkit-gradient(linear, left top, right top, color-stop( 0%,rgba(255,255,255,1)), color-stop( 100%,rgba(255,255,255,0.7)));
+				background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 100%);
+				background: -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 100%);
+				background: -ms-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 100%);
+				background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#80ffffff',GradientType=1 );
 			}
 
 #footer {
