@@ -112,13 +112,24 @@ body {
 			bottom: 0px;
 			display: none;
 			overflow-y: scroll;
+			padding-bottom: 20px;
 		}
 
 			.week {
 				float: left;
 				margin-top: 20px;
-				margin-right: 20px;
+				margin-left: 20px;
+				border: 1px solid #aaa;
+				border-radius: 4px;
+				padding: 4px;
 			}
+
+				.week h2 {
+					font-size: 16px;
+					text-align: center;
+					margin: 0px;
+					color: #aaa;
+				}
 
 			#rightCalendar table {
 				border-spacing: 1px;

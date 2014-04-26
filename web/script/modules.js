@@ -630,6 +630,14 @@ function Calendar() {
 				map.addTown(town);
 			})
 
+			var time0 = new Date(data.config.timeStart*1000);
+			var weekDay = (time0.getDay()+6) % 7;
+			time0.setDate(time0.getDate()-weekDay);
+			time0.setHours(0);
+			time0.setMinutes(0);
+			time0.setSeconds(0);
+			time0 = time0.getTime();
+
 			var hours = [];
 
 			var blockMinutes = 60;
@@ -637,7 +645,14 @@ function Calendar() {
 			var blocksPerDay = 1440/blockMinutes;
 
 			data.positions.forEach(function (position, timeIndex) {
-				var hourIndex = Math.floor(timeIndex/blockCount);
+				var date = new Date((data.config.timeStart + timeIndex*data.config.timeStepSeconds)*1000);
+				var dayDate = new Date(date.getTime());
+				dayDate.setHours(0);
+				var dayIndex = Math.round((dayDate.getTime() - time0)/86400000);
+				var time = dayIndex*1440 + date.getHours()*60 + date.getMinutes();
+				
+				var hourIndex = Math.floor(time/blockMinutes);
+				if (timeIndex < 288) console.log(timeIndex, hourIndex);
 				if (hours[hourIndex] == undefined) hours[hourIndex] = [0,0,0,0,0,0];
 
 				towns.forEach(function (town, townIndex) {
@@ -655,11 +670,11 @@ function Calendar() {
 			var calendar = [];
 
 			hours.forEach(function (townConf, hourIndex) {
-				var time = (data.config.timeStart + hourIndex*blockMinutes*60)*1000;
 				var blockInDay = hourIndex % blocksPerDay;
 				var day = Math.floor(hourIndex / blocksPerDay);
-				var weekDay = (day + weekDayOffset) % 7;
-				var week = Math.floor((day - weekDay)/7 + 1);
+				var weekDay = day % 7;
+				var week = Math.floor((day - weekDay)/7);
+				if (hourIndex < 300) console.log(hourIndex, week, weekDay, blockInDay);
 
 				var bestTownIndex = -1;
 				var bestTownValue = 1;
@@ -679,6 +694,11 @@ function Calendar() {
 			})
 
 			calendar.forEach(function (week, weekIndex) {
+				var startDate = new Date(time0 + (weekIndex*7+0.5)*86400000);
+				var   endDate = new Date(time0 + (weekIndex*7+6.5)*86400000);
+				var weekLabel = ''    + startDate.getDate() + '.' + (startDate.getMonth()+1) + '.' +
+				                ' - ' +   endDate.getDate() + '.' + (  endDate.getMonth()+1) + '.';
+
 				var html = [];
 
 				var row = weekDays.map(function (weekDay) {
@@ -708,7 +728,7 @@ function Calendar() {
 
 				html.push(block.join('\n'));
 
-				html = '<div class="week"><table>'+html.join('\n')+'</table></div>';
+				html = '<div class="week"><h2>'+weekLabel+'</h2><table>'+html.join('\n')+'</table></div>';
 
 				$('#rightCalendar').append(html);
 			})
