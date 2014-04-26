@@ -16,20 +16,20 @@ function initModules() {
 
 var weekDayOffset = 2;
 var weekDays = [
-	{ label: 'Mo', bgColor:'#F7F7F7', color:'C7C7C7' },
-	{ label: 'Di', bgColor:'#F0F0F0', color:'C0C0C0' },
-	{ label: 'Mi', bgColor:'#F7F7F7', color:'C7C7C7' },
-	{ label: 'Do', bgColor:'#F0F0F0', color:'C0C0C0' },
-	{ label: 'Fr', bgColor:'#F7F7F7', color:'C7C7C7' },
-	{ label: 'Sa', bgColor:'#E0E0FF', color:'B0B0FF' },
-	{ label: 'So', bgColor:'#D7D7FF', color:'A7A7FF' },
+	{ label: 'Mo', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: 'Di', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: 'Mi', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: 'Do', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: 'Fr', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: 'Sa', bgColor:'#F0F0F0', color:'#B0B0B0', lColor:'#B0B0B0' },
+	{ label: 'So', bgColor:'#F0F0F0', color:'#B0B0B0', lColor:'#B0B0B0' }
 ];
 
 function ScrollBar() {
 	var me = this;
 	makeEventListener(me);
 
-	var useCanvas = false;
+	var useCanvas = true;
 
 	var scrollBarWidth = maxDays*1440/(timeIndexZoom*timeStepMinutes);
 	var container = $('#scrollContainer');
@@ -59,25 +59,50 @@ function ScrollBar() {
 		})
 		
 		for (var weekDayIndex = 0; weekDayIndex < 7; weekDayIndex++) {
-			var maxWeeks = Math.ceil((maxDays-weekDayIndex)/7);
+			var maxWeeks = Math.ceil((maxDays - weekDayIndex)/7);
 
-			context.fillStyle = weekDays[(weekDayIndex+weekDayOffset)%7].bgColor;
+			context.fillStyle = weekDays[weekDayIndex % 7].bgColor;
 			for (var week = 0; week < maxWeeks; week++) {
-				var x = (weekDayIndex + 7*week)*dayWidth;
+				var x = (weekDayIndex - weekDayOffset + 7*week)*dayWidth;
 				context.fillRect(x, 0, dayWidth, scrollBarHeight);
 			}
 			context.fill();
 
-			context.fillStyle = weekDays[(weekDayIndex+weekDayOffset)%7].color;
-			var text = weekDays[(weekDayIndex+weekDayOffset)%7].label;
+			context.fillStyle = weekDays[weekDayIndex % 7].color;
+			context.font = '8px Verdana';
+			var text = weekDays[weekDayIndex % 7].label;
 			for (var week = 0; week < maxWeeks; week++) {
-				var x = (weekDayIndex + 7*week + 0.5)*dayWidth-6;
-				context.fillText(text, x, 10);
+				var day = weekDayIndex - weekDayOffset + 7*week;
+				var date = new Date(data.config.timeStart*1000 + (day+0.5)*86400000);
+				date = date.getDate();
+				
+				var x = (day + 0.5)*dayWidth;
+
+				var label = text + ' ' + date+'.';
+				var w = context.measureText(label).width;
+				context.fillText(label, x + 2 - w/2, 10);
 			}
 			context.fill();
 		}
+		
+		for (var weekDayIndex = 0; weekDayIndex < 7; weekDayIndex++) {
+			var maxWeeks = Math.ceil((maxDays - weekDayIndex)/7);
 
-		context.strokeStyle = 'rgba(0,0,0,0.3)';
+			context.beginPath();
+			context.strokeStyle = weekDays[weekDayIndex % 7].lColor;
+			for (var week = 0; week < maxWeeks; week++) {
+				var x = (weekDayIndex - weekDayOffset + 7*week)*dayWidth + 0.5;
+				context.moveTo(x, 0)
+				context.lineTo(x, scrollBarHeight);
+
+				x += dayWidth;
+				context.moveTo(x, 0)
+				context.lineTo(x, scrollBarHeight);
+			}
+			context.stroke();
+		}
+
+		context.strokeStyle = 'rgba(0,0,0,0.8)';
 		context.lineWidth = 1;
 		for (var x = 0; x < scrollBarWidth; x++) {
 			y = (scrollBarHeight)*(1-1.5*v[x]/maxV);
