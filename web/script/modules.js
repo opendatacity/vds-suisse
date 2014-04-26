@@ -513,11 +513,7 @@ function CommunicationList() {
 			} else {
 				paper.path('M40,'+entry.y0+'C60,'+entry.y0+',60,'+entry.y+',80,'+entry.y+'C60,'+entry.y+',60,'+entry.y1+',40,'+entry.y1).attr({stroke:color, fill:color, 'fill-opacity':0.2});
 			}
-			paper.path(iconSVG[entry.type]).attr({
-				stroke:false,
-				fill:color,
-				transform:'S0.75T92,'+(entry.y - lineHeight/2)
-			});
+
 			if (entry.inBound) {
 				paper.path(iconSVG.arrow).attr({
 					stroke:false,
@@ -526,6 +522,7 @@ function CommunicationList() {
 				});
 				label = label.replace(/%/, 'von ' + addresses2Text([entry.from]));
 			}
+
 			if (entry.outBound) {
 				paper.path(iconSVG.arrow).attr({
 					stroke:false,
@@ -534,8 +531,35 @@ function CommunicationList() {
 				});
 				label = label.replace(/%/, 'an ' + addresses2Text(entry.to));
 			}
+
+			paper.path(iconSVG[entry.type]).attr({
+				stroke:false,
+				fill:color,
+				transform:'S0.75T92,'+(entry.y - lineHeight/2)
+			});
+
 			if (label.length > 28) label = label.substr(0,25)+'…';
 			paper.text(125, entry.y, label).attr({fill:color, 'text-anchor':'start', 'font-family':'sans-serif', 'font-size':12});
+
+			paper.rect(40, entry.y - lineHeight/2, 260, lineHeight).attr({stroke:false, fill:'#000', 'fill-opacity':0}).hover(
+				function () {
+					var html = [];
+
+					if (isFinite(entry.from)) html.push('<b>Von:</b> '+addresses2Text([entry.from]));
+					if (entry.to.length > 0 ) html.push('<b>An:</b> ' +addresses2Text( entry.to   ));
+					if (entry.subject       ) html.push('<b>Inhalt:</b> ' +entry.subject);
+					if (entry.url           ) html.push('<b>Link:</b> <a href="' +entry.url+'">'+(entry.url.length > 20 ? entry.url.substr(0,19)+'…' : entry.url)+'</a>');
+
+					html = '<p>' + html.join('</p><p>') + '</p>';
+
+					$('#comDetails')
+						.css({display:'block', top:entry.y + lineHeight/2, color:color})
+						.html(html);
+				},
+				function () {
+					$('#comDetails').css({display:'none'})
+				}
+			);
 		})
 
 		function addresses2Text(addresses) {
@@ -652,7 +676,7 @@ function Calendar() {
 				var time = dayIndex*1440 + date.getHours()*60 + date.getMinutes();
 				
 				var hourIndex = Math.floor(time/blockMinutes);
-				if (timeIndex < 288) console.log(timeIndex, hourIndex);
+
 				if (hours[hourIndex] == undefined) hours[hourIndex] = [0,0,0,0,0,0];
 
 				towns.forEach(function (town, townIndex) {
@@ -674,7 +698,6 @@ function Calendar() {
 				var day = Math.floor(hourIndex / blocksPerDay);
 				var weekDay = day % 7;
 				var week = Math.floor((day - weekDay)/7);
-				if (hourIndex < 300) console.log(hourIndex, week, weekDay, blockInDay);
 
 				var bestTownIndex = -1;
 				var bestTownValue = 1;

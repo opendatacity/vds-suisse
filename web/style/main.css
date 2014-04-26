@@ -173,25 +173,41 @@ body {
 					text-align: right;
 				}
 
-			#comList {
+			#comWrapper {
 				position: absolute;
 				top: 0px;
 				left: 0px;
 				right: 0px;
-				bottom: 150px;
+				bottom: 0px;
 				overflow-y: scroll;
 				overflow-x: scroll;
 			}
 
-				#comDetails {
-					position: absolute;
-					height: 160px;
-					left: 0px;
-					right: 0px;
-					bottom: 0px;
-					font-size: 12px;
-					margin-bottom: 5px;
+				#comList {
 				}
+
+				#comDetails {
+					display: none;
+					position: absolute;
+					left: 60px;
+					width: 200px;
+					padding: 10px;
+					border-radius: 8px;
+					background: rgba(255,255,255,0.95);
+					border: 1px solid #eee;
+					   -moz-box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+					-webkit-box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+					        box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+				}
+
+					#comDetails p {
+						font-size: 12px;
+						margin: 0 0 5px 0;
+					}
+					
+					#comDetails a {
+						color: inherit;
+					}
 
 		#middleSection.calendarView #map {
 			right: 50%;
