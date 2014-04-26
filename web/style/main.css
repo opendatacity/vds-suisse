@@ -1,8 +1,10 @@
 
 html {
 	height: 100%;
+	background: #fff;
 }
 body {
+	background: #fff;
 	margin: 0;
 	position: relative;
 	height: 100%;
