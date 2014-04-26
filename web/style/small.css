@@ -4,18 +4,26 @@
 
 	#infoText {
 		position: absolute;
-		top: 12px;
-		width: 72px;
-		font-size: 12px;
+		top: 5px;
+		right: 3px;
+		width: 115px;
+		font-size: 11px;
 	}
 
 	#playPauseButtons {
-		left: 72px;
+		left: 5px;
 	}
 
 	#speedButtons {
-		left: 120px;
+		right: 3px;
+		width: 115px;
 	}
+
+		#speedButtons .speedButton {
+			
+			width: 38px;
+			
+		}
 
 #scrollContainer {
 	left: 168px;
