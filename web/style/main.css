@@ -218,16 +218,16 @@ body {
 				top: 0px;
 				left: 0px;
 				right: 0px;
-				height: 60px;
+				height: 100px;
 				padding: 40px 0px 0px;
 				border-bottom: 1px solid #000;
 				background: rgba(255,255,255,0.9);
-				background: -moz-linear-gradient(top,  rgba(255,255,255,1) 50%, rgba(255,255,255,0.5) 100%);
-				background: -webkit-gradient(linear, left top, left bottom, color-stop( 50%,rgba(255,255,255,1)), color-stop( 100%,rgba(255,255,255,0.5)));
-				background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 50%,rgba(255,255,255,0.5) 100%);
-				background: -o-linear-gradient(top,  rgba(255,255,255,1) 50%,rgba(255,255,255,0.5) 100%);
-				background: -ms-linear-gradient(top,  rgba(255,255,255,1) 50%,rgba(255,255,255,0.5) 100%);
-				background: linear-gradient(to bottom,  rgba(255,255,255,1) 50%,rgba(255,255,255,0.5) 100%);
+				background: -moz-linear-gradient(top,  rgba(255,255,255,1) 70%, rgba(255,255,255,0.5) 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop( 70%,rgba(255,255,255,1)), color-stop( 100%,rgba(255,255,255,0.5)));
+				background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 70%,rgba(255,255,255,0.5) 100%);
+				background: -o-linear-gradient(top,  rgba(255,255,255,1) 70%,rgba(255,255,255,0.5) 100%);
+				background: -ms-linear-gradient(top,  rgba(255,255,255,1) 70%,rgba(255,255,255,0.5) 100%);
+				background: linear-gradient(to bottom,  rgba(255,255,255,1) 70%,rgba(255,255,255,0.5) 100%);
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#80ffffff',GradientType=0 );
 			}
 			
@@ -253,7 +253,7 @@ body {
 				right: 0px;
 				bottom: 0px;
 				overflow: hidden;
-				padding-top: 100px;
+				padding-top: 140px;
 			}
 
 				#comList {

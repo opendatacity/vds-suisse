@@ -450,6 +450,7 @@ function CommunicationList() {
 	var dayFullHeight = 7200;
 	var dayTinyHeight = 2400;
 	var dayBottomBuffer = 300;
+	var hairlineHeight = 140;
 
 	for (var i = 0; i < data.events.length; i++) {
 		data.events[i].index = i;
@@ -562,7 +563,7 @@ function CommunicationList() {
 					html = '<p>' + html.join('</p><p>') + '</p>';
 
 					$('#comDetails')
-						.css({display:'block', top:entry.y + lineHeight/2 + 100, color:color})
+						.css({display:'block', top:entry.y + lineHeight/2 + hairlineHeight, color:color})
 						.html(html);
 				},
 				function () {
