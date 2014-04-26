@@ -233,7 +233,7 @@ function Map() {
 	var map = L.map('map').setView([47, 8.3], 8);
 
 	// add an OpenStreetMap tile layer
-	L.tileLayer('http://tiles.odcdn.de/suisse/{z}/{x}/{y}.png', {
+	L.tileLayer('http://{s}.tilt.odcdn.de/suisse/{z}/{x}/{y}.png', {
 	}).addTo(map);
 
 	var cellLayer = L.layerGroup();
