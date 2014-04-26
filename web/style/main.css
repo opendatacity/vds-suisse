@@ -146,10 +146,6 @@ body {
 			background: none;
 		}
 
-			.leaflet-map-pane {
-				z-index:-1;
-			}
-
 		#rightCalendar {
 			position: absolute;
 			top: 0px;
