@@ -1,5 +1,5 @@
 var fs = require('fs');
-var utils = require('./modules/utils');
+var utils = require('./utils');
 
 exports.import = function (activities, config) {
 	console.log('Calc Position');
