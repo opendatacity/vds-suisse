@@ -141,7 +141,7 @@ function Player() {
 
 	var interval = false;
 	var paused = false;
-	var speed = 6/9;
+	var speed = 2/15;
 
 	me.start = function () {
 		if (!interval) {
