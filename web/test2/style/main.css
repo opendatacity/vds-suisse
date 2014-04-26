@@ -6,7 +6,7 @@ body {
 	margin: 0;
 	position: relative;
 	height: 100%;
-	font-family: Arial;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 12px;
 }
 
@@ -191,9 +191,9 @@ body {
 				position: absolute;
 				top: 0px;
 				left: 3px;
-				width: 42px;
+				width: 38px;
 				height: 12px;
-				font-size: 10px;
+				font-size: 11px;
 				border: 1px solid #000;
 				border-radius: 6px;
 				text-align: center;
