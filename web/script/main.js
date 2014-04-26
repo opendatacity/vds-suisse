@@ -2,6 +2,28 @@ var scrollBar, player, map, comList;
 
 
 $(function () {
+	console.log(data.positions);
+	decompress(data, 'cells');
+	decompress(data, 'activities');
+	decompress(data, 'positions');
+	decompress(data, 'events');
+	decompress(data, 'contacts');
+	console.log(data.positions);
+
+	function decompress(object, field) {
+		var result = [];
+		Object.keys(object[field]).forEach(function (key) {
+			var list = object[field][key];
+			list.forEach(function (entry, index) {
+				if ((entry != null) && (entry !== undefined)) {
+					if (result[index] === undefined) result[index] = {};
+					result[index][key] = entry;
+				}
+			})
+		})
+		object[field] = result;
+	}
+
 	initModules();
 
 	tabBar = new TabBar();

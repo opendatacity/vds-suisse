@@ -105,7 +105,13 @@ data.activities = activities.map(function (activity) {
 
 
 
-data.positions = positions;
+data.positions = positions.map(function (position) {
+	return {
+		x: Math.round(position.x*10000)/10000,
+		y: Math.round(position.y*10000)/10000,
+		r: Math.round(position.r)
+	}
+});
 
 data.events = events.map(function (event) {
 	return {
@@ -141,7 +147,14 @@ data.config = {
 	timeStepSeconds: config.timeStepSeconds
 }
 
-fs.writeFileSync('../web/data/data.js', 'var data = ' + JSON.stringify(data, null, '\t'), 'utf8')
+compress(data, 'cells');
+compress(data, 'activities');
+compress(data, 'positions');
+compress(data, 'events');
+compress(data, 'contacts');
+
+
+fs.writeFileSync('../web/data/data.js', 'var data = ' + JSON.stringify(data), 'utf8')
 
 console.log('Analyse data.js');
 Object.keys(data).forEach(function (key) {
@@ -149,6 +162,17 @@ Object.keys(data).forEach(function (key) {
 })
 
 
+
+function compress(object, key) {
+	var result = {};
+	object[key].forEach(function (entry, index) {
+		Object.keys(entry).forEach(function (key) {
+			if (result[key] === undefined) result[key] = [];
+			result[key][index] = entry[key];
+		})
+	})
+	object[key] = result;
+}
 
 
 
