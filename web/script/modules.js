@@ -769,6 +769,11 @@ function Calendar() {
 				var hourIndex = cell.attr('index');
 				if (hourIndex !== undefined) cells[hourIndex] = cell;
 			})
+			cellNodes.click(function (event) {
+				var cell = $(event.currentTarget);
+				var hourIndex = cell.attr('index');
+				if (hourIndex !== undefined) setHourIndex(hourIndex);
+			})
 
 			initialized = true;
 		}
@@ -796,7 +801,22 @@ function Calendar() {
 		var dayIndex = Math.round((dayDate.getTime() - time0)/86400000);
 		var time = dayIndex*1440 + date.getHours()*60 + date.getMinutes();
 		
-		return hourIndex = Math.floor(time/blockMinutes);
+		return Math.floor(time/blockMinutes);
+	}
+
+	function setHourIndex(hourIndex) {
+		var hour = hourIndex % 24;
+		var day = Math.floor(hourIndex/24);
+		var date = new Date(time0);
+
+		date.setDate(date.getDate()+day);
+		date.setHours(hour);
+		date.setMinutes(0);
+		date.setSeconds(0);
+
+		var timeIndex = (date.getTime()/1000 - data.config.timeStart)/data.config.timeStepSeconds;
+
+		player.setTimeIndex(timeIndex);
 	}
 
 	return me;

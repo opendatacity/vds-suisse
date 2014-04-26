@@ -154,6 +154,7 @@ body {
 			#rightCalendar td {
 				border: 1px solid #fff;
 				height: 3px;
+				cursor: pointer;
 			}
 
 				#rightCalendar td.active {
