@@ -645,6 +645,8 @@ function Calendar() {
 
 	var cells = [];
 	var lastCell = false;
+	var weeks = [];
+	var lastWeek = false;
 
 	var towns = [
 		{ x:8.54, y:47.38, color:[255,230,  0], title:'Zürich'   },
@@ -761,7 +763,9 @@ function Calendar() {
 
 				html = '<div class="week"><h2>'+weekLabel+'</h2><table>'+html.join('\n')+'</table></div>';
 
-				$('#rightCalendar').append(html);
+				var weekNode = $(html);
+				$('#rightCalendar').append(weekNode);
+				weeks[weekIndex] = weekNode;
 			})
 
 			var cellNodes = $('#rightCalendar td');
@@ -792,6 +796,14 @@ function Calendar() {
 				newCell.addClass('active');
 				lastCell = newCell;
 			}
+
+			var weekIndex = getWeekIndex(player.getTimeIndex());
+			var newWeek = weeks[weekIndex];
+			if (newWeek !== lastWeek) {
+				if (lastWeek) lastWeek.removeClass('active');
+				newWeek.addClass('active');
+				lastWeek = newWeek;
+			}
 		}
 	}
 
@@ -805,9 +817,14 @@ function Calendar() {
 		return Math.floor(time/blockMinutes);
 	}
 
+	function getWeekIndex(timeIndex) {
+		var hourIndex = getHourIndex(timeIndex);
+		return Math.floor(hourIndex/(blocksPerDay*7));
+	}
+
 	function setHourIndex(hourIndex) {
-		var hour = hourIndex % 24;
-		var day = Math.floor(hourIndex/24);
+		var hour = hourIndex % blocksPerDay;
+		var day = Math.floor(hourIndex/blocksPerDay);
 		var date = new Date(time0);
 
 		date.setDate(date.getDate()+day);
