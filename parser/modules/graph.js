@@ -1,5 +1,5 @@
 var fs = require('fs');
-var utils = require('utils');
+var utils = require('./modules/utils');
 
 exports.Graph = function () {
 	var me = this;
