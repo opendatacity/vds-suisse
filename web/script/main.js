@@ -100,10 +100,10 @@ function formatDate(value) {
 	var d = new Date(value);
 	d = ''+
 		leadingSpace(d.getDate().toFixed()) + '.' +
-		(d.getMonth()+1) + '.' +
-		d.getFullYear() + '<br>' +
+		leadingSpace((d.getMonth()+1)) + '.' +
+		d.getFullYear() + ' ' +
 		leadingSpace(d.getHours().toFixed()) + ':' +
-		(100+d.getMinutes()).toFixed().substr(1);
+		leadingSpace((100+d.getMinutes()).toFixed().substr(1));
 	return d;
 }
 
@@ -118,6 +118,6 @@ function formatTime(value) {
 }
 
 function leadingSpace(v) {
-	if (v.length == 1) return '&nbsp;'+v;
+	if (v.toString().length == 1) return '0'+v;
 	return v;
 }
