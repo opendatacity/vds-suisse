@@ -217,7 +217,6 @@ function Player() {
 
 	me.setSpeed = function (newSpeed) {
 		speed = newSpeed/(data.config.timeStepSeconds*framesPerSecond);
-		console.log(speed);
 	}
 
 	me.getTimeIndex = function () {

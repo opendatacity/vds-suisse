@@ -2,13 +2,11 @@ var scrollBar, player, map, comList;
 
 
 $(function () {
-	console.log(data.positions);
 	decompress(data, 'cells');
 	decompress(data, 'activities');
 	decompress(data, 'positions');
 	decompress(data, 'events');
 	decompress(data, 'contacts');
-	console.log(data.positions);
 
 	function decompress(object, field) {
 		var result = [];
