@@ -15,7 +15,7 @@ var usingCache = true;
 console.log('Get VDS');
 var vds = cache(
 	'vds.json',
-	function () { return require('vds').import(config.inputPath + 'vds/vds_erik.tsv', config); }
+	function () { return require('./modules/vds').import(config.inputPath + 'vds/vds_erik.tsv', config); }
 )
 
 
@@ -29,7 +29,7 @@ cells.forEach(function (cell, index) { cell.index = index })
 console.log('Get CellActivity');
 var activities = cache(
 	'activity.json',
-	function () { return require('cellActivity').import(cells, vds, config); }
+	function () { return require('./modules/cellActivity').import(cells, vds, config); }
 )
 
 
@@ -37,17 +37,17 @@ var activities = cache(
 console.log('Get Position');
 var positions = cache(
 	'position.json',
-	function () { return require('position').import(activities, config); }
+	function () { return require('./modules/position').import(activities, config); }
 )
 
 
-//require('heatmap').generateHeatmap(positions, '../print/heatmap');
-//require('heatmap').generateInkmap(positions, '../print/inkmap');
+//require('./modules/heatmap').generateHeatmap(positions, '../print/heatmap');
+//require('./modules/heatmap').generateInkmap(positions, '../print/inkmap');
 
-var events = require('contacts').import(vds, config);
+var events = require('./modules/contacts').import(vds, config);
 
-events = events.concat(require('tweets').import(config));
-events = events.concat(require('facebook').import(config));
+events = events.concat(require('./modules/tweets').import(config));
+events = events.concat(require('./modules/facebook').import(config));
 
 console.log('Sort and Filter Events');
 
@@ -66,12 +66,12 @@ events = events.filter(function (event) {
 })
 
 
-var statistics = new require('statistics').Statistics(config);
+var statistics = new require('./modules/statistics').Statistics(config);
 //statistics.calculateSpeed(positions);
 //statistics.analyseMails(events);
 
 
-var graph = new require('graph').Graph();
+var graph = new require('./modules/graph').Graph();
 //graph.calculateEdges(events);
 
 var contacts = graph.updateEvents(events);
