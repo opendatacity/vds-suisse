@@ -279,7 +279,14 @@ function Map() {
 	})
 
 	// create a map in the "map" div, set the view to a given place and zoom
-	var map = L.map('map', {maxZoom: 12}).setView([47, 7.5], 7);
+	var map = L.map('map', {
+		minZoom:3,
+		maxZoom: 14,
+		maxBounds: [
+			[45.3, 5], //south west
+			[48.2, 11.6]  //north east
+		]
+	}).setView([47, 7.5], 7);
 
 	// add an OpenStreetMap tile layer
 	L.tileLayer('http://{s}.tilt.odcdn.de/suisse/{z}/{x}/{y}.png', {
