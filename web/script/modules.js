@@ -299,7 +299,7 @@ function Map() {
 		}))
 	}
 
-	var dotLayer = L.marker([0,0],{
+	var dotLayer = L.marker([0,0], {
 		icon: icons[1],
 		clickable: false,
 		keyboard: false
@@ -599,7 +599,7 @@ function CommunicationList() {
 
 		var y = player.getDayTimeIndex();
 		y = dayHeight*y/(86400/data.config.timeStepSeconds);
-		$('#comList').scrollTop(y);
+		$('#comWrapper').scrollTop(y);
 	}
 
 	me.showNewsletters = function (checked) {
