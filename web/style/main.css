@@ -10,6 +10,15 @@ body {
 	font-size: 12px;
 }
 
+.explanation {
+	color: #333;
+	display: block;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 1.2em;
+}
+
 #topSection {
 	left: 0px;
 	top: 0px;
