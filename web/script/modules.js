@@ -43,7 +43,7 @@ function ScrollBar() {
 		canvas.css({display:'block'});
 		canvas.attr({width:scrollBarWidth*scale, height:scrollBarHeight*scale});
 
-		canvas.mousedown(mouseDown);
+		container.mousedown(mouseDown);
 		$(document).mousemove(mouseMove);
 		$(document).mouseup(  mouseUp  );
 
@@ -126,7 +126,7 @@ function ScrollBar() {
 		canvas.css({display:'block'});
 		canvas.attr({width:scrollBarWidth, height:scrollBarHeight});
 
-		canvas.mousedown(mouseDown);
+		container.mousedown(mouseDown);
 		$(document).mousemove(mouseMove);
 		$(document).mouseup(  mouseUp  );
 
