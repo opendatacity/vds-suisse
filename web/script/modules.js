@@ -642,6 +642,9 @@ function showCom(eventIndex) {
 function Calendar() {
 	var me = this;
 
+	var cells = [];
+	var lastCell = false;
+
 	var towns = [
 		{ x:8.54, y:47.38, color:[255,230,  0], title:'Zürich'   },
 		{ x:7.44, y:46.95, color:[255,  0, 23], title:'Bern'     },
@@ -652,9 +655,22 @@ function Calendar() {
 	]
 
 	var initialized = false;
+	var visible = false;
+
+	var blockMinutes = 60;
+	var blockCount = blockMinutes/timeStepMinutes;
+	var blocksPerDay = 1440/blockMinutes;
+
+	var time0 = new Date(data.config.timeStart*1000);
+	time0.setDate(time0.getDate() - (time0.getDay()+6) % 7);
+	time0.setHours(0);
+	time0.setMinutes(0);
+	time0.setSeconds(0);
+	time0 = time0.getTime();
 
 	me.hide = function () {
 		map.hideTownLayer();
+		visible = false;
 	}
 
 	me.show = function () {
@@ -663,28 +679,10 @@ function Calendar() {
 				map.addTown(town);
 			})
 
-			var time0 = new Date(data.config.timeStart*1000);
-			var weekDay = (time0.getDay()+6) % 7;
-			time0.setDate(time0.getDate()-weekDay);
-			time0.setHours(0);
-			time0.setMinutes(0);
-			time0.setSeconds(0);
-			time0 = time0.getTime();
-
 			var hours = [];
 
-			var blockMinutes = 60;
-			var blockCount = blockMinutes/timeStepMinutes;
-			var blocksPerDay = 1440/blockMinutes;
-
 			data.positions.forEach(function (position, timeIndex) {
-				var date = new Date((data.config.timeStart + timeIndex*data.config.timeStepSeconds)*1000);
-				var dayDate = new Date(date.getTime());
-				dayDate.setHours(0);
-				var dayIndex = Math.round((dayDate.getTime() - time0)/86400000);
-				var time = dayIndex*1440 + date.getHours()*60 + date.getMinutes();
-				
-				var hourIndex = Math.floor(time/blockMinutes);
+				var hourIndex = getHourIndex(timeIndex);
 
 				if (hours[hourIndex] == undefined) hours[hourIndex] = [0,0,0,0,0,0];
 
@@ -721,7 +719,7 @@ function Calendar() {
 				if (calendar[week]             === undefined) calendar[week]             = [];
 				if (calendar[week][blockInDay] === undefined) calendar[week][blockInDay] = [];
 
-				calendar[week][blockInDay][weekDay] = [bestTownIndex, bestTownValue];
+				calendar[week][blockInDay][weekDay] = [bestTownIndex, bestTownValue, hourIndex];
 
 			})
 
@@ -752,7 +750,7 @@ function Calendar() {
 							color = color.map(function (value) {
 								return (value*opacity + 255*(1-opacity)).toFixed(0);
 							}).join(',');
-							row.push('<td style="background:rgb('+color+')"></td>');
+							row.push('<td style="background:rgb('+color+')" index="'+block[2]+'"></td>');
 						}
 					}
 					return '<tr>'+row.join('')+'</tr>';
@@ -765,9 +763,60 @@ function Calendar() {
 				$('#rightCalendar').append(html);
 			})
 
+			var cellNodes = $('#rightCalendar td');
+			cellNodes.each(function (index, cell) {
+				cell = $(cell);
+				var hourIndex = cell.attr('index');
+				if (hourIndex !== undefined) cells[hourIndex] = cell;
+			})
+			cellNodes.click(function (event) {
+				var cell = $(event.currentTarget);
+				var hourIndex = cell.attr('index');
+				if (hourIndex !== undefined) setHourIndex(hourIndex);
+			})
+
 			initialized = true;
 		}
 		map.showTownLayer();
+		visible = true;
+		me.redraw();
+	}
+
+	me.redraw = function () {
+		if (initialized && visible) {
+			var hourIndex = getHourIndex(player.getTimeIndex());
+			var newCell = cells[hourIndex];
+			if (newCell !== lastCell) {
+				if (lastCell) lastCell.removeClass('active');
+				newCell.addClass('active');
+				lastCell = newCell;
+			}
+		}
+	}
+
+	function getHourIndex(timeIndex) {
+		var date = new Date((data.config.timeStart + timeIndex*data.config.timeStepSeconds)*1000);
+		var dayDate = new Date(date.getTime());
+		dayDate.setHours(0);
+		var dayIndex = Math.round((dayDate.getTime() - time0)/86400000);
+		var time = dayIndex*1440 + date.getHours()*60 + date.getMinutes();
+		
+		return Math.floor(time/blockMinutes);
+	}
+
+	function setHourIndex(hourIndex) {
+		var hour = hourIndex % 24;
+		var day = Math.floor(hourIndex/24);
+		var date = new Date(time0);
+
+		date.setDate(date.getDate()+day);
+		date.setHours(hour);
+		date.setMinutes(0);
+		date.setSeconds(0);
+
+		var timeIndex = (date.getTime()/1000 - data.config.timeStart)/data.config.timeStepSeconds;
+
+		player.setTimeIndex(timeIndex);
 	}
 
 	return me;
