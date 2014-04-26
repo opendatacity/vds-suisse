@@ -137,14 +137,15 @@ function Player() {
 	makeEventListener(me);
 
 	var timeIndex = 100;
+	var framesPerSecond = 25;
 
 	var interval = false;
 	var paused = false;
-	var speed = 0.2
+	var speed = 6/9;
 
 	me.start = function () {
 		if (!interval) {
-			interval = setInterval(me.step, 50);
+			interval = setInterval(me.step, framesPerSecond);
 			me.trigger('start');
 		}
 	}
@@ -162,6 +163,11 @@ function Player() {
 		timeIndex += speed;
 		me.trigger('change');
 		if (timeIndex >= maxTimeIndex) me.stop();
+	}
+
+	me.setSpeed = function (newSpeed) {
+		speed = newSpeed/(data.config.timeStepSeconds*framesPerSecond);
+		console.log(speed);
 	}
 
 	me.getTimeIndex = function () {

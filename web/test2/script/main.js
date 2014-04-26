@@ -43,6 +43,10 @@ $(function () {
 		comList.showNewsletters($('#showNewsletters').prop('checked'));
 	});
 
+	$('#speedButton1').click(function () { $('.speedButton').removeClass('active'); $('#speedButton1').addClass('active'); player.setSpeed( 200) });
+	$('#speedButton2').click(function () { $('.speedButton').removeClass('active'); $('#speedButton2').addClass('active'); player.setSpeed(1000) });
+	$('#speedButton3').click(function () { $('.speedButton').removeClass('active'); $('#speedButton3').addClass('active'); player.setSpeed(5000) });
+
 	player.start();
 })
 
