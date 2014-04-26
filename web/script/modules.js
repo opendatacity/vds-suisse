@@ -290,6 +290,7 @@ function Map() {
 
 	// add an OpenStreetMap tile layer
 	L.tileLayer('http://{s}.tilt.odcdn.de/suisse/{z}/{x}/{y}.png', {
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a>'
 	}).addTo(map);
 
 	var cellLayer = L.layerGroup();
