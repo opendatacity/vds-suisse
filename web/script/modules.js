@@ -655,7 +655,7 @@ function Calendar() {
 	]
 
 	var initialized = false;
-	var visible = false;
+	var visible = true;
 
 	var blockMinutes = 60;
 	var blockCount = blockMinutes/timeStepMinutes;
