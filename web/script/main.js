@@ -53,6 +53,7 @@ $(function () {
 	player.on('change', function () { $('#infoText').html(formatDate(player.getTimeStamp())); })
 	player.on('change', function () { map.redraw(); })
 	player.on('change', function () { comList.redraw(); })
+	player.on('change', function () { calendar.redraw(); })
 
 	player.on('start', function () { $('#playPauseButtons').addClass(   'paused'); })
 	player.on('stop',  function () { $('#playPauseButtons').removeClass('paused'); })
