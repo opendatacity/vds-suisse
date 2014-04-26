@@ -53,10 +53,10 @@ $(function () {
 function formatDate(value) {
 	var d = new Date(value);
 	d = ''+
-		d.getDate() + '.' +
+		leadingSpace(d.getDate().toFixed()) + '.' +
 		(d.getMonth()+1) + '.' +
 		d.getFullYear() + '<br>' +
-		d.getHours() + ':' +
+		leadingSpace(d.getHours().toFixed()) + ':' +
 		(100+d.getMinutes()).toFixed().substr(1);
 	return d;
 }
@@ -69,4 +69,9 @@ function formatTime(value) {
 		(100+d.getMinutes()).toFixed().substr(1) + ':' +
 		(100+d.getSeconds()).toFixed().substr(1);
 	return d;
+}
+
+function leadingSpace(v) {
+	if (v.length == 1) return '&nbsp;'+v;
+	return v;
 }

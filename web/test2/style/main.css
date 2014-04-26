@@ -143,20 +143,20 @@ body {
 
 		#infoText {
 			position: absolute;
-			top: 0px;
+			top: 7px;
 			left: 0px;
-			bottom: 0px;
-			width: 96px;
+			width: 144px;
+			height: 48px;
 			text-align: center;
-			font-family: 'Courier New';
+			font-family: 'Courier New', monospace;
 			font-weight: bold;
-			font-size: 14px;
+			font-size: 16px;
 		}
 
 		#playPauseButtons {
 			position: absolute;
 			top: 0px;
-			left: 96px;
+			left: 144px;
 			width: 48px;
 			height: 48px;
 		}
@@ -182,7 +182,7 @@ body {
 		#speedButtons {
 			position: absolute;
 			top: 0px;
-			left: 144px;
+			left: 192px;
 			width: 48px;
 			height: 48px;
 		}
@@ -207,7 +207,7 @@ body {
 
 	#scrollContainer {
 		top: 0px;
-		left: 192px;
+		left: 240px;
 		right: 0px;
 		bottom: 0px;
 		position: absolute;
