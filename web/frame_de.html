@@ -27,32 +27,45 @@
 			<div id="tabCalendar" class="tabButton">Kalender</div>
 			<div id="topFullscreen" class="topButton">Vollbild</div>
 		</div>
-		<div id="middleSection">
-			<div id="map"></div>
-			<div id="rightList">
-				<!--<label><input type="checkbox" checked="checked" id="showNewsletters" /> Zeige Newsletter</label>-->
-				<div id="comList"></div>
-				<div id="comDetails"></div>
-			</div>
-			<div id="rightCalendar"></div>
-		</div>
-		<div id="bottomSection">
-			<div id="bottomLeftControls">
-				<div id="infoText"></div>
-				<div id="playPauseButtons">
-					<img id="playButton" src="graphics/playButton.png" width="48" height="48">
-					<img id="pauseButton" src="graphics/pauseButton.png" width="48" height="48">
+		<div id="contentSection">
+			<div id="middleSection">
+				<div id="map"></div>
+				<div id="rightList">
+					<!--<label><input type="checkbox" checked="checked" id="showNewsletters" /> Zeige Newsletter</label>-->
+					<div id="comList"></div>
+					<div id="comDetails"></div>
 				</div>
-				<div id="speedButtons">
-					<div id="speedButton1" class="speedButton" style="top:0px">&times;200</div>
-					<div id="speedButton2" class="speedButton active" style="top:17px">&times;1000</div>
-					<div id="speedButton3" class="speedButton" style="top:34px">&times;5000</div>
+				<div id="rightCalendar">
+					<div class="explanation" style="margin-top:20px;margin-left:20px">
+						<p>Wann befand sich Balthasar in:<br>
+							<span style="color:rgb(255,230,  0); font-weight:bold">Zürich</span>,
+							<span style="color:rgb(255,  0, 23); font-weight:bold">Bern</span>,
+							<span style="color:rgb(206,  0,186); font-weight:bold">Basel</span>,
+							<span style="color:rgb(  5,  0,170); font-weight:bold">Genf</span>,
+							<span style="color:rgb(  0,133,211); font-weight:bold">Luzern</span> oder
+							<span style="color:rgb(  0,166, 81); font-weight:bold">Lausanne</span>?
+						<p>
+					</div>
 				</div>
 			</div>
-			<div id="scrollContainer">
-				<canvas id="scrollCanvas"></canvas>
-				<img id="scrollImage" src="graphics/scrollbar.png" class="unselectable">
-				<div id="scrollHairLine"></div>
+			<div id="bottomSection">
+				<div id="bottomLeftControls">
+					<div id="infoText"></div>
+					<div id="playPauseButtons">
+						<img id="playButton" src="graphics/playButton.png" width="48" height="48">
+						<img id="pauseButton" src="graphics/pauseButton.png" width="48" height="48">
+					</div>
+					<div id="speedButtons">
+						<div id="speedButton1" class="speedButton" style="top:0px">&times;200</div>
+						<div id="speedButton2" class="speedButton active" style="top:17px">&times;1000</div>
+						<div id="speedButton3" class="speedButton" style="top:34px">&times;5000</div>
+					</div>
+				</div>
+				<div id="scrollContainer">
+					<canvas id="scrollCanvas"></canvas>
+					<img id="scrollImage" src="graphics/scrollbar.png">
+					<div id="scrollHairLine"></div>
+				</div>
 			</div>
 		</div>
 		<div style="display:none">

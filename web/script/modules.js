@@ -16,13 +16,13 @@ function initModules() {
 
 var weekDayOffset = 2;
 var weekDays = [
-	{ label: 'Mo', bgColor:'#F7F7F7', color:'C7C7C7' },
-	{ label: 'Di', bgColor:'#F0F0F0', color:'C0C0C0' },
-	{ label: 'Mi', bgColor:'#F7F7F7', color:'C7C7C7' },
-	{ label: 'Do', bgColor:'#F0F0F0', color:'C0C0C0' },
-	{ label: 'Fr', bgColor:'#F7F7F7', color:'C7C7C7' },
-	{ label: 'Sa', bgColor:'#E0E0FF', color:'B0B0FF' },
-	{ label: 'So', bgColor:'#D7D7FF', color:'A7A7FF' },
+	{ label: 'Mo', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: 'Di', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: 'Mi', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: 'Do', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: 'Fr', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: 'Sa', bgColor:'#F0F0F0', color:'#B0B0B0', lColor:'#B0B0B0' },
+	{ label: 'So', bgColor:'#F0F0F0', color:'#B0B0B0', lColor:'#B0B0B0' }
 ];
 
 function ScrollBar() {
@@ -30,6 +30,7 @@ function ScrollBar() {
 	makeEventListener(me);
 
 	var useCanvas = false;
+	var scale = 2;
 
 	var scrollBarWidth = maxDays*1440/(timeIndexZoom*timeStepMinutes);
 	var container = $('#scrollContainer');
@@ -40,14 +41,14 @@ function ScrollBar() {
 	
 	function initCanvas() {
 		canvas.css({display:'block'});
-		canvas.attr({width:scrollBarWidth, height:scrollBarHeight});
+		canvas.attr({width:scrollBarWidth*scale, height:scrollBarHeight*scale});
 
 		canvas.mousedown(mouseDown);
 		$(document).mousemove(mouseMove);
 		$(document).mouseup(  mouseUp  );
 
 		context = canvas.get(0).getContext('2d');
-		context.clearRect(0, 0, scrollBarWidth, scrollBarHeight);
+		context.clearRect(0, 0, scrollBarWidth*scale, scrollBarHeight*scale);
 
 		var v = [];
 		var maxV = 0;
@@ -59,31 +60,60 @@ function ScrollBar() {
 		})
 		
 		for (var weekDayIndex = 0; weekDayIndex < 7; weekDayIndex++) {
-			var maxWeeks = Math.ceil((maxDays-weekDayIndex)/7);
+			var maxWeeks = Math.ceil((maxDays - weekDayIndex + weekDayOffset)/7);
 
-			context.fillStyle = weekDays[(weekDayIndex+weekDayOffset)%7].bgColor;
+			context.fillStyle = weekDays[weekDayIndex % 7].bgColor;
 			for (var week = 0; week < maxWeeks; week++) {
-				var x = (weekDayIndex + 7*week)*dayWidth;
-				context.fillRect(x, 0, dayWidth, scrollBarHeight);
+				var x = (weekDayIndex - weekDayOffset + 7*week)*dayWidth;
+				context.fillRect(x*scale, 0, dayWidth*scale, scrollBarHeight*scale);
 			}
 			context.fill();
 
-			context.fillStyle = weekDays[(weekDayIndex+weekDayOffset)%7].color;
-			var text = weekDays[(weekDayIndex+weekDayOffset)%7].label;
+			context.fillStyle = weekDays[weekDayIndex % 7].color;
+			context.font = (8*scale)+'px Verdana';
+			
+			var text = weekDays[weekDayIndex % 7].label;
+
 			for (var week = 0; week < maxWeeks; week++) {
-				var x = (weekDayIndex + 7*week + 0.5)*dayWidth-6;
-				context.fillText(text, x, 10);
+				var day = weekDayIndex - weekDayOffset + 7*week;
+				var date = new Date(data.config.timeStart*1000 + (day+0.5)*86400000);
+				date = date.getDate();
+				
+				var x = (day + 0.5)*dayWidth;
+
+				var label = text + ' ' + date + '.';
+
+				var w = context.measureText(label).width;
+				context.fillText(label, x*scale + 2 - w/2, 10*scale);
 			}
 			context.fill();
 		}
+		
+		for (var weekDayIndex = 0; weekDayIndex < 7; weekDayIndex++) {
+			var maxWeeks = Math.ceil((maxDays - weekDayIndex + weekDayOffset)/7);
 
-		context.strokeStyle = 'rgba(0,0,0,0.3)';
-		context.lineWidth = 1;
+			context.beginPath();
+			context.strokeStyle = weekDays[weekDayIndex % 7].lColor;
+			context.lineWidth = scale;
+			for (var week = 0; week < maxWeeks; week++) {
+				var x = (weekDayIndex - weekDayOffset + 7*week)*dayWidth + 0.5;
+				context.moveTo(x*scale, 0)
+				context.lineTo(x*scale, scrollBarHeight*scale);
+
+				x += dayWidth;
+				context.moveTo(x*scale, 0)
+				context.lineTo(x*scale, scrollBarHeight*scale);
+			}
+			context.stroke();
+		}
+
+		context.strokeStyle = 'rgba(0,0,0,0.8)';
+		context.lineWidth = scale;
 		for (var x = 0; x < scrollBarWidth; x++) {
 			y = (scrollBarHeight)*(1-1.5*v[x]/maxV);
 			if (y < 0) y = 0;
-			context.moveTo(x-0.5,scrollBarHeight);
-			context.lineTo(x-0.5,y);
+			context.moveTo((x-0.5)*scale, scrollBarHeight*scale);
+			context.lineTo((x-0.5)*scale, y*scale);
 		}
 		context.stroke();
 
@@ -187,7 +217,6 @@ function Player() {
 
 	me.setSpeed = function (newSpeed) {
 		speed = newSpeed/(data.config.timeStepSeconds*framesPerSecond);
-		console.log(speed);
 	}
 
 	me.getTimeIndex = function () {
@@ -250,7 +279,7 @@ function Map() {
 	})
 
 	// create a map in the "map" div, set the view to a given place and zoom
-	var map = L.map('map').setView([47, 8.3], 8);
+	var map = L.map('map', {maxZoom: 12}).setView([47, 7.5], 7);
 
 	// add an OpenStreetMap tile layer
 	L.tileLayer('http://{s}.tilt.odcdn.de/suisse/{z}/{x}/{y}.png', {
@@ -601,6 +630,14 @@ function Calendar() {
 				map.addTown(town);
 			})
 
+			var time0 = new Date(data.config.timeStart*1000);
+			var weekDay = (time0.getDay()+6) % 7;
+			time0.setDate(time0.getDate()-weekDay);
+			time0.setHours(0);
+			time0.setMinutes(0);
+			time0.setSeconds(0);
+			time0 = time0.getTime();
+
 			var hours = [];
 
 			var blockMinutes = 60;
@@ -608,7 +645,14 @@ function Calendar() {
 			var blocksPerDay = 1440/blockMinutes;
 
 			data.positions.forEach(function (position, timeIndex) {
-				var hourIndex = Math.floor(timeIndex/blockCount);
+				var date = new Date((data.config.timeStart + timeIndex*data.config.timeStepSeconds)*1000);
+				var dayDate = new Date(date.getTime());
+				dayDate.setHours(0);
+				var dayIndex = Math.round((dayDate.getTime() - time0)/86400000);
+				var time = dayIndex*1440 + date.getHours()*60 + date.getMinutes();
+				
+				var hourIndex = Math.floor(time/blockMinutes);
+				if (timeIndex < 288) console.log(timeIndex, hourIndex);
 				if (hours[hourIndex] == undefined) hours[hourIndex] = [0,0,0,0,0,0];
 
 				towns.forEach(function (town, townIndex) {
@@ -626,11 +670,11 @@ function Calendar() {
 			var calendar = [];
 
 			hours.forEach(function (townConf, hourIndex) {
-				var time = (data.config.timeStart + hourIndex*blockMinutes*60)*1000;
 				var blockInDay = hourIndex % blocksPerDay;
 				var day = Math.floor(hourIndex / blocksPerDay);
-				var weekDay = (day + weekDayOffset) % 7;
-				var week = Math.floor((day - weekDay)/7 + 1);
+				var weekDay = day % 7;
+				var week = Math.floor((day - weekDay)/7);
+				if (hourIndex < 300) console.log(hourIndex, week, weekDay, blockInDay);
 
 				var bestTownIndex = -1;
 				var bestTownValue = 1;
@@ -650,6 +694,11 @@ function Calendar() {
 			})
 
 			calendar.forEach(function (week, weekIndex) {
+				var startDate = new Date(time0 + (weekIndex*7+0.5)*86400000);
+				var   endDate = new Date(time0 + (weekIndex*7+6.5)*86400000);
+				var weekLabel = ''    + startDate.getDate() + '.' + (startDate.getMonth()+1) + '.' +
+				                ' - ' +   endDate.getDate() + '.' + (  endDate.getMonth()+1) + '.';
+
 				var html = [];
 
 				var row = weekDays.map(function (weekDay) {
@@ -679,7 +728,7 @@ function Calendar() {
 
 				html.push(block.join('\n'));
 
-				html = '<div class="week"><table>'+html.join('\n')+'</table></div>';
+				html = '<div class="week"><h2>'+weekLabel+'</h2><table>'+html.join('\n')+'</table></div>';
 
 				$('#rightCalendar').append(html);
 			})

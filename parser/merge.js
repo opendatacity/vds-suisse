@@ -84,11 +84,13 @@ var data = {};
 data.cells = [];
 cells.forEach(function (cell) {
 	data.cells[cell.index] = {
+		/*
 		x0:    cell.x0,
 		y0:    cell.y0,
-		x:     cell.x,
-		y:     cell.y,
-		acc:   cell.acc,
+		*/
+		x:     Math.round(cell.x*10000)/10000,
+		y:     Math.round(cell.y*10000)/10000,
+		acc:   Math.round(cell.acc),
 		index: cell.index
 	};
 })
@@ -103,11 +105,36 @@ data.activities = activities.map(function (activity) {
 
 
 
-data.positions = positions;
+data.positions = positions.map(function (position) {
+	return {
+		x: Math.round(position.x*10000)/10000,
+		y: Math.round(position.y*10000)/10000,
+		r: Math.round(position.r)
+	}
+});
 
-data.events = events;
+data.events = events.map(function (event) {
+	return {
+		from: event.from,
+		to: event.to,
+		start: event.start,
+		end: event.end,
+		url: event.url,
+		type: event.type,
+		inBound: event.inBound,
+		outBound: event.outBound
+	}
+});
 
-data.contacts = contacts;
+data.contacts = contacts.map(function (contact) {
+	return {
+		label: contact.label,
+		index: contact.index,
+		nr: contact.nr,
+		org: contact.org,
+		size: Math.round(contact.size*10)/10
+	}
+});
 
 
 data.config = {
@@ -120,11 +147,32 @@ data.config = {
 	timeStepSeconds: config.timeStepSeconds
 }
 
-fs.writeFileSync('../web/data/data.js', 'var data = ' + JSON.stringify(data, null, '\t'), 'utf8')
+compress(data, 'cells');
+compress(data, 'activities');
+compress(data, 'positions');
+compress(data, 'events');
+compress(data, 'contacts');
+
+
+fs.writeFileSync('../web/data/data.js', 'var data = ' + JSON.stringify(data), 'utf8')
+
+console.log('Analyse data.js');
+Object.keys(data).forEach(function (key) {
+	console.log('   ' + key + ': ' + JSON.stringify(data[key]).length);
+})
 
 
 
-
+function compress(object, key) {
+	var result = {};
+	object[key].forEach(function (entry, index) {
+		Object.keys(entry).forEach(function (key) {
+			if (result[key] === undefined) result[key] = [];
+			result[key][index] = entry[key];
+		})
+	})
+	object[key] = result;
+}
 
 
 

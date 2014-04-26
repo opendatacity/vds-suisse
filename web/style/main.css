@@ -10,268 +10,311 @@ body {
 	font-size: 12px;
 }
 
+.explanation {
+	color: #333;
+	display: block;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 1.2em;
+}
+
 #topSection {
 	left: 0px;
 	top: 0px;
 	right: 0px;
-	height: 48px;
+	height: 35px;
 	position: absolute;
 	text-align: center;
 }
 
 	.tabButton {
-		display: inline-block;
-		border: 1px solid #357ebd;
-		background: #428bca;
-		border-radius: 4px;
-		padding: 7px 9px 6px 9px;
-		color: #fff;
+		background: #fff;
+		border-left: 2px solid #aaa;
+		border-right: 2px solid #aaa;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		border-top: 2px solid #aaa;
+		color: #aaa;
 		cursor: pointer;
-		white-space: nowrap;
+		display: inline-block;
 		font-size: 14px;
+		font-weight: bold;
+		height: 16px;
+		margin-right: 10px;
+		padding: 7px 9px 6px 9px;
+		position: relative;
+		top: 4px;
+		white-space: nowrap;
+		z-index: 1;
 	}
 
 		.tabButton.active {
-			border-color: #285e8e;
-			background: #3276b1;
-			-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-			box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+			border-color: #000;
+			color: #000;
+			height: 18px;
 		}
 
 		.tabButton:hover {
-			background: #3276b1;
+			border-color: #555;
+			color: #555;
 		}
 
 	.topButton {
-		display: block;
-		position: absolute;
-		top: 0px;
-		right: 10px;
-		width: 45px;
-		border: 1px solid #357ebd;
-		background: #428bca;
-		border-radius: 4px;
-		padding: 7px 9px 6px 9px;
-		color: #fff;
+		background: #fff;
+		border-radius: 8px;
+		border: 2px solid #aaa;
+		color: #aaa;
 		cursor: pointer;
-		font-size: 14px;
-		text-align: center;
-	}
-
-		.topButton.active {
-			border-color: #285e8e;
-			background: #3276b1;
-			-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-			box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-		}
-
-		.topButton:hover {
-			background: #3276b1;
-		}
-
-#middleSection {
-	left: 0px;
-	top: 48px;
-	right: 0px;
-	bottom: 48px;
-	position: absolute;
-}
-
-	#map {
-		left: 0px;
-		top: 0px;
-		right: 300px;
-		bottom: 0px;
-		position: absolute;
-	}
-
-	#rightCalendar {
-		position: absolute;
-		top: 0px;
-		width: 50%;
-		right: 0px;
-		bottom: 0px;
-		display: none;
-		overflow-y: scroll;
-	}
-
-		.week {
-			float: left;
-			margin-top: 20px;
-			margin-right: 20px;
-		}
-
-		#rightCalendar table {
-			border-spacing: 1px;
-		}
-
-		#rightCalendar th {
-			font-size: 10px;
-			color: #aaa;
-			width: 16px;
-			font-weight: normal;
-		}
-
-		#rightCalendar td {
-			height: 3px;
-		}
-
-	#rightList {
-		top: 0px;
-		right: 0px;
-		bottom: 0px;
-		width: 300px;
-		position: absolute;
-	}
-
-		#rightList table {
-			border-collapse: collapse;
-		}
-
-			#rightList th, #rightList td {
-				border: 1px solid #eee;
-				padding: 1px 5px;
-				text-align: right;
-			}
-
-		#comList {
-			position: absolute;
-			top: 10px;
-			left: 0px;
-			right: 0px;
-			bottom: 150px;
-			overflow-y: scroll;
-		}
-
-			#comDetails {
-				position: absolute;
-				height: 160px;
-				left: 0px;
-				right: 0px;
-				bottom: 0px;
-				font-size: 12px;
-				margin-bottom: 5px;
-			}
-
-	#middleSection.calendarView #map {
-		right: 50%;
-	}
-	
-	#middleSection.calendarView #rightList {
-		display: none;
-	}
-	
-	#middleSection.calendarView #rightCalendar {
 		display: block;
-	}
-
-#bottomSection {
-	position: absolute;
-	left: 0px;
-	right: 0px;
-	height: 48px;
-	bottom: 0px;
-}
-
-	#bottomLeftControls {
+		font-size: 12px;
+		font-weight: bold;
+		height: 18px;
+		padding-top: 5px;
 		position: absolute;
-		top: 0px;
-		left: 0px;
-		bottom: 0px;
-		width: 240px;
+		right: 4px;
+		text-align: center;
+		top: 4px;
+		width: 55px;
 	}
 
-		#infoText {
-			position: absolute;
-			top: 7px;
+		.topButton.active, .topButton:hover {
+			border-color: #555;
+			color: #555;
+		}
+
+#contentSection {
+	left: 4px;
+	top: 35px;
+	right: 4px;
+	bottom: 4px;
+	position: absolute;
+	border: 2px solid #000;
+	border-radius: 8px;
+}
+	#middleSection {
+		left: 0px;
+		top: 0px;
+		right: 0px;
+		bottom: 52px;
+		position: absolute;
+	}
+
+		#map {
 			left: 0px;
-			width: 144px;
-			height: 36px;
-			text-align: center;
-			font-family: 'Courier New', monospace;
-			font-weight: bold;
-			font-size: 16px;
+			top: 0px;
+			right: 300px;
+			bottom: 0px;
+			position: absolute;
+			background: none;
 		}
 
-		#playPauseButtons {
+			.leaflet-map-pane {
+				z-index:-1;
+			}
+
+		#rightCalendar {
 			position: absolute;
 			top: 0px;
-			left: 144px;
-			width: 48px;
-			height: 48px;
-			cursor: pointer;
+			width: 50%;
+			right: 0px;
+			bottom: 0px;
+			display: none;
+			overflow-y: scroll;
+			padding-bottom: 20px;
 		}
 
-			#playPauseButtons img {
-				position: absolute;
-				top: 0px;
-				left: 0px;
+			.week {
+				float: left;
+				margin-top: 20px;
+				margin-left: 20px;
+				border: 1px solid #aaa;
+				border-radius: 4px;
+				padding: 4px;
 			}
 
-			#playPauseButtons #pauseButton {
-				display: none;
-			}
-
-			#playPauseButtons.paused #playButton {
-				display: none;
-			}
-
-			#playPauseButtons.paused #pauseButton {
-				display: inline;
-			}
-
-		#speedButtons {
-			position: absolute;
-			top: 0px;
-			left: 192px;
-			width: 48px;
-			height: 48px;
-		}
-
-			.speedButton {
-				position: absolute;
-				top: 0px;
-				left: 3px;
-				width: 38px;
-				height: 12px;
-				font-size: 11px;
-				border: 1px solid #000;
-				border-radius: 6px;
-				text-align: center;
-				background: #fff;
-				color: #000;
-				cursor: pointer;
-			}
-				.speedButton.active {
-					background: #000;
-					color: #fff;
+				.week h2 {
+					font-size: 16px;
+					text-align: center;
+					margin: 0px;
+					color: #aaa;
 				}
 
-	#scrollContainer {
-		top: 0px;
-		left: 240px;
-		right: 0px;
-		bottom: 0px;
+			#rightCalendar table {
+				border-spacing: 1px;
+			}
+
+			#rightCalendar th {
+				font-size: 10px;
+				color: #aaa;
+				width: 16px;
+				font-weight: normal;
+			}
+
+			#rightCalendar td {
+				height: 3px;
+			}
+
+		#rightList {
+			top: 0px;
+			right: 0px;
+			bottom: 0px;
+			width: 300px;
+			position: absolute;
+		}
+
+			#rightList table {
+				border-collapse: collapse;
+			}
+
+				#rightList th, #rightList td {
+					border: 1px solid #eee;
+					padding: 1px 5px;
+					text-align: right;
+				}
+
+			#comList {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 150px;
+				overflow-y: scroll;
+				overflow-x: scroll;
+			}
+
+				#comDetails {
+					position: absolute;
+					height: 160px;
+					left: 0px;
+					right: 0px;
+					bottom: 0px;
+					font-size: 12px;
+					margin-bottom: 5px;
+				}
+
+		#middleSection.calendarView #map {
+			right: 50%;
+		}
+		
+		#middleSection.calendarView #rightList {
+			display: none;
+		}
+		
+		#middleSection.calendarView #rightCalendar {
+			display: block;
+		}
+
+	#bottomSection {
 		position: absolute;
-		overflow: hidden;
+		left: 0px;
+		right: 0px;
+		height: 50px;
+		bottom: 0px;
 	}
 
-		#scrollCanvas, #scrollImage {
-			display: none;
+		#bottomLeftControls {
 			position: absolute;
-			left: 0px;
 			top: 0px;
-			cursor: pointer;
+			left: 0px;
+			bottom: 0px;
+			width: 240px;
 		}
 
-		#scrollHairLine {
-			position: absolute;
-			left: 50%;
-			top: 0px;
-			width: 1px;
+			#infoText {
+				position: absolute;
+				top: 7px;
+				left: 0px;
+				width: 144px;
+				height: 36px;
+				text-align: center;
+				font-family: 'Courier New', monospace;
+				font-weight: bold;
+				font-size: 16px;
+			}
+
+			#playPauseButtons {
+				position: absolute;
+				top: 0px;
+				left: 144px;
+				width: 48px;
+				height: 48px;
+				cursor: pointer;
+			}
+
+				#playPauseButtons img {
+					position: absolute;
+					top: 0px;
+					left: 0px;
+				}
+
+				#playPauseButtons #pauseButton {
+					display: none;
+				}
+
+				#playPauseButtons.paused #playButton {
+					display: none;
+				}
+
+				#playPauseButtons.paused #pauseButton {
+					display: inline;
+				}
+
+			#speedButtons {
+				position: absolute;
+				top: 0px;
+				left: 192px;
+				width: 48px;
+				height: 48px;
+			}
+
+				.speedButton {
+					position: absolute;
+					top: 0px;
+					left: 3px;
+					width: 40px;
+					height: 12px;
+					font-size: 11px;
+					border: 1px solid #000;
+					border-radius: 6px;
+					text-align: center;
+					background: #fff;
+					color: #000;
+					cursor: pointer;
+				}
+					.speedButton.active {
+						background: #000;
+						color: #fff;
+					}
+
+		#scrollContainer {
 			height: 48px;
-			background: rgba(255,0,0,1);
+			left: 240px;
+			right: -2px;
+			bottom: -2px;
+			position: absolute;
+
+			border: 2px solid #000;
+			border-radius: 8px;
+			overflow: hidden;
 		}
+
+			#scrollCanvas, #scrollImage {
+				display: none;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				cursor: pointer;
+			}
+
+			#scrollHairLine {
+				position: absolute;
+				left: 50%;
+				top: 0px;
+				width: 1px;
+				height: 48px;
+				background: rgba(255,0,0,1);
+			}
 
 .unselectable {
 	-webkit-user-select: none;
