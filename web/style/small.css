@@ -1,0 +1,30 @@
+#bottomLeftControls {
+	width: 168px;
+}
+
+	#infoText {
+		position: absolute;
+		top: 12px;
+		width: 72px;
+		font-size: 12px;
+	}
+
+	#playPauseButtons {
+		left: 72px;
+	}
+
+	#speedButtons {
+		left: 120px;
+	}
+
+#scrollContainer {
+	left: 168px;
+}
+
+#comList {
+	bottom: 0px;
+}
+
+#comDetails {
+	display: none;
+}

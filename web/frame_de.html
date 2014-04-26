@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8" >
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 		<link rel="stylesheet" href="lib/leaflet/leaflet.css" />
 		<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<link href="style/main.css" rel="stylesheet">
-		<script src="../data/data.js"></script>
+		<link href="style/small.css" rel="stylesheet" media="(max-width: 800px)">
+
+		<script src="data/data.js"></script>
 		<script src="script/modules.js"></script>
 		<script src="lib/jquery-1.11.0.min.js"></script>
 		<script src="lib/leaflet/leaflet.js"></script>
@@ -20,7 +24,7 @@
 		<div id="middleSection">
 			<div id="map"></div>
 			<div id="rightList">
-				<label><input type="checkbox" checked="checked" id="showNewsletters" /> Zeige Newsletter</label>
+				<!--<label><input type="checkbox" checked="checked" id="showNewsletters" /> Zeige Newsletter</label>-->
 				<div id="comList"></div>
 				<div id="comDetails"></div>
 			</div>
