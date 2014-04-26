@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <title>Vorratsdatenspeicherung in der Schweiz</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta charset="utf-8">
 
-    <meta charset="utf-8">
-    <!--<base href="http://apps.opendatacity.de/vds/" target="_parent">-->
+	<title>Vorratsdatenspeicherung in der Schweiz</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <meta property="og:title" content="Vorratsdatenspeicherung in der Schweiz"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:url" content="http://apps.opendatacity.de/vds/"/>
-    <meta property="og:image" content="http://apps.opendatacity.de/vds/screenshot.png"/>
-    <!--TODO: make screenshot -->
+	<meta property="og:title" content="Vorratsdatenspeicherung in der Schweiz"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:url" content="http://apps.opendatacity.de/vds/"/>
+	<meta property="og:image" content="http://apps.opendatacity.de/vds/screenshot.png"/>
+	<!--TODO: make screenshot -->
 
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@opendatacity">
-    <meta name="twitter:creator" content="@opendatacity">
-    <meta name="twitter:title" content="Vorratsdatenspeicherung in der Schweiz">
-    <meta name="twitter:description" content="Visualiert: Vorratsdatenspeicherung in der Schweiz">
-    <meta name="twitter:image:src" content="http://apps.opendatacity.de/vds/screenshot.png">
-    <meta name="twitter:domain" content="opendatacity.de">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@opendatacity">
+	<meta name="twitter:creator" content="@opendatacity">
+	<meta name="twitter:title" content="Vorratsdatenspeicherung in der Schweiz">
+	<meta name="twitter:description" content="Visualiert: Vorratsdatenspeicherung in der Schweiz">
+	<meta name="twitter:image:src" content="http://apps.opendatacity.de/vds/screenshot.png">
+	<meta name="twitter:domain" content="opendatacity.de">
 
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="style/index.css" rel="stylesheet">
+	<!-- viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="lib/jquery-1.11.0.min.js"></script>
-    <script src="script/index.js"></script>
+	<link rel="shortcut icon" href="/images/favicon.ico?v=1"/>
+
+	<link type="text/css" rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+	<link type="text/css" rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="style/index.css" rel="stylesheet">
+
+	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="script/index.js"></script>
+
+	<!-- polyfills -->
+	<!--[if lt IE 9]><script type="text/javascript" src="lib/polyfills/html5shiv.min.js"></script><![endif]-->
+	<!--[if lt IE 9]><script type="text/javascript" src="lib/polyfills/respond.min.js"></script><![endif]-->
+	<!--[if lt IE 7]><script type="text/javascript" src="http://browser-update.org/update.js"></script><![endif]-->
 
 </head>
 <body>
@@ -33,39 +45,39 @@
 
 <div id="container">
 
-    <header>
-        <h1>Vorratsdatenspeicherung in der Schweiz</h1>
-    </header>
+	<header>
+		<h1>Vorratsdatenspeicherung in der Schweiz</h1>
+	</header>
 
-    <div id="social">
-        <div class="share-buttons">
-            <ul class="clearfix">
-                <li><a id="button-share" class="embed-pop embed" href="javascript:;" title="Einbetten"><i class="fa fa-share"></i> <span>Einbetten</span></a></li>
-                <li><a class="share-pop twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
-                <li><a class="share-pop facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
-                <li><a class="share-pop google"><i class="fa fa-google-plus"></i><span> Google+</span></a>
-                <li><a class="share-pop adn"><i class="fa fa-adn"></i><span> App.net</span></a>
-            </ul>
-        </div>
-    </div>
+	<div id="social">
+		<div class="share-buttons">
+			<ul class="clearfix">
+				<li><a id="button-share" class="embed-pop embed" href="javascript:;" title="Einbetten"><i class="fa fa-share"></i> <span>Einbetten</span></a></li>
+				<li><a class="share-pop twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+				<li><a class="share-pop facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+				<li><a class="share-pop google"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+				<li><a class="share-pop adn"><i class="fa fa-adn"></i><span> App.net</span></a>
+			</ul>
+		</div>
+	</div>
 
-    <iframe src="frame_de.html" height="400" width="800" frameborder="0" allowfullscreen></iframe>
+	<iframe src="frame_de.html" height="400" width="800" frameborder="0" allowfullscreen></iframe>
 
-    <p>Realisiert von <a href="http://www.opendatacity.de/">OpenDataCity</a>. Anwendung steht unter <a rel="license" href="http://creativecommons.org/licenses/by/3.0/de/">CC-BY 3.0</a>.</p>
+	<p>Realisiert von <a href="http://www.opendatacity.de/">OpenDataCity</a>. Anwendung steht unter <a rel="license" href="http://creativecommons.org/licenses/by/3.0/de/">CC-BY 3.0</a>.</p>
 
-    <p>Diese Seite wird mit Google Analytics ausgewertet. Die NSA weiß möglicherweise schon, dass du gerade hier bist. <a href="http://www.opendatacity.de/kontakt/" target="_blank">Impressum</a></p>
+	<p>Diese Seite wird mit Google Analytics ausgewertet. Die NSA weiß möglicherweise schon, dass du gerade hier bist. <a href="http://www.opendatacity.de/kontakt/" target="_blank">Impressum</a></p>
 
 
-    <div id="share" class="overlay">
-        <h2>Einbetten</h2>
-        <p>
-            Diese Browser-App steht unter <a target="_blank" href="http://creativecommons.org/licenses/by/3.0">CC-BY-Lizenz</a> und darf gerne in Blogs und anderen Medien eingebettet werden:
-        </p>
-        <code>&lt;iframe src=&quot;http://apps.opendatacity.de/vds/frame_de.html&quot; width=&quot;540&quot; height=&quot;420&quot; scrolling=&quot;auto&quot; allowfullscreen frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br /&gt;Ein Informationsangebot von &lt;a target=&quot;_blank&quot; href=&quot;http://www.opendatacity.de/&quot;&gt;OpenDataCity&lt;/a&gt; </code>
-        <p>
-            <a href="javascript:;" onclick="$('#container').removeClass('show-share');" class="btn btn-primary">Schließen</a>
-        </p>
-    </div>
+	<div id="share" class="overlay">
+		<h2>Einbetten</h2>
+		<p>
+			Diese Browser-App steht unter <a target="_blank" href="http://creativecommons.org/licenses/by/3.0">CC-BY-Lizenz</a> und darf gerne in Blogs und anderen Medien eingebettet werden:
+		</p>
+		<code>&lt;iframe src=&quot;http://apps.opendatacity.de/vds/frame_de.html&quot; width=&quot;540&quot; height=&quot;420&quot; scrolling=&quot;auto&quot; allowfullscreen frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br /&gt;Ein Informationsangebot von &lt;a target=&quot;_blank&quot; href=&quot;http://www.opendatacity.de/&quot;&gt;OpenDataCity&lt;/a&gt; </code>
+		<p>
+			<a href="javascript:;" onclick="$('#container').removeClass('show-share');" class="btn btn-primary">Schließen</a>
+		</p>
+	</div>
 </div>
 
 </body>
