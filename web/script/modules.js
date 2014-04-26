@@ -449,7 +449,7 @@ function CommunicationList() {
 	var lineHeight = 16;
 	var dayFullHeight = 7200;
 	var dayTinyHeight = 2400;
-	var dayBottomBuffer = 600;
+	var dayBottomBuffer = 300;
 
 	for (var i = 0; i < data.events.length; i++) {
 		data.events[i].index = i;
