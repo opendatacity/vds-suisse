@@ -1,182 +1,174 @@
 
 body {
 
-    background: #F5F5F5;
+	background: #F5F5F5;
 
 }
 
 #container {
 
-    display: block;
-    position: relative;
-    margin: 0px auto;
-    box-shadow: 0px 0px 40px -20px rgba(0,0,0,0.4);
-    width: 950px;
-    background: #fff;
-    padding: 30px;
+	display: block;
+	position: relative;
+	margin: 0px auto;
+	box-shadow: 0px 0px 40px -20px rgba(0,0,0,0.4);
+	background: #fff;
+	padding: 30px;
+	max-width: 862px;
 
 }
 
-#social {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 90px;
-    margin: 0px;
-    padding: 0px;
-    width: 100px;
-    z-index: 100;
-}
+	#container .jumbotron {
+		
+		padding: 0px;
+		background-color: transparent;
+		
+	}
 
-    .share-buttons ul {
+	#container .content {
+	
+		border: 1px solid #fcfcfc;
+		margin-bottom: 20px;
+		
+	}
 
-        display: block;
-        position: relative;
-        list-style: none;
-        margin: 0px;
-        padding: 0px;
+	#container .share-buttons {
 
-    }
+		display: block;
+		position: relative;
+		text-align: right;
+		padding: 0px;
+		border-radius: 2px;
+		height: 24px;
 
-    .share-buttons ul li {
+	}
 
-        display: block;
-        position: relative;
+		#container .share-buttons ul {
 
-    }
+			display: inline-block;
+			position: relative;
+			list-style: none;
+			margin: 0px;
+			padding: 0px;
 
-    .share-buttons ul li+li {
+		}
 
-        margin-top: 8px;
+		#container .share-buttons ul li {
 
-    }
+			display: block;
+			position: relative;
+			float: left;
 
-    .share-buttons ul li a {
+		}
+		
+			#container .share-buttons ul li a {
 
-        display: block;
-        position: relative;
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-        font-size: 30px;
-        color: #fff;
-        border-radius: 7px;
+				display: block;
+				position: relative;
+				height: 24px;
+				padding: 0px 10px;
+				line-height: 24px;
+				text-align: center;
+				font-size: 12px;
+				color: #fff;
+				-webkit-transform: scale(1,1);
+				-webkit-transition-timing-function: ease-out;
+				-webkit-transition-duration: 250ms;
+				-moz-transform: scale(1,1);
+				-moz-transition-timing-function: ease-out;
+				-moz-transition-duration: 250ms;
+				
+			}
+			
+			#container .share-buttons ul li a:hover {
+			
+				-webkit-transform: scale(1.2);
+				-webkit-transition-timing-function: ease-out;
+				-webkit-transition-duration: 250ms;
+				-moz-transform: scale(1.2);
+				-moz-transition-timing-function: ease-out;
+				-moz-transition-duration: 250ms;
+				z-index: 100;
 
-    }
+			}
+			
+			#container .share-buttons ul li:first-child a {
+				border-top-left-radius: 2px;
+				border-bottom-left-radius: 2px;
+			}
 
-    .share-buttons ul li a i {
+			#container .share-buttons ul li:last-child a {
+				border-top-right-radius: 2px;
+				border-bottom-right-radius: 2px;
+			}
+			
+			#container .share-buttons ul li a i {
+				font-size: 1.2em;
+				margin-right: 3px;
+			}
 
-        margin-top: 5px;
+			#container .share-buttons ul li a:hover,
+			#container .share-buttons ul li a:focus,
+			#container .share-buttons ul li a:active {
 
-    }
+				text-decoration: none;
 
-    .share-buttons ul li a span {
+			}
 
-        display: none;
+				#container .share-buttons ul li a.twitter { background-color: #00aced; }
+				#container .share-buttons ul li a.twitter:hover { background-color: #4bc5f2; }
+				#container .share-buttons ul li a.facebook { background-color: #3B5998; }
+				#container .share-buttons ul li a.facebook:hover { background-color: #5a73a8; }
+				#container .share-buttons ul li a.google { background-color: #dd4b39; }
+				#container .share-buttons ul li a.google:hover { background-color: #e26758; }
+				#container .share-buttons ul li a.adn { background-color: #444; }
+				#container .share-buttons ul li a.adn:hover { background-color: #555; }
+				#container .share-buttons ul li a.embed { background-color: #444; }
+				#container .share-buttons ul li a.embed:hover { background-color: #555; }
 
-    }
+footer {
 
-    .share-buttons ul li a:hover,
-    .share-buttons ul li a:focus,
-    .share-buttons ul li a:active {
-
-        text-decoration: none;
-
-    }
-
-    .share-buttons ul li a.twitter {
-
-        background-color: #00aced;
-
-    }
-
-    .share-buttons ul li a.twitter:hover {
-
-        background-color: #4bc5f2;
-
-    }
-
-    .share-buttons ul li a.facebook {
-
-        background-color: #3B5998;
-
-    }
-
-    .share-buttons ul li a.facebook:hover {
-
-        background-color: #5a73a8;
-
-    }
-
-    .share-buttons ul li a.google {
-
-        background-color: #dd4b39;
-
-    }
-
-    .share-buttons ul li a.google:hover {
-
-        background-color: #e26758;
-
-    }
-
-    .share-buttons ul li a.adn {
-
-        background-color: #444;
-
-    }
-
-    .share-buttons ul li a.adn:hover {
-
-        background-color: #555;
-
-    }
-
-
-    .share-buttons ul li a.embed {
-
-        background-color: #444;
-
-    }
-
-    .share-buttons ul li a.adn:embed {
-
-        background-color: #555;
-
-    }
-
-
-.overlay {
-
-    display: none;
-    position: fixed;
-    left: 0px;
-    right: 0px;
-    top: 0px;
-    bottom: 0px;
-    background-color: #fff;
-    z-index: 1500;
-    padding: 5% 10% 10% 10%;
-    overflow-x: auto;
+	display: block;
+	position: relative;
+	margin: 0px;
+	padding: 10px;
+	border-top: 1px solid #eee;
+	background-color: #fff;
+	font-size: 13px;
 
 }
 
-    .show-info #info, .show-share #share {
-        display: block;
-    }
+	footer p {
 
-    .show-info, .show-share {
-        z-index: 1000;
-    }
+		margin-bottom: 0;
 
-    .overlay code {
+	}
 
-        display: block;
-        color: #333333;
-        margin-bottom: 10px;
-        padding: 10px;
-        white-space: normal;
-        overflow: auto;
+#share {
 
-    }
+	display: none;
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	background-color: #fff;
+	z-index: 1500;
+	padding: 5% 10% 10% 10%;
+	overflow-x: auto;
+
+}
+
+	.show-share #share {
+		display: block;
+	}
+
+	#share code {
+
+		display: block;
+		color: #333333;
+		margin-bottom: 10px;
+		padding: 10px;
+		white-space: normal;
+		overflow: auto;
+
+	}

@@ -19,7 +19,13 @@ $(document).ready(function () {
 	/* embed code */
 	$('#button-share').click(function(evt){
 		evt.preventDefault();
-		$('#container').toggleClass('show-share');
+		$('body').toggleClass('show-share');
+	});
+	
+	/* maximize container height */
+	$('#container').css('min-height', ($(window).innerHeight()-$('footer').outerHeight()));
+	$(window).resize(function(){
+		$('#container').css('min-height', ($(window).innerHeight()-$('footer').outerHeight()));
 	});
 
 });

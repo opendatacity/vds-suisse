@@ -37,22 +37,19 @@
 	<!-- polyfills -->
 	<!--[if lt IE 9]><script type="text/javascript" src="lib/polyfills/html5shiv.min.js"></script><![endif]-->
 	<!--[if lt IE 9]><script type="text/javascript" src="lib/polyfills/respond.min.js"></script><![endif]-->
-	<!--[if lt IE 7]><script type="text/javascript" src="http://browser-update.org/update.js"></script><![endif]-->
-
 </head>
 <body>
-<div id="fb-root"></div>
-
-<div id="container">
-
-	<header>
-		<h1>Vorratsdatenspeicherung in der Schweiz</h1>
-	</header>
-
-	<div id="social">
-		<div class="share-buttons">
+	<div id="container">
+		<div class="jumbotron">
+			<h1>Vorratsdatenspeicherung<br> in der Schweiz</h1>
+			<p>Erklärbärtext Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi augue lectus, molestie at elit id, suscipit luctus urna. Nam fringilla ante ultrices quam porta, nec iaculis tellus sollicitudin.</p>
+		</div>
+		<div class="content">
+			<iframe src="frame_de.html" height="400" width="800" frameborder="0" allowfullscreen></iframe>
+		</div>
+		<div id="social" class="share-buttons">
 			<ul class="clearfix">
-				<li><a id="button-share" class="embed-pop embed" href="javascript:;" title="Einbetten"><i class="fa fa-share"></i> <span>Einbetten</span></a></li>
+				<li><a class="embed-pop embed" id="button-share" href="javascript:;" title="Einbetten"><i class="fa fa-share"></i> <span>Einbetten</span></a></li>
 				<li><a class="share-pop twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
 				<li><a class="share-pop facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
 				<li><a class="share-pop google"><i class="fa fa-google-plus"></i><span> Google+</span></a>
@@ -60,14 +57,10 @@
 			</ul>
 		</div>
 	</div>
-
-	<iframe src="frame_de.html" height="400" width="800" frameborder="0" allowfullscreen></iframe>
-
-	<p>Realisiert von <a href="http://www.opendatacity.de/">OpenDataCity</a>. Anwendung steht unter <a rel="license" href="http://creativecommons.org/licenses/by/3.0/de/">CC-BY 3.0</a>.</p>
-
-	<p>Diese Seite wird mit Google Analytics ausgewertet. Die NSA weiß möglicherweise schon, dass du gerade hier bist. <a href="http://www.opendatacity.de/kontakt/" target="_blank">Impressum</a></p>
-
-
+	<footer class="clearfix">
+		<p class="pull-left">Realisiert von <a href="http://www.opendatacity.de/">OpenDataCity</a>. Anwendung steht unter <a rel="license" href="http://creativecommons.org/licenses/by/3.0/de/">CC-BY 3.0</a>.</p>
+		<p class="pull-right">Diese Seite wird mit Google Analytics ausgewertet. Die NSA weiß möglicherweise schon, dass du gerade hier bist. <a href="http://www.opendatacity.de/kontakt/" target="_blank">Impressum</a></p>
+	</footer>
 	<div id="share" class="overlay">
 		<h2>Einbetten</h2>
 		<p>
@@ -75,10 +68,9 @@
 		</p>
 		<code>&lt;iframe src=&quot;http://apps.opendatacity.de/vds/frame_de.html&quot; width=&quot;540&quot; height=&quot;420&quot; scrolling=&quot;auto&quot; allowfullscreen frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br /&gt;Ein Informationsangebot von &lt;a target=&quot;_blank&quot; href=&quot;http://www.opendatacity.de/&quot;&gt;OpenDataCity&lt;/a&gt; </code>
 		<p>
-			<a href="javascript:;" onclick="$('#container').removeClass('show-share');" class="btn btn-primary">Schließen</a>
+			<a href="javascript:;" onclick="$('body').removeClass('show-share');" class="btn btn-primary">Schließen</a>
 		</p>
 	</div>
-</div>
-
+	<div id="fb-root"></div>
 </body>
 </html>
