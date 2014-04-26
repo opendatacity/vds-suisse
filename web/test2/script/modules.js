@@ -1,11 +1,11 @@
 var timeIndexZoom = 6;
 var scrollBarHeight = 48;
 
-var maxDays, timeStepMinutes, timeStepSecondes, maxMinutes, maxTimeIndex, dayLength, dayWidth;
+var maxDays, timeStepMinutes, timeStepSeconds, maxMinutes, maxTimeIndex, dayLength, dayWidth;
 
 function initModules() {
 	maxDays = data.config.days;
-	timeStepSecondes = data.config.timeStepSeconds;
+	timeStepSeconds = data.config.timeStepSeconds;
 	timeStepMinutes = data.config.timeStepSeconds/60;
 
 	maxMinutes = maxDays*1440;
@@ -175,12 +175,28 @@ function Player() {
 	}
 
 	me.getTimeStamp = function () {
-
-		return (timeIndex*timeStepSecondes + data.config.timeStart)*1000;
+		return (timeIndex*timeStepSeconds + data.config.timeStart)*1000;
 	}
 
 	me.getTime = function () {
-		return (timeIndex*timeStepSecondes + data.config.timeStart);
+		return (timeIndex*timeStepSeconds + data.config.timeStart);
+	}
+
+	me.getDayTimeIndex = function () {
+		var timeStamp = me.getTimeStamp();
+		var time = new Date(timeStamp);
+		time.setHours(0);
+		time.setMinutes(0);
+		time.setSeconds(0);
+		time = (timeStamp - time.getTime())/1000;
+		return time/data.config.timeStepSeconds;
+	}
+
+	me.getDayIndex = function () {
+		var day = new Date(me.getTimeStamp());
+		day.setHours(0);
+		day = day.getTime()/1000 - data.config.timeStart;
+		return Math.round(day/86400);
 	}
 
 	me.setTimeIndex = function (index) {
@@ -381,7 +397,10 @@ function CommunicationList() {
 		data.events[i].index = i;
 	}
 
-	var dayNodes = [];
+	var dayNode;
+	var activeDayIndex = -1;
+	var dayHeight;
+
 	function drawDay(dayIndex) {
 		var date = new Date(data.config.timeStart*1000);
 		date.setDate(date.getDate()+dayIndex);
@@ -423,7 +442,7 @@ function CommunicationList() {
 			}
 		}
 
-		var node = $('#comList').append('<div class="comDay" id="day'+dayIndex+'"></div>');
+		var node = $('#comList').html('<div class="comDay" id="day'+dayIndex+'"></div>');
 
 		var paper = Raphael(node.get(0), 300, dayHeight);
 
@@ -492,14 +511,22 @@ function CommunicationList() {
 		}
 		paper.path('M40,0L40,'+dayHeight).attr({stroke:'#ccc'});
 
-		dayNodes[dayIndex] = node;
-
+		return node;
 	}
 
 	me.redraw = function (force) {
-		if (dayNodes[0] === undefined) {
-			drawDay(0);
+		var date = new Date(player.getTimeStamp());
+
+		var dayIndex = player.getDayIndex();
+
+		if (activeDayIndex != dayIndex) {
+			drawDay(dayIndex);
+			activeDayIndex = dayIndex;
 		}
+
+		var y = player.getDayTimeIndex();
+		y = dayHeight*y/(86400/data.config.timeStepSeconds);
+		$('#comList').scrollTop(y);
 	}
 
 	me.showNewsletters = function (checked) {

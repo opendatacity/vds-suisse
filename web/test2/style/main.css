@@ -95,7 +95,6 @@ body {
 		bottom: 0px;
 		width: 300px;
 		position: absolute;
-		overflow-y: scroll;
 	}
 
 		#rightList table {
@@ -108,10 +107,24 @@ body {
 				text-align: right;
 			}
 
-		#rightList #comDetails p {
-			font-size: 12px;
-			margin-bottom: 5px;
+		#comList {
+			position: absolute;
+			top: 10px;
+			left: 0px;
+			right: 0px;
+			bottom: 150px;
+			overflow-y: scroll;
 		}
+
+			#comDetails {
+				position: absolute;
+				height: 160px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				font-size: 12px;
+				margin-bottom: 5px;
+			}
 
 	#middleSection.calendarView #map {
 		right: 50%;
