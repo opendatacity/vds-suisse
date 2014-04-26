@@ -114,7 +114,7 @@ data.positions = positions.map(function (position) {
 });
 
 data.events = events.map(function (event) {
-	return {
+	var obj = {
 		from: event.from,
 		to: event.to,
 		start: event.start,
@@ -124,6 +124,8 @@ data.events = events.map(function (event) {
 		inBound: event.inBound,
 		outBound: event.outBound
 	}
+	if ((event.type == 'tweet') || (event.type == 'facebook')) obj.subject = event.subject;
+	return obj;
 });
 
 data.contacts = contacts.map(function (contact) {
@@ -154,7 +156,8 @@ compress(data, 'events');
 compress(data, 'contacts');
 
 
-fs.writeFileSync('../web/data/data.js', 'var data = ' + JSON.stringify(data), 'utf8')
+fs.writeFileSync('../web/data/data.js', 'var data = ' + JSON.stringify(data), 'utf8');
+//fs.writeFileSync('../web/data/data.js', 'var data = ' + JSON.stringify(data, null, '\t'), 'utf8');
 
 console.log('Analyse data.js');
 Object.keys(data).forEach(function (key) {
