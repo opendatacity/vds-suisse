@@ -31,7 +31,7 @@ body {
 		position: absolute;
 		top: 2px;
 		height: 22px;
-		line-height: 22px;
+		line-height: 18px;
 		padding: 5px 20px 0px;
 		background-color: #eee;
 		border: 1px solid #ccc;
@@ -41,7 +41,7 @@ body {
 		cursor: pointer;
 		font-size: 14px;
 		font-weight: 600;
-		box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.3);
+		box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
 		color: #555;
 
 	}
@@ -49,13 +49,13 @@ body {
 		#tabList {
 			
 			/* right: 164px; */
-			left: 50px;
+			left: 80px;
 			
 		}
 
 		#tabCalendar {
 			
-			left: 130px;
+			left: 165px;
 			
 		}
 
@@ -93,8 +93,7 @@ body {
 		cursor: pointer;
 		border-radius: 4px;
 		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
-		padding-left: 1px;
-		padding-top: 1px;
+		padding: 0px;
 
 	}
 
@@ -401,13 +400,13 @@ body {
 					
 					display: block;
 					position: absolute;
-					top: 1px;
+					top: 0px;
 					left: 0px;
-					width: 40px;
-					height: 40px;
+					width: 41px;
+					height: 41px;
 					border-radius: 5px;
 					text-align: center;
-					line-height: 45px;
+					line-height: 44px;
 					font-size: 15pt;
 					font-weight: 500;
 					vertical-align: bottom;
@@ -425,15 +424,15 @@ body {
 
 				#playPauseButtons #playButton {
 					
-					padding-left: 4px;
-					width: 36px;
+					padding-left: 3px;
+					width: 38px;
 					
 				}
 				
 				#playPauseButtons #pauseButton {
 					
-					padding-left: 1px;
-					width: 39px;
+					padding-left: 0px;
+					width: 41px;
 					
 				}
 
