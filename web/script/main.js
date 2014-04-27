@@ -76,25 +76,39 @@ $(function () {
 		var element = $('html').get(0);
 		var me = this;
 		
-		var isFullScreen;
+		var isFullScreen = false;
 
-		if (element.requestFullScreen) isFullScreen = function () { return document.fullScreen; };
-		if (element.mozRequestFullScreen) isFullScreen = function () { return document.mozFullScreen; };
+		if (element.requestFullScreen)       isFullScreen = function () { return document.fullScreen;         };
+		if (element.mozRequestFullScreen)    isFullScreen = function () { return document.mozFullScreen;      };
 		if (element.webkitRequestFullScreen) isFullScreen = function () { return document.webkitIsFullScreen; };
 
-		if (isFullScreen()) {
-			if (document.exitFullScreen)   document.exitFullScreen();   else if (document.mozCancelFullScreen) document.mozCancelFullScreen(); else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
-		} else {
-			if (element.requestFullscreen) element.requestFullscreen(); else if (element.mozRequestFullScreen) element.mozRequestFullScreen(); else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen();
-		}
+		if (isFullScreen) {
+			// function found
 
-		setTimeout(function () {
 			if (isFullScreen()) {
-				$('#topFullscreen').addClass('active');
+				if      (document.exitFullScreen)         document.exitFullScreen();
+				else if (document.mozCancelFullScreen)    document.mozCancelFullScreen();
+				else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
 			} else {
-				$('#topFullscreen').removeClass('active');
+				if      (element.requestFullscreen)       element.requestFullscreen();
+				else if (element.mozRequestFullScreen)    element.mozRequestFullScreen();
+				else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen();
 			}
-		}, 100);
+
+			setTimeout(function () {
+				if (isFullScreen()) {
+					$('#topFullscreen').addClass('active');
+				} else {
+					$('#topFullscreen').removeClass('active');
+				}
+			}, 100);
+		} else {
+			// fullscreen is not possible!
+
+			if (window.location != window.parent.location) {
+				window.open('frame_de.html', '_blank')
+			}
+		}
 	})
 
 	player.start();
