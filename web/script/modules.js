@@ -558,7 +558,7 @@ function CommunicationList() {
 					if (isFinite(entry.from)) html.push('<b>Von:</b> '+addresses2Text([entry.from]));
 					if (entry.to.length > 0 ) html.push('<b>An:</b> ' +addresses2Text( entry.to   ));
 					if (entry.subject       ) html.push('<b>Inhalt:</b> ' +entry.subject);
-					if (entry.url           ) html.push('<b>Link:</b> <a href="' +entry.url+'">'+(entry.url.length > 20 ? entry.url.substr(0,19)+'…' : entry.url)+'</a>');
+					//if (entry.url           ) html.push('<b>Link:</b> <a href="' +entry.url+'">'+(entry.url.length > 20 ? entry.url.substr(0,19)+'…' : entry.url)+'</a>');
 
 					html = '<p>' + html.join('</p><p>') + '</p>';
 
