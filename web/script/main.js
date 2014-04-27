@@ -8,6 +8,10 @@ $(function () {
 	decompress(data, 'events');
 	decompress(data, 'contacts');
 
+	if (window.self !== window.top) {
+		$("html").addClass("in-frame");
+	}
+
 	function decompress(object, field) {
 		var result = [];
 		Object.keys(object[field]).forEach(function (key) {
