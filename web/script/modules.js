@@ -43,10 +43,6 @@ function ScrollBar() {
 		canvas.css({display:'block'});
 		canvas.attr({width:scrollBarWidth*scale, height:scrollBarHeight*scale});
 
-		container.mousedown(mouseDown);
-		$(document).mousemove(mouseMove);
-		$(document).mouseup(  mouseUp  );
-
 		context = canvas.get(0).getContext('2d');
 		context.clearRect(0, 0, scrollBarWidth*scale, scrollBarHeight*scale);
 
@@ -126,10 +122,6 @@ function ScrollBar() {
 		canvas.css({display:'block'});
 		canvas.attr({width:scrollBarWidth, height:scrollBarHeight});
 
-		container.mousedown(mouseDown);
-		$(document).mousemove(mouseMove);
-		$(document).mouseup(  mouseUp  );
-
 		canvas.on('dragstart', function(event) { event.preventDefault(); });
 	}
 
@@ -151,15 +143,15 @@ function ScrollBar() {
 	var pressed = false;
 	var lastMouseX = 0;
 
-	function mouseDown(event) {
+	function mouseDown(x) {
 		pressed = true;
-		lastMouseX = event.pageX;
+		lastMouseX = x;
 		me.trigger('dragStart');
 	}
 
-	function mouseMove(event) {
+	function mouseMove(x) {
 		if (pressed) {
-			var mouseX = event.pageX;
+			var mouseX = x;
 			timeIndex -= (mouseX-lastMouseX)*timeIndexZoom;
 			lastMouseX = mouseX;
 			me.trigger('drag');
@@ -177,6 +169,19 @@ function ScrollBar() {
 		initCanvas()
 	} else {
 		initImage()
+	}
+
+	if ('ontouchstart' in window) {
+		// touch device
+		container.bind(  'touchstart', function(event) { mouseDown(event.originalEvent.pageX) });
+		$(document).bind('touchmove',  function(event) { mouseMove(event.originalEvent.pageX) });
+		$(document).bind('touchend',   mouseUp);
+
+	} else {
+		// mouse device
+		container.mousedown(  function (event) { mouseDown(event.pageX) });
+		$(document).mousemove(function (event) { mouseMove(event.pageX) });
+		$(document).mouseup(  mouseUp  );
 	}
 
 	return me;
