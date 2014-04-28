@@ -464,7 +464,7 @@ function CommunicationList() {
 	var activeDayIndex = -1;
 	var dayHeight;
 
-	var visible = false;
+	var visible = true;
 	me.show = function () { visible = true; me.redraw() }
 	me.hide = function () { visible = false; }
 
