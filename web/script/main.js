@@ -40,10 +40,12 @@ $(function () {
 		switch (id) {
 			case 'tabList':
 				section.removeClass('calendarView');
+				comList.show();
 				calendar.hide();
 			break;
 			case 'tabCalendar':
 				section.addClass(   'calendarView');
+				comList.hide();
 				calendar.show();
 			break;
 		}

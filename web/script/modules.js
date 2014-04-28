@@ -464,6 +464,10 @@ function CommunicationList() {
 	var activeDayIndex = -1;
 	var dayHeight;
 
+	var visible = false;
+	me.show = function () { visible = true; me.redraw() }
+	me.hide = function () { visible = false; }
+
 	function drawDay(dayIndex) {
 		var date = new Date(data.config.timeStart*1000);
 		date.setDate(date.getDate()+dayIndex);
@@ -600,6 +604,8 @@ function CommunicationList() {
 	}
 
 	me.redraw = function () {
+		if (!visible) return;
+
 		var date = new Date(player.getTimeStamp());
 
 		var dayIndex = player.getDayIndex();
