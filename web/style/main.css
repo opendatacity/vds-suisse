@@ -29,7 +29,7 @@ body {
 		top: 2px;
 		height: 22px;
 		line-height: 18px;
-		padding: 5px 20px 0px;
+		padding: 5px 10px 0px;
 		background-color: #eee;
 		border: 1px solid #ccc;
 		border-bottom-right-radius: 4px;
@@ -47,7 +47,11 @@ body {
 		}
 
 		#tabCalendar {
-			left: 165px;
+			left: 146px;
+		}
+
+		#tabSocial {
+			left: 239px;
 		}
 
 		.tabButton.active {
@@ -167,13 +171,17 @@ body {
 		position: absolute;
 	}
 
-		#map {
+		.map {
 			left: 0px;
 			top: 0px;
 			right: 300px;
 			bottom: 0px;
 			position: absolute;
 			background: none;
+		}
+
+		#socialMap {
+			display: none;
 		}
 
 		#rightCalendar {
@@ -326,6 +334,12 @@ body {
 		#middleSection.calendarView .map { right: 50%; }
 		#middleSection.calendarView #rightList { display: none; }
 		#middleSection.calendarView #rightCalendar { display: block; }
+
+		#middleSection.socialView .map { right: 0px; }
+		#middleSection.socialView #map { display: none; }
+		#middleSection.socialView #socialMap { display: block; }
+		#middleSection.socialView #rightList { display: none; }
+		#middleSection.socialView #rightCalendar { display: none; }
 
 	#bottomSection {
 		position: absolute;

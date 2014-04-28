@@ -34,19 +34,31 @@ $(function () {
 	map = new Map();
 	calendar = new Calendar();
 	comList = new CommunicationList();
+	social = new Social();
 
 	tabBar.on('activate', function (id) {
 		var section = $('#middleSection');
 		switch (id) {
 			case 'tabList':
 				section.removeClass('calendarView');
+				section.removeClass('socialView'  );
 				comList.show();
 				calendar.hide();
+				social.hide();
 			break;
 			case 'tabCalendar':
 				section.addClass(   'calendarView');
+				section.removeClass('socialView'  );
 				comList.hide();
 				calendar.show();
+				social.hide();
+			break;
+			case 'tabSocial':
+				section.removeClass('calendarView');
+				section.addClass(   'socialView'  );
+				comList.hide();
+				calendar.hide();
+				social.show();
 			break;
 		}
 	})

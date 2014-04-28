@@ -823,6 +823,19 @@ function Calendar() {
 	return me;
 }
 
+function Social () {
+	var me = this;
+
+	var visible = false;
+	me.show = function () { visible = true; me.redraw() }
+	me.hide = function () { visible = false; }
+
+	me.redraw = function () {
+
+	}
+	return;
+}
+
 function makeEventListener(object) {
 	var eventCallbacks = {};
 
