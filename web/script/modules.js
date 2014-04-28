@@ -449,7 +449,6 @@ function CommunicationList() {
 	var me = this;
 	var lastEventStart = -1e10;
 	var maxEntries = 20;
-	var showNewsletters = true;
 	
 	var lineHeight = 16;
 	var dayFullHeight = 7200;
@@ -474,8 +473,6 @@ function CommunicationList() {
 		var entries = data.events.filter(function (event) {
 			if (event.start <  time0) return false;
 			if (event.start >= time1) return false;
-			var newsletter = ((''+event.from.org).toLowerCase().substr(0,4) == 'news');
-			if (newsletter && !showNewsletters) return false;
 			if ((event.type == 'mail') && (!event.outBound || event.inBound)) return false;
 			return true;
 		})
@@ -602,7 +599,7 @@ function CommunicationList() {
 		return node;
 	}
 
-	me.redraw = function (force) {
+	me.redraw = function () {
 		var date = new Date(player.getTimeStamp());
 
 		var dayIndex = player.getDayIndex();
@@ -617,32 +614,7 @@ function CommunicationList() {
 		$('#comWrapper').scrollTop(y);
 	}
 
-	me.showNewsletters = function (checked) {
-		showNewsletters = checked;
-		me.redraw(true);
-	}
-
 	return me;
-}
-
-function showCom(eventIndex) {
-	var event = data.events[eventIndex];
-
-	var html = [
-		'<b>Subject:</b> '+event.subject,
-		'<b>From:</b> '   +formatAddress(event.from),
-		'<b>To:</b> '     +event.to.map(function (a) { return formatAddress(a) }).join(', ')
-	];
-
-	$('#comDetails').html('<p>'+html.join('</p><p>')+'</p>');
-
-	function formatAddress(a) {
-		if (a.address == a.contact) {
-			return a.address;
-		} else {
-			return a.contact+' ('+a.address+')';
-		}
-	}
 }
 
 function Calendar() {
