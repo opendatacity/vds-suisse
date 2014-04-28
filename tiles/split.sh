@@ -1,0 +1,7 @@
+convert "circles-ps.png" -filter Box -resize 256x256 -crop 256x256 -set filename:tile "%[fx:page.x/256]/%[fx:page.y/256]" +repage +adjoin "tiles/0/%[filename:tile].png"
+convert "circles-ps.png" -filter Box -resize 512x512 -crop 256x256 -set filename:tile "%[fx:page.x/256]/%[fx:page.y/256]" +repage +adjoin "tiles/1/%[filename:tile].png"
+convert "circles-ps.png" -filter Box -resize 1024x1024 -crop 256x256 -set filename:tile "%[fx:page.x/256]/%[fx:page.y/256]" +repage +adjoin "tiles/2/%[filename:tile].png"
+convert "circles-ps.png" -filter Box -resize 2048x2048 -crop 256x256 -set filename:tile "%[fx:page.x/256]/%[fx:page.y/256]" +repage +adjoin "tiles/3/%[filename:tile].png"
+convert "circles-ps.png" -filter Box -resize 4096x4096 -crop 256x256 -set filename:tile "%[fx:page.x/256]/%[fx:page.y/256]" +repage +adjoin "tiles/4/%[filename:tile].png"
+convert "circles-ps.png" -filter Box -resize 8192x8192 -crop 256x256 -set filename:tile "%[fx:page.x/256]/%[fx:page.y/256]" +repage +adjoin "tiles/5/%[filename:tile].png"
+convert "circles-ps.png" -crop 256x256 -set filename:tile "%[fx:page.x/256]/%[fx:page.y/256]" +repage +adjoin "tiles/6/%[filename:tile].png"

@@ -3,6 +3,7 @@ var utils = require('./utils');
 
 exports.Graph = function () {
 	var me = this;
+	var _edges = [];
 
 	var knownNodes = {};
 	utils.readListOfObjects('data/contacts/known_nodes.tsv').forEach(function (node, index) {
@@ -172,8 +173,16 @@ exports.Graph = function () {
 			return edge;
 		})
 
+		_edges = [];
+
 		edgeList = edgeList.map(function (edge) {
 			var f = Math.min(nodes[edge.source].maxWeight, nodes[edge.target].maxWeight);
+
+			_edges.push([
+				nodes[edge.source].index,
+				nodes[edge.target].index
+			]);
+
 			return [
 				nodes[edge.source].index,
 				nodes[edge.target].index,
@@ -185,8 +194,114 @@ exports.Graph = function () {
 		edgeList.unshift('Source\tTarget\tWeight\tType');
 
 		fs.writeFileSync('output/edges.csv', edgeList.join('\n'), 'utf8');
+	}
 
-		console.log(nodeList.length, edgeList.length);
+	me.calculateNetwork = function (contacts) {
+		var offset = 2;
+
+		var graph = fs.readFileSync('../../Social Networks/socialnetwork5.svg', 'utf8');
+		
+		graph = graph.replace(/\s+/g, ' ');
+		var circles = graph.match(/<circle.*?\/>/g);
+
+		var minX = 1e10, maxX = -1e10;
+		var minY = 1e10, maxY = -1e10;
+
+		circles = circles.map(function (circle) {
+			circle = {
+				x: parseFloat(circle.match(   /cx=\"(.*?)\"/)[1]  ),
+				y: parseFloat(circle.match(   /cy=\"(.*?)\"/)[1]  ),
+				r: parseFloat(circle.match(    /r=\"(.*?)\"/)[1]  ),
+				id:parseInt(  circle.match(/class=\"(.*?)\"/)[1],0)
+			}
+
+			if (minX > circle.x) minX = circle.x;
+			if (minY > circle.y) minY = circle.y;
+			if (maxX < circle.x) maxX = circle.x;
+			if (maxY < circle.y) maxY = circle.y;
+			
+			return circle;
+		})
+
+		var midX = (minX + maxX)/2;
+		var midY = (minY + maxY)/2;
+		var size = 16384;
+		var factor = size/2560;
+
+		var orgColors = {
+			'Diverse':        false,
+			'Familie':        [255,202, 48],
+			'Gemeinderat':    [ 84,107,210],
+			'Grüne':          [106,203, 60],
+			'Kantonsrat':     [ 84,107,210],
+			'Medien':         [  0,  0,  0],
+			'Mieterverband':  [196, 33,140],
+			'Migration/Asyl': false,
+			'Nationalrat':    [ 84,107,210],
+			'NGO':            [  0,175,236],
+			'Politik':        false,
+			'Stadtrat':       [ 84,107,210],
+			'Ständerat':      [ 84,107,210],
+			'Universität':    false
+		};
+		var labelColors = {
+			'Adèle Thorens Goumaz':     false,
+			'Brigitte Marti':           false,
+			'Journalist/in':            [  0,  0,  0],
+			'Min Li Marti (Partnerin)': false,
+			'Miriam Behrens':           false,
+			'Mutter':                   false,
+			'Parlamentarier/in':        [ 84,107,210],
+			'Person':                   false,
+			'Pfarrer':                  false,
+			'Rechtsanwalt':             [235, 33, 46],
+			'Ueli Leuenberger':         false,
+			'Vater':                    false,
+			'Verteiler':                false
+		}
+		
+		circles.forEach(function (circle) {
+			var contact = contacts[circle.id + offset];
+			contact.x = (circle.x - midX)*factor + size/2;
+			contact.y = (circle.y - midY)*factor + size/2;
+			contact.r = circle.r;
+
+			if (orgColors[  contact.org  ] === undefined) console.log('Unknown org "'   + contact.org   + '"');
+			if (labelColors[contact.label] === undefined) console.log('Unknown label "' + contact.label + '"');
+			contact.color = labelColors[contact.label] || orgColors[contact.org] || [170,170,170];
+		})
+
+		var edges = _edges.map(function (edge) {
+			return [edge[0] + offset, edge[1] + offset];
+		})
+
+		var svg = [];
+		svg.push('<?xml version="1.0" encoding="UTF-8"?>');
+		svg.push('<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >');
+		svg.push('<svg width="'+size+'px" height="'+size+'px" viewBox="0 0 '+size+' '+size+'" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1">');
+
+		svg.push('<g id="edges">');
+		edges.forEach(function (edge) {
+			var contact1 = contacts[edge[0]];
+			var contact2 = contacts[edge[1]];
+			var color = contact1.color.map(function (v,i) { return Math.round((v+contact2.color[i])/2) }).join(',');
+			svg.push('<path fill="none" stroke-width="' + (0.075*factor) + '" d="M'+contact1.x+','+contact1.y+'L'+contact2.x+','+contact2.y+'" stroke="rgb('+color+')"/>');
+		})
+		svg.push('</g>');
+
+		svg.push('<g id="nodes">');
+		contacts.forEach(function (contact) {
+			if (!contact.r) return;
+			var r = 1.4*contact.r*factor;
+			var color = contact.color.join(',');
+			var stroke = contact.color.map(function (v) { return Math.round(v*0.5) }).join(',');
+			svg.push('<circle fill="rgb('+color+')" r="'+r+'" cx="'+contact.x+'" cy="'+contact.y+'" stroke="rgb('+stroke+')" stroke-width="'+(r/100)+'"/>')
+		})
+		svg.push('</g>');
+
+		svg.push('</svg>');
+
+		fs.writeFileSync('../tiles/circles.svg', svg.join('\n'), 'utf8');
 	}
 
 	me.updateEvents = function (events) {

@@ -72,9 +72,11 @@ var statistics = new require('./modules/statistics').Statistics(config);
 
 
 var graph = new require('./modules/graph').Graph();
-//graph.calculateEdges(events);
+graph.calculateEdges(events);
 
 var contacts = graph.updateEvents(events);
+
+graph.calculateNetwork(contacts);
 
 
 
@@ -115,13 +117,13 @@ data.positions = positions.map(function (position) {
 
 data.events = events.map(function (event) {
 	var obj = {
-		from: event.from,
-		to: event.to,
-		start: event.start,
-		end: event.end,
-		url: event.url,
-		type: event.type,
-		inBound: event.inBound,
+		from:     event.from,
+		to:       event.to,
+		start:    event.start,
+		end:      event.end,
+		url:      event.url,
+		type:     event.type,
+		inBound:  event.inBound,
 		outBound: event.outBound
 	}
 	if ((event.type == 'tweet') || (event.type == 'facebook')) obj.subject = event.subject;
@@ -131,10 +133,11 @@ data.events = events.map(function (event) {
 data.contacts = contacts.map(function (contact) {
 	return {
 		label: contact.label,
-		index: contact.index,
-		nr: contact.nr,
-		org: contact.org,
-		size: Math.round(contact.size*10)/10
+		nr:    contact.nr,
+		org:   contact.org,
+		x:     contact.x,
+		y:     contact.y,
+		r:     contact.r
 	}
 });
 

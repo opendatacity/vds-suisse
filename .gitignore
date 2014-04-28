@@ -8,3 +8,11 @@ parser/config.json
 parser/data/
 parser/cache/
 parser/output/
+
+tiles/tiles/
+
+tiles/circles-ps.png
+
+tiles/circles-ps.psd
+
+tiles/circles.psd
