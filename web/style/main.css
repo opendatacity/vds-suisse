@@ -14,7 +14,6 @@ body {
 }
 
 #topSection {
-
 	display: block;
 	position: absolute;
 	top: -1px;
@@ -22,11 +21,9 @@ body {
 	right: 0px;
 	height: 0px;
 	z-index: 500;
-
 }
 
 	.tabButton {
-
 		display: block;
 		position: absolute;
 		top: 2px;
@@ -43,20 +40,14 @@ body {
 		font-weight: 600;
 		box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
 		color: #555;
-
 	}
-	
+
 		#tabList {
-			
-			/* right: 164px; */
 			left: 80px;
-			
 		}
 
 		#tabCalendar {
-			
 			left: 165px;
-			
 		}
 
 		.tabButton.active {
@@ -65,20 +56,18 @@ body {
 			top: 1px;
 			padding-top: 6px;
 			height: 22px;
-			
 		}
 
 		.tabButton:hover {
 			border-color: #999;
 			color: #555;
 		}
-		
+
 		.tabButton.active:hover  {
 			color: #333;
 		}
 
 	.topButton {
-
 		display: block;
 		position: absolute;
 		right: 10px;
@@ -94,7 +83,6 @@ body {
 		border-radius: 4px;
 		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 		padding: 0px;
-
 	}
 
 		.topButton span {
@@ -105,13 +93,11 @@ body {
 		.topButton:hover {
 			background-color: #eee;
 		}
-		
+
 		#fullscreen-advice {
-			
 			display: none;
-			
 		}
-		
+
 		@media (max-width: 400px) {
 
 			.in-frame #topSection {
@@ -124,13 +110,12 @@ body {
 				min-width: 100%;
 				z-index: 999997;
 			}
-			
+
 			.in-frame #topSection .tabButton {
 				display: none;
 			}
 
 			.in-frame .topButton {
-				
 				width: 100px;
 				height: 100px;
 				line-height: 105px;
@@ -142,17 +127,15 @@ body {
 				color: #fff;
 				border-radius: 10px;
 				z-index: 999999;
-				
 			}
-			
+
 			.in-frame .topButton.active,
 			.in-frame .topButton:hover {
 				color: #fff;
 				background-color: #cc0000;
 			}
-			
-			.in-frame #fullscreen-advice {
 
+			.in-frame #fullscreen-advice {
 				display: block;
 				position: absolute;
 				left: 20px;
@@ -161,10 +144,9 @@ body {
 				font-size: 30px;
 				text-align: center;
 				z-index: 999998;
-
 			}
-			
-			
+
+
 		}
 
 #contentSection {
@@ -289,9 +271,8 @@ body {
 				background: linear-gradient(to bottom,  rgba(255,255,255,1) 70%,rgba(255,255,255,0.5) 100%);
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#80ffffff',GradientType=0 );
 			}
-			
-				.explanation {
 
+				.explanation {
 					display: block;
 					position: relative;
 					margin: 0px;
@@ -303,7 +284,7 @@ body {
 					line-height: 1.2em;
 					text-align: center;
 				}
-				
+
 
 			#comWrapper {
 				position: absolute;
@@ -337,22 +318,14 @@ body {
 						font-size: 12px;
 						margin: 0 0 5px 0;
 					}
-					
+
 					#comDetails a {
 						color: inherit;
 					}
 
-		#middleSection.calendarView #map {
-			right: 50%;
-		}
-		
-		#middleSection.calendarView #rightList {
-			display: none;
-		}
-		
-		#middleSection.calendarView #rightCalendar {
-			display: block;
-		}
+		#middleSection.calendarView .map { right: 50%; }
+		#middleSection.calendarView #rightList { display: none; }
+		#middleSection.calendarView #rightCalendar { display: block; }
 
 	#bottomSection {
 		position: absolute;
@@ -397,7 +370,6 @@ body {
 			}
 
 				#playPauseButtons span {
-					
 					display: block;
 					position: absolute;
 					top: 0px;
@@ -413,27 +385,20 @@ body {
 					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3);
 					background-color: #ac0000;
 					color: #fff;
-					
 				}
-				
+
 					#playPauseButtons span:hover {
-						
 						background-color: #cc0000;
-						
 					}
 
 				#playPauseButtons #playButton {
-					
 					padding-left: 3px;
 					width: 38px;
-					
 				}
-				
+
 				#playPauseButtons #pauseButton {
-					
 					padding-left: 0px;
 					width: 41px;
-					
 				}
 
 				#playPauseButtons img {
@@ -462,11 +427,9 @@ body {
 				height: 15px;
 				border-radius: 3px;
 				box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3);
-				
 			}
 
 				#speedButtons .speedButton {
-
 					display: block;
 					position: relative;
 					float: left;
@@ -479,28 +442,25 @@ body {
 					color: #000;
 					cursor: pointer;
 				}
+
 					#speedButtons .speedButton.active {
 						background: #ac0000;
 						color: #fff;
 					}
-					
+
 					#speedButtons .speedButton:hover {
 						background: #cc0000;
 						color: #fff;
 					}
-					
-					#speedButtons #speedButton1 { 
-						
+
+					#speedButtons #speedButton1 {
 						border-top-left-radius: 3px;
 						border-bottom-left-radius: 3px;
-						
 					}
-					
-					#speedButtons #speedButton3 { 
-					
+
+					#speedButtons #speedButton3 {
 						border-top-right-radius: 3px;
 						border-bottom-right-radius: 3px;
-						
 					}
 
 
@@ -555,6 +515,7 @@ body {
 	color: #666;
 	line-height: 1em;
 }
+
 	#footer a {
 		color: #666;
 	}
