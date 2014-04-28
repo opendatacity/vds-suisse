@@ -184,6 +184,10 @@ body {
 			display: none;
 		}
 
+			#socialMap .leaflet-popup-content {
+				margin: 6px 10px;
+			}
+
 		#rightCalendar {
 			position: absolute;
 			top: 0px;

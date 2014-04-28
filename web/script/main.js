@@ -59,6 +59,7 @@ $(function () {
 				comList.hide();
 				calendar.hide();
 				social.show();
+				player.stop();
 			break;
 		}
 	})
