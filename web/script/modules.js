@@ -855,7 +855,7 @@ function Social () {
 
 			var markers = [];
 			var popup;
-			
+
 			data.contacts.forEach(function (contact) {
 				if (!contact.r) return;
 				var x = +360*contact.x/16384 - 180;
@@ -872,18 +872,16 @@ function Social () {
 					fillOpacity: 0
 				});
 				marker.on('mouseover', function (e) {
-					//if ()
 					popup = L.popup({closeButton:false,offset: L.point(0,3)});
 					popup.setLatLng([y+r,x]);
 					popup.setContent(contact.label + (contact.nr ? ' '+contact.nr : '') +' ('+contact.org+')');
 					popup.openOn(map);
-					console.log(popup);
 				})
 				marker.on('mouseout', function () {
 					map.removeLayer(popup);
 				})
 				markers.push(marker);
-			})//r, label, nr, org, L.Projection.LonLat
+			})
 			
 			var layer = L.layerGroup(markers);
 			layer.addTo(map);

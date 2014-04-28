@@ -13,7 +13,7 @@ exports.Graph = function () {
 
 
 	me.calculateEdges = function (events) {
-		console.log('Calc Graph');
+		console.log('   Calc Graph');
 
 		var ignoreContacts = {};
 		fs.readFileSync('data/contacts/ignore_nodes.tsv', 'utf8').split('\n').forEach(function (contact) {
@@ -197,6 +197,8 @@ exports.Graph = function () {
 	}
 
 	me.calculateNetwork = function (contacts) {
+		console.log('   Draw Graph');
+
 		var offset = 2;
 
 		var graph = fs.readFileSync('../../Social Networks/socialnetwork5.svg', 'utf8');
@@ -285,7 +287,7 @@ exports.Graph = function () {
 			var contact1 = contacts[edge[0]];
 			var contact2 = contacts[edge[1]];
 			var color = contact1.color.map(function (v,i) { return Math.round((v+contact2.color[i])/2) }).join(',');
-			svg.push('<path fill="none" stroke-width="' + (0.075*factor) + '" d="M'+contact1.x+','+contact1.y+'L'+contact2.x+','+contact2.y+'" stroke="rgb('+color+')"/>');
+			svg.push('<path fill="none" stroke-width="' + (1*factor) + '" d="M'+contact1.x+','+contact1.y+'L'+contact2.x+','+contact2.y+'" stroke="rgb('+color+')"/>');
 		})
 		svg.push('</g>');
 
@@ -305,6 +307,8 @@ exports.Graph = function () {
 	}
 
 	me.updateEvents = function (events) {
+		console.log('   Update Events');
+
 		// Durchzählen, also Person 1, Person 2, ...
 		var groups = {};
 
