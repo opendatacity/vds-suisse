@@ -183,6 +183,8 @@ exports.Graph = function () {
 				nodes[edge.target].index
 			]);
 
+			if (!nodes[edge.target].index) console.log(edge.target, nodes[edge.target].index);
+
 			return [
 				nodes[edge.source].index,
 				nodes[edge.target].index,
@@ -231,20 +233,20 @@ exports.Graph = function () {
 		var factor = size/2560;
 
 		var orgColors = {
-			'Diverse':        false,
-			'Familie':        [255,202, 48],
-			'Gemeinderat':    [ 84,107,210],
-			'Grüne':          [106,203, 60],
-			'Kantonsrat':     [ 84,107,210],
-			'Medien':         [  0,  0,  0],
-			'Mieterverband':  [196, 33,140],
-			'Migration/Asyl': false,
-			'Nationalrat':    [ 84,107,210],
-			'NGO':            [  0,175,236],
-			'Politik':        false,
-			'Stadtrat':       [ 84,107,210],
-			'Ständerat':      [ 84,107,210],
-			'Universität':    false
+			'Diverse':            false,
+			'Familie':            [255,202, 48],
+			'Gemeinderat':        [ 84,107,210],
+			'Grüne':              [106,203, 60],
+			'Kantonsrat':         [ 84,107,210],
+			'Medien':             [  0,  0,  0],
+			'NGO Mieterrecht':    [196, 33,140],
+			'NGO Migration/Asyl': false,
+			'Nationalrat':        [ 84,107,210],
+			'NGO':                [  0,175,236],
+			'Politik':            false,
+			'Stadtrat':           [ 84,107,210],
+			'Ständerat':          [ 84,107,210],
+			'Universität':        false
 		};
 		var labelColors = {
 			'Adèle Thorens Goumaz':     false,
@@ -283,9 +285,12 @@ exports.Graph = function () {
 		svg.push('<svg width="'+size+'px" height="'+size+'px" viewBox="0 0 '+size+' '+size+'" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1">');
 
 		svg.push('<g id="edges">');
-		edges.forEach(function (edge) {
+		edges.forEach(function (edge, index) {
 			var contact1 = contacts[edge[0]];
 			var contact2 = contacts[edge[1]];
+			if (contact2 === undefined) {
+				console.log(edge, index);
+			}
 			var color = contact1.color.map(function (v,i) { return Math.round((v+contact2.color[i])/2) }).join(',');
 			svg.push('<path fill="none" stroke-width="' + (1*factor) + '" d="M'+contact1.x+','+contact1.y+'L'+contact2.x+','+contact2.y+'" stroke="rgb('+color+')"/>');
 		})
