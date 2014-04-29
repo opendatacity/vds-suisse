@@ -42,6 +42,10 @@
 		"link2": "Hochauflösende Grafik des <a href=\"download/calendar.png\">Kalenders</a>.",
 		"link3": "Hochauflösende Grafik des <a href=\"download/network_4096.png\">sozialen Netzwerks</a>.",
 		"footer_left": "Realisiert von <a href=\"https://opendatacity.de/\">OpenDataCity</a>. Anwendung steht unter <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/3.0/de/\">CC-BY 3.0</a>.",
-		
+		"footer_right": "Diese Seite wird mit Google Analytics ausgewertet. Die NSA weiß möglicherweise schon, dass du gerade hier bist. <a href=\"https://opendatacity.de/impressum/\" target=\"_blank\">Impressum</a>",
+		"license_info": "Diese Browser-App steht unter <a target=\"_blank\" href=\"http://creativecommons.org/licenses/by/3.0\">CC-BY-Lizenz</a> und darf gerne in Blogs und anderen Medien eingebettet werden:",
+		"created_by": "Ein Informationsangebot von",
+		"embed_info": "Für Profis: Zusätzlich lässt sich durch einen an die URL angehängten Hash-Parameter der vorausgewählte Tab definieren.<ul><li><code>#tab=calendar</code> Die <a href=\"http://apps.opendatacity.de/vds/frame_de.html#tab=calendar\" target=\"_blank\">Kalenderdarstellung</a> wird angezeigt.</li><li><code>#tab=social</code> Das <a href=\"http://apps.opendatacity.de/vds/frame_de.html#tab=social\" target=\"_blank\">Soziale Netzwerk</a> wird angezeigt.</li></ul>",
+		"close": "Schließen"
 	}
 }

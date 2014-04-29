@@ -85,24 +85,21 @@
 	</div>
 	<footer class="clearfix">
 		<p class="pull-left">{{footer_left}}</p>
-		<p class="pull-right">Diese Seite wird mit Google Analytics ausgewertet. Die NSA weiß möglicherweise schon, dass du gerade hier bist. <a href="https://opendatacity.de/impressum/" target="_blank">Impressum</a></p>
+		<p class="pull-right">{{footer_right}}</p>
 	</footer>
 	<div id="share" class="overlay">
-		<h2>Einbetten</h2>
+		<h2>{{embed}}</h2>
 		<p>
-			Diese Browser-App steht unter <a target="_blank" href="http://creativecommons.org/licenses/by/3.0">CC-BY-Lizenz</a> und darf gerne in Blogs und anderen Medien eingebettet werden:
+			{{license_info}}
 		</p>
-		<code style="display:block;margin-bottom:10px;padding:10px;">&lt;iframe src=&quot;http://apps.opendatacity.de/vds/frame_de.html&quot; width=&quot;100%&quot; height=&quot;500&quot; scrolling=&quot;auto&quot; allowfullscreen frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br /&gt;Ein Informationsangebot von &lt;a target=&quot;_blank&quot; href=&quot;http://opendatacity.de/&quot;&gt;OpenDataCity&lt;/a&gt;</code>
+		<code style="display:block;margin-bottom:10px;padding:10px;">&lt;iframe src=&quot;http://apps.opendatacity.de/vds/frame_{{lang_code}}.html&quot; width=&quot;100%&quot; height=&quot;500&quot; scrolling=&quot;auto&quot; allowfullscreen frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br /&gt;{{created_by}} &lt;a target=&quot;_blank&quot; href=&quot;http://opendatacity.de/&quot;&gt;OpenDataCity&lt;/a&gt;</code>
 		<p>&nbsp;</p>
 		<p>
-			Für Profis: Zusätzlich lässt sich durch einen an die URL angehängten Hash-Parameter der vorausgewählte Tab definieren.<ul>
-				<li><code>#tab=calendar</code> Die <a href="http://apps.opendatacity.de/vds/frame_de.html#tab=calendar" target="_blank">Kalenderdarstellung</a> wird angezeigt.</li>
-				<li><code>#tab=social</code> Das <a href="http://apps.opendatacity.de/vds/frame_de.html#tab=social" target="_blank">Soziale Netzwerk</a> wird angezeigt.</li>
-			</ul>
+			{{embed_info}}
 		</p>
 		<p>&nbsp;</p>
 		<p>
-			<a href="javascript:;" onclick="$('body').removeClass('show-share');" class="btn btn-primary">Schließen</a>
+			<a href="javascript:;" onclick="$('body').removeClass('show-share');" class="btn btn-primary">{{close}}</a>
 		</p>
 	</div>
 	<div id="fb-root"></div>
