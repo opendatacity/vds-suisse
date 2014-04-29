@@ -196,7 +196,16 @@ body {
 			width: 300px;
 			right: 0px;
 			bottom: 0px;
+			overflow-x: auto;
 		}
+
+			#socialDetails {
+				padding:0px 10px 10px 10px;
+			}
+
+				#socialDetails p {
+					margin-top:0px;
+				}
 
 		#rightCalendar {
 			position: absolute;
