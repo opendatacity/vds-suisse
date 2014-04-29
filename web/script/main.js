@@ -127,6 +127,17 @@ $(function () {
 	})
 
 	player.start();
+
+	if (window.location.hash.length > 1) {
+		var hash = window.location.hash.substr(1);
+		hash = hash.split(',');
+		hash.forEach(function (value) {
+			switch (window.location.hash.substr(1)) {
+				case 'tab=calendar': $('#tabCalendar').click(); break;
+				case 'tab=social':   $('#tabSocial'  ).click(); break;
+			}
+		})	
+	}
 })
 
 function formatDate(value) {
