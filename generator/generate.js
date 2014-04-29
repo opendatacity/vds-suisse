@@ -12,6 +12,10 @@ languages.forEach(function (code) {
 
 	var indexFileName = (code == 'de') ? 'index.html' : 'index_'+code+'.html';
 	translate(indexHtml, merge(lang.general, lang.index), '../web/'+indexFileName);
+
+	var langJSFile = merge(lang.general, lang.script);
+	langJSFile = 'var lang = '+JSON.stringify(langJSFile, null, '\t');
+	fs.writeFileSync('../web/script/language_'+code+'.js', langJSFile, 'utf8');
 })
 
 function translate(html, language, file) {
