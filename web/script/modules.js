@@ -855,6 +855,7 @@ function Social () {
 
 			var markers = [];
 			var popup;
+			var rect = false;
 
 			data.contacts.forEach(function (contact) {
 				if (!contact.r) return;
@@ -880,7 +881,24 @@ function Social () {
 				marker.on('mouseout', function () {
 					map.removeLayer(popup);
 				})
+				marker.on('click', function () {
+					html = [];
+					html.push(['Name', contact.label + (contact.nr ? ' '+contact.nr : '')]);
+					html.push(['Gruppe', contact.org]);
+					html = html.map(function (entry) { return '<p><strong>'+entry[0]+':</strong> '+entry[1]+'</p>' });
+					html = html.join('\n');
+					$('#socialDetails').html(html);
+
+					if (rect) map.removeLayer(rect);
+					rect = L.rectangle([[y-r,x-r],[y+r,x+r]], {fill:false, color:'#000', dashArray:'2,3', weight:2});
+					rect.addTo(map);
+				})
 				markers.push(marker);
+			})
+			map.on('click', function () {
+				if (rect) map.removeLayer(rect);
+				rect = false;
+				$('#socialDetails').html('');
 			})
 			
 			var layer = L.layerGroup(markers);
