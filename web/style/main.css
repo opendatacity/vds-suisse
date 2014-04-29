@@ -182,11 +182,21 @@ body {
 
 		#socialMap {
 			display: none;
+			right: 300px;
 		}
 
 			#socialMap .leaflet-popup-content {
 				margin: 6px 10px;
 			}
+
+		#rightSocialDetails {
+			display: none;
+			position: absolute;
+			top: 0px;
+			width: 300px;
+			right: 0px;
+			bottom: 0px;
+		}
 
 		#rightCalendar {
 			position: absolute;
@@ -271,8 +281,8 @@ body {
 				top: 0px;
 				left: 0px;
 				right: 0px;
-				height: 100px;
-				padding: 40px 0px 0px 0px;
+				height: 120px;
+				padding: 20px 0px 0px 0px;
 				border-bottom: 1px solid #000;
 				background: rgba(255,255,255,0.9);
 				background: -moz-linear-gradient(top,  rgba(255,255,255,1) 70%, rgba(255,255,255,0.5) 100%);
@@ -288,14 +298,24 @@ body {
 					display: block;
 					position: relative;
 					margin: 0px;
-					padding: 5px 0px 0px;
+					padding: 10px 10px;
 					color: #333;
 					font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 					font-size: 15px;
-					font-weight: 500;
+					font-weight: normal;
 					line-height: 1.2em;
-					text-align: center;
+					text-align: left;
 				}
+					.explanation p {
+						margin: 5px 0px 0px 0px;
+					}
+
+					.explanation .small {
+						font-size: 12px;
+						line-height: 1.1em;
+						opacity: 0.8;
+						font-weight: normal;
+					}
 
 
 			#comWrapper {
@@ -344,6 +364,7 @@ body {
 		#middleSection.socialView #socialMap { display: block; }
 		#middleSection.socialView #rightList { display: none; }
 		#middleSection.socialView #rightCalendar { display: none; }
+		#middleSection.socialView #rightSocialDetails { display: block; }
 
 	#bottomSection {
 		position: absolute;
