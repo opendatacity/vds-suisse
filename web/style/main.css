@@ -409,15 +409,17 @@ body {
 						color: inherit;
 					}
 
-		#middleSection.calendarView #map { right: 50%; }
-		#middleSection.calendarView #rightList { display: none; }
-		#middleSection.calendarView #rightCalendar { display: block; }
+		#contentSection.calendarView #map { right: 50%; }
+		#contentSection.calendarView #rightList { display: none; }
+		#contentSection.calendarView #rightCalendar { display: block; }
 
-		#middleSection.socialView #map { display: none; }
-		#middleSection.socialView #socialMap { display: block; }
-		#middleSection.socialView #rightList { display: none; }
-		#middleSection.socialView #rightCalendar { display: none; }
-		#middleSection.socialView #rightSocialDetails { display: block; }
+		#contentSection.socialView #map { display: none; }
+		#contentSection.socialView #socialMap { display: block; }
+		#contentSection.socialView #rightList { display: none; }
+		#contentSection.socialView #rightCalendar { display: none; }
+		#contentSection.socialView #rightSocialDetails { display: block; }
+		#contentSection.socialView #middleSection { bottom: 0px; }
+		#contentSection.socialView #bottomSection { display: none; }
 
 	#bottomSection {
 		position: absolute;

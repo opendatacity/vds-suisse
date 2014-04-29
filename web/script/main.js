@@ -37,7 +37,7 @@ $(function () {
 	social = new Social();
 
 	tabBar.on('activate', function (id) {
-		var section = $('#middleSection');
+		var section = $('#contentSection');
 		switch (id) {
 			case 'tabList':
 				section.removeClass('calendarView');
