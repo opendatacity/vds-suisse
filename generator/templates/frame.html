@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=600, user-scalable=no, minimal-ui" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 
-		<title>Vorratsdatenspeicherung in der Schweiz</title>
+		<title>{{title}}</title>
 
 		<link rel="stylesheet" href="lib/leaflet/leaflet.css" />
 		<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -16,7 +16,7 @@
 		<script src="lib/ie/es5-shim.min.js"></script>
 		<script src="lib/ie/html5shiv.js"></script>
 		<![endif]-->
-		<!--<script src="script/language_de.js"></script>-->
+		<!--<script src="script/language_{{lang_code}}.js"></script>-->
 		<script src="data/data.js"></script>
 		<script src="script/modules.js"></script>
 		<script src="lib/jquery-1.11.0.min.js"></script>
@@ -26,11 +26,11 @@
 	</head>
 	<body class="unselectable">
 		<div id="topSection">
-			<div id="tabList" class="tabButton active">Liste</div>
-			<div id="tabCalendar" class="tabButton">Kalender</div>
-			<div id="tabSocial" class="tabButton">Netzwerk</div>
-			<div id="topFullscreen" class="topButton"><i class="fa fa-arrows-alt"></i> <span>Vollbild</span></div>
-			<div id="fullscreen-advice">Anwendung im Vollbild-Modus öffnen.</div>
+			<div id="tabList" class="tabButton active">{{tab_map}}</div>
+			<div id="tabCalendar" class="tabButton">{{tab_calendar}}</div>
+			<div id="tabSocial" class="tabButton">{{tab_social}}</div>
+			<div id="topFullscreen" class="topButton"><i class="fa fa-arrows-alt"></i> <span>{{button_fullscreen}}</span></div>
+			<div id="fullscreen-advice">{{button_fullscreen_info}}</div>
 		</div>
 		<div id="contentSection">
 			<div id="middleSection">
@@ -43,30 +43,30 @@
 					</div>
 					<div id="comHairline">
 						<div class="explanation">
-							<p><strong>Wann und mit wem hat<br>Balthasar kommuniziert?</strong></p>
-							<p class="small">Aus den E-Mail- und Telefon-Vorratsdaten<br>lassen sich Ort und Kommunikation berechnen.</p>
+							<p><strong>{{text_map_head}}</strong></p>
+							<p class="small">{{text_map_info}}</p>
 						</div>
 					</div>
 				</div>
 				<div id="rightCalendar">
 					<div class="explanation" style="margin:20px 10px 20px 10px">
 						<p><strong>Wann befand sich Balthasar in:</strong><br>
-							<span style="color:rgb(255,230,  0); font-weight:bold">Zürich</span>,
-							<span style="color:rgb(255,  0, 23); font-weight:bold">Bern</span>,
-							<span style="color:rgb(206,  0,186); font-weight:bold">Basel</span>,
-							<span style="color:rgb(  5,  0,170); font-weight:bold">Genf</span>,
-							<span style="color:rgb(  0,133,211); font-weight:bold">Luzern</span> oder
-							<span style="color:rgb(  0,166, 81); font-weight:bold">Lausanne</span>?
+							<span style="color:rgb(255,230,  0); font-weight:bold">{{text_calendar_town_zuerich}}</span>,
+							<span style="color:rgb(255,  0, 23); font-weight:bold">{{text_calendar_town_bern}}</span>,
+							<span style="color:rgb(206,  0,186); font-weight:bold">{{text_calendar_town_basel}}</span>,
+							<span style="color:rgb(  5,  0,170); font-weight:bold">{{text_calendar_town_genf}}</span>,
+							<span style="color:rgb(  0,133,211); font-weight:bold">{{text_calendar_town_luzern}}</span> {{word_or}}
+							<span style="color:rgb(  0,166, 81); font-weight:bold">{{text_calendar_town_lausanne}}</span>?
 						<p>
-						<p class="small">Aus dem Telefon-Bewegungsprofil lasst sich der Reisekalender berechnen.</p>
+						<p class="small">{{text_calendar_info}}</p>
 					</div>
 				</div>
 				<div id="rightSocialDetails">
 					<div class="explanation" style="margin-top:20px;margin-left:0px">
-						<p><strong>Wer sind Balthasars<br>Freunde und Kollegen?</strong></p>
-						<p class="small">Mit den auf Vorrat gespeicherten E-Mail-Randdaten lässt sich ein Kontaktnetzwerk spinnen, ohne dass man die Inhalte der Mails kennen muss.</p>
-						<p class="small">Wer eine E-Mail an mehrere Kollegen gleichzeitig verschickt, verrät, dass sich die Kollegen untereinander kennen.</p>
-						<p class="small">Aus Balthasars 22'324 E-Mails lässt sich so sein komplettes Umfeld aus Familie, Freunden und Kollegen ermitteln.</p>
+						<p><strong>{{text_social_head}}</strong></p>
+						<p class="small">{{text_social_info1}}</p>
+						<p class="small">{{text_social_info2}}</p>
+						<p class="small">{{text_social_info3}}</p>
 					</div>
 					<div id="socialDetails">
 					</div>
@@ -92,7 +92,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="footer">Realisiert von <a href="https://opendatacity.de/" target="_blank">OpenDataCity</a>. Über die Datenquelle: <a href="http://www.digitale-gesellschaft.ch/vds" target="_blank">digiges.ch</a>. Anwendung steht unter <a href="http://creativecommons.org/licenses/by/3.0/de/" target="_blank">CC-BY 3.0</a>.</div>
+		<div id="footer">{{footer}}</div>
 		<div style="display:none">
 			<img src="graphics/dot1.png">
 			<img src="graphics/dot2.png">

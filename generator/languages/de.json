@@ -1,0 +1,35 @@
+{
+	"general": {
+		"lang_code":"de",
+		"title":"Vorratsdatenspeicherung in der Schweiz"
+	},
+	"frame": {
+		"tab_map":"Liste",
+		"tab_calendar":"Kalender",
+		"tab_social":"Netzwerk",
+		"button_fullscreen":"Vollbild",
+		"button_fullscreen_info":"Anwendung im Vollbild-Modus öffnen.",
+		"text_map_head": "Wann und mit wem hat<br>Balthasar kommuniziert?",
+		"text_map_info": "Aus den E-Mail- und Telefon-Vorratsdaten<br>lassen sich Ort und Kommunikation berechnen.",
+		"text_calendar_head": "Wann befand sich Balthasar in:",
+		"text_calendar_town_zuerich": "Zürich",
+		"text_calendar_town_bern": "Bern",
+		"text_calendar_town_basel": "Basel",
+		"text_calendar_town_genf": "Genf",
+		"text_calendar_town_luzern": "Luzern",
+		"text_calendar_town_lausanne": "Lausanne",
+		"word_or": "oder",
+		"text_calendar_info": "Aus dem Telefon-Bewegungsprofil lasst sich der Reisekalender berechnen.",
+		"text_social_head": "Wer sind Balthasars<br>Freunde und Kollegen?",
+		"text_social_info1": "Mit den auf Vorrat gespeicherten E-Mail-Randdaten lässt sich ein Kontaktnetzwerk spinnen, ohne dass man die Inhalte der Mails kennen muss.",
+		"text_social_info2": "Wer eine E-Mail an mehrere Kollegen gleichzeitig verschickt, verrät, dass sich die Kollegen untereinander kennen.",
+		"text_social_info3": "Aus Balthasars 22'324 E-Mails lässt sich so sein komplettes Umfeld aus Familie, Freunden und Kollegen ermitteln.",
+		"text_social_info3": "Aus Balthasars 22'324 E-Mails lässt sich so sein komplettes Umfeld aus Familie, Freunden und Kollegen ermitteln.",
+		"footer": "Realisiert von <a href=\"https://opendatacity.de/\" target=\"_blank\">OpenDataCity</a>. Über die Datenquelle: <a href=\"http://www.digitale-gesellschaft.ch/vds\" target=\"_blank\">digiges.ch</a>. Anwendung steht unter <a href=\"http://creativecommons.org/licenses/by/3.0/de/\" target=\"_blank\">CC-BY 3.0</a>."
+	},
+	"index": {
+		"desc_long": "Der grüne Nationalrat Balthasar Glättli hat einen Teil seiner Vorratsdaten aus sechs Monaten für diese Visualisierung zur Verfügung gestellt. Im Ergebnis ergeben diese Vorratsdaten das, was Geheimdienste und Strafverfolgungsbehörden als Profil bezeichnen – ein umfassendes Bild über das gesamte Leben der überwachten Person.",
+		"desc_short": "Visualiert: Vorratsdatenspeicherung in der Schweiz",
+		"keywords": "Vorratsdatenspeicherung, Schweiz, Vorratsdaten"
+	}
+}
