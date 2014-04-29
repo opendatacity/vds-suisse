@@ -207,6 +207,51 @@ body {
 					margin-top:0px;
 				}
 
+				#socialDetails #chart {
+					position: relative;
+					border-bottom: 1px solid #000;
+					height: 50px;
+					width: 264px;
+					margin-bottom: 30px;
+				}
+
+					#socialDetails .barWrapper {
+						position: absolute;
+						height: 100%;
+						width: 11px;
+					}
+
+					#socialDetails .bar {
+						position: absolute;
+						bottom: 0px;
+						width: 100%;
+						background: #aaa;
+					}
+
+						#socialDetails .barWrapper span {
+							font-size: 10px;
+							display: none;
+							position: absolute;
+							bottom: -33px;
+							color: #000;
+							text-align: center;
+							width: 51px;
+							left: -20px;
+							line-height: 10px;
+						}
+
+							#socialDetails .barWrapper:hover .bar {
+								background: #000 !important;
+							}
+
+							#socialDetails .barWrapper:hover span {
+								display: block;
+							}
+
+						#socialDetails .bar.active {
+							background: #666;
+						}
+
 		#rightCalendar {
 			position: absolute;
 			top: 0px;

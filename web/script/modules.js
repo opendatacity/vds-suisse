@@ -856,6 +856,7 @@ function Social () {
 			var markers = [];
 			var popup;
 			var rect = false;
+			var barWidth = 11;
 
 			data.contacts.forEach(function (contact) {
 				if (!contact.r) return;
@@ -884,26 +885,38 @@ function Social () {
 				marker.on('click', function () {
 					html = [];
 					
-					html.push(['Name', contact.label + (contact.nr ? ' '+contact.nr : '')]);
-					html.push(['Gruppe', contact.org]);
+					html.push('<p>');
+					html.push('<strong>Name:</strong> ' + contact.label + (contact.nr ? ' '+contact.nr : '') + '<br>');
+					html.push('<strong>Gruppe:</strong> ' + contact.org + '<br>');
 
-					html.push(['E-Mails an Balthasar', contact.email_out]);
-					html.push(['E-Mails von Balthasar', contact.email_in]);
-					html.push(['im CC von E-Mails an Balthasar', contact.email_co]);
-					html.push(['SMS an Balthasar', contact.sms_out]);
-					html.push(['SMS von Balthasar', contact.sms_in]);
-					html.push(['Telefonate an Balthasar', contact.call_out]);
-					html.push(['Telefonate von Balthasar', contact.call_in]);
+					html.push('<strong>E-Mails an Balthasar:</strong> ' + contact.email_out + '<br>');
+					html.push('<strong>E-Mails von Balthasar:</strong> ' + contact.email_in + '<br>');
+					html.push('<strong>im CC von E-Mails an Balthasar:</strong> ' + contact.email_co + '<br>');
+					html.push('<strong>SMS an Balthasar:</strong> ' + contact.sms_out + '<br>');
+					html.push('<strong>SMS von Balthasar:</strong> ' + contact.sms_in + '<br>');
+					html.push('<strong>Telefonate an Balthasar:</strong> ' + contact.call_out + '<br>');
+					html.push('<strong>Telefonate von Balthasar:</strong> ' + contact.call_in);
+					html.push('</p>');
 
 					var comSum = 0;
-					contact.hours.forEach(function (v) { comSum += Math.sqrt(v) });
-					var avgCom = comSum/24;
-					avgCom = avgCom*avgCom;
+					var maxCom = 0;
+					contact.hours.forEach(function (v) {
+						comSum += v
+						if (maxCom < v) maxCom = v;
+					});
+					var avgCom = maxCom/2;
 
 					var timeSlots = [];
-					contact.hours.forEach(function (v, hour) {
-						if (v >= avgCom/2) timeSlots.push([hour, (hour+1) % 24]);
+					var bars = contact.hours.map(function (v, hour) {
+						var barClass = 'bar';
+						if (v >= avgCom/2) {
+							timeSlots.push([hour, (hour+1) % 24]);
+							barClass = 'bar active';
+						}
+						var height = Math.round(100*v/maxCom);
+						return '<div class="barWrapper" style="left:'+(barWidth*hour)+'px"><div class="'+barClass+'" style="height:'+height+'%"></div><span>'+hour+':00<br>-<br>'+((hour+1)%24)+':00</span></div>';
 					});
+
 					for (var i = 50; i >= 0; i--) {
 						var i0 = (i+0) % timeSlots.length;
 						var i1 = (i+1) % timeSlots.length;
@@ -912,13 +925,16 @@ function Social () {
 							timeSlots.splice(i1,1);
 						}
 					}
+
 					timeSlots = timeSlots.map(function (slot) { return slot[0]+':00 - '+slot[1]+':00' });
 					timeSlots = timeSlots.join(', ');
-					html.push(['Hauptkommunikationszeiten', timeSlots]);
 
-					html = html.map(function (entry) { return '<strong>'+entry[0]+':</strong> '+entry[1] });
-					html = '<p>'+html.join('<br>\n')+'</p>';
-					$('#socialDetails').html(html);
+					html.push('<p>');
+					html.push('<strong>Hauptkommunikationszeiten:</strong><br>'+timeSlots);
+					html.push('<div id="chart">'+bars.join('')+'</div>');
+					html.push('</p>');
+
+					$('#socialDetails').html(html.join('\n'));
 
 					if (rect) map.removeLayer(rect);
 					rect = L.rectangle([[y-r,x-r],[y+r,x+r]], {fill:false, color:'#000', dashArray:'2,3', weight:2});
