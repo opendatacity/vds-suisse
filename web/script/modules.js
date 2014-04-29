@@ -883,10 +883,41 @@ function Social () {
 				})
 				marker.on('click', function () {
 					html = [];
+					
 					html.push(['Name', contact.label + (contact.nr ? ' '+contact.nr : '')]);
 					html.push(['Gruppe', contact.org]);
-					html = html.map(function (entry) { return '<p><strong>'+entry[0]+':</strong> '+entry[1]+'</p>' });
-					html = html.join('\n');
+
+					html.push(['E-Mails an Balthasar', contact.email_out]);
+					html.push(['E-Mails von Balthasar', contact.email_in]);
+					html.push(['im CC von E-Mails an Balthasar', contact.email_co]);
+					html.push(['SMS an Balthasar', contact.sms_out]);
+					html.push(['SMS von Balthasar', contact.sms_in]);
+					html.push(['Telefonate an Balthasar', contact.call_out]);
+					html.push(['Telefonate von Balthasar', contact.call_in]);
+
+					var comSum = 0;
+					contact.hours.forEach(function (v) { comSum += Math.sqrt(v) });
+					var avgCom = comSum/24;
+					avgCom = avgCom*avgCom;
+
+					var timeSlots = [];
+					contact.hours.forEach(function (v, hour) {
+						if (v >= avgCom/2) timeSlots.push([hour, (hour+1) % 24]);
+					});
+					for (var i = 50; i >= 0; i--) {
+						var i0 = (i+0) % timeSlots.length;
+						var i1 = (i+1) % timeSlots.length;
+						if (timeSlots[i0][1] == timeSlots[i1][0]) {
+							timeSlots[i0][1] = timeSlots[i1][1];
+							timeSlots.splice(i1,1);
+						}
+					}
+					timeSlots = timeSlots.map(function (slot) { return slot[0]+':00 - '+slot[1]+':00' });
+					timeSlots = timeSlots.join(', ');
+					html.push(['Hauptkommunikationszeiten', timeSlots]);
+
+					html = html.map(function (entry) { return '<strong>'+entry[0]+':</strong> '+entry[1] });
+					html = '<p>'+html.join('<br>\n')+'</p>';
 					$('#socialDetails').html(html);
 
 					if (rect) map.removeLayer(rect);
