@@ -1,7 +1,13 @@
 {
 	"general": {
 		"lang_code":"de",
-		"title":"Vorratsdatenspeicherung in der Schweiz"
+		"title":"Vorratsdatenspeicherung in der Schweiz",
+		"town_zuerich": "Zürich",
+		"town_bern": "Bern",
+		"town_basel": "Basel",
+		"town_genf": "Genf",
+		"town_luzern": "Luzern",
+		"town_lausanne": "Lausanne"
 	},
 	"frame": {
 		"tab_map":"Liste",
@@ -12,12 +18,6 @@
 		"text_map_head": "Wann und mit wem hat<br>Balthasar kommuniziert?",
 		"text_map_info": "Aus den E-Mail- und Telefon-Vorratsdaten<br>lassen sich Ort und Kommunikation berechnen.",
 		"text_calendar_head": "Wann befand sich Balthasar in:",
-		"text_calendar_town_zuerich": "Zürich",
-		"text_calendar_town_bern": "Bern",
-		"text_calendar_town_basel": "Basel",
-		"text_calendar_town_genf": "Genf",
-		"text_calendar_town_luzern": "Luzern",
-		"text_calendar_town_lausanne": "Lausanne",
 		"word_or": "oder",
 		"text_calendar_info": "Aus dem Telefon-Bewegungsprofil lasst sich der Reisekalender berechnen.",
 		"text_social_head": "Wer sind Balthasars<br>Freunde und Kollegen?",
@@ -31,5 +31,35 @@
 		"desc_long": "Der grüne Nationalrat Balthasar Glättli hat einen Teil seiner Vorratsdaten aus sechs Monaten für diese Visualisierung zur Verfügung gestellt. Im Ergebnis ergeben diese Vorratsdaten das, was Geheimdienste und Strafverfolgungsbehörden als Profil bezeichnen – ein umfassendes Bild über das gesamte Leben der überwachten Person.",
 		"desc_short": "Visualiert: Vorratsdatenspeicherung in der Schweiz",
 		"keywords": "Vorratsdatenspeicherung, Schweiz, Vorratsdaten"
+	},
+	"script": {
+		"weekday_short_mon": "Mo",
+		"weekday_short_tue": "Di",
+		"weekday_short_wed": "Mi",
+		"weekday_short_thu": "Do",
+		"weekday_short_fri": "Fr",
+		"weekday_short_sat": "Sa",
+		"weekday_short_sun": "So",
+		"msg_type_fb":"Facebook-Post",
+		"msg_type_tw":"Tweet",
+		"msg_type_sm":"SMS %",
+		"msg_type_ca":"Anruf %",
+		"msg_type_ma":"E-Mail %",
+		"word_from":"von",
+		"word_to":"to",
+		"word_From":"Von",
+		"word_To":"An",
+		"word_Content":"Inhalt",
+		"word_number":"Nr.",
+		"social_info_name":"Name",
+		"social_info_org":"Gruppe",
+		"social_info_email_out":"E-Mails an Balthasar",
+		"social_info_email_in":"E-Mails von Balthasar",
+		"social_info_email_co":"im CC von E-Mails an Balthasar:",
+		"social_info_sms_out":"SMS an Balthasar",
+		"social_info_sms_in":"SMS von Balthasar",
+		"social_info_call_out":"Telefonate an Balthasar",
+		"social_info_call_in":"Telefonate von Balthasar",
+		"social_info_maincomtimes":"Hauptkommunikationszeiten"
 	}
 }

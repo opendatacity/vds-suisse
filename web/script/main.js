@@ -121,7 +121,7 @@ $(function () {
 			// fullscreen is not possible!
 
 			if (window.location != window.parent.location) {
-				window.open('frame_de.html', '_blank')
+				window.open('frame_'+lang.code+'.html', '_blank')
 			}
 		}
 	})
@@ -130,7 +130,7 @@ $(function () {
 
 	if (window.location.hash.length > 1) {
 		var hash = window.location.hash.substr(1);
-		hash = hash.split(',');
+		hash = hash.split('&');
 		hash.forEach(function (value) {
 			switch (window.location.hash.substr(1)) {
 				case 'tab=calendar': $('#tabCalendar').click(); break;

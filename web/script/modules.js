@@ -16,13 +16,13 @@ function initModules() {
 
 var weekDayOffset = 2;
 var weekDays = [
-	{ label: 'Mo', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
-	{ label: 'Di', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
-	{ label: 'Mi', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
-	{ label: 'Do', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
-	{ label: 'Fr', bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
-	{ label: 'Sa', bgColor:'#F0F0F0', color:'#B0B0B0', lColor:'#B0B0B0' },
-	{ label: 'So', bgColor:'#F0F0F0', color:'#B0B0B0', lColor:'#B0B0B0' }
+	{ label: lang.weekday_short_mon, bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: lang.weekday_short_tue, bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: lang.weekday_short_wed, bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: lang.weekday_short_thu, bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: lang.weekday_short_fri, bgColor:'#FFFFFF', color:'#C7C7C7', lColor:'#C7C7C7' },
+	{ label: lang.weekday_short_sat, bgColor:'#F0F0F0', color:'#B0B0B0', lColor:'#B0B0B0' },
+	{ label: lang.weekday_short_sun, bgColor:'#F0F0F0', color:'#B0B0B0', lColor:'#B0B0B0' }
 ];
 
 function ScrollBar() {
@@ -515,11 +515,11 @@ function CommunicationList() {
 		entries.forEach(function (entry) {
 			var color, label;
 			switch (entry.type) {
-				case 'facebook': color = '#3c5a96'; label = 'Facebook-Post'; break;
-				case 'tweet':    color = '#59adeb'; label = 'Tweet';         break;
-				case 'sms':      color = '#22aa22'; label = 'SMS %';          break;
-				case 'call':     color = '#cc2222'; label = 'Anruf %';        break;
-				case 'mail':     color = '#cccccc'; label = 'E-Mail %';       break;
+				case 'facebook': color = '#3c5a96'; label = lang.msg_type_fb; break;
+				case 'tweet':    color = '#59adeb'; label = lang.msg_type_tw; break;
+				case 'sms':      color = '#22aa22'; label = lang.msg_type_sm; break;
+				case 'call':     color = '#cc2222'; label = lang.msg_type_ca; break;
+				case 'mail':     color = '#cccccc'; label = lang.msg_type_ma; break;
 				default:
 					console.error('Unknown type "'+entry.type+'"');
 			}
@@ -536,7 +536,7 @@ function CommunicationList() {
 					fill:color,
 					transform:'S0.75T80,'+(entry.y - lineHeight/2)
 				});
-				label = label.replace(/%/, 'von ' + addresses2Text([entry.from]));
+				label = label.replace(/%/, lang.word_from + ' ' + addresses2Text([entry.from]));
 			}
 
 			if (entry.outBound) {
@@ -545,7 +545,7 @@ function CommunicationList() {
 					fill:color,
 					transform:'S0.75T105,'+(entry.y - lineHeight/2)
 				});
-				label = label.replace(/%/, 'an ' + addresses2Text(entry.to));
+				label = label.replace(/%/, lang.word_to + ' ' + addresses2Text(entry.to));
 			}
 
 			paper.path(iconSVG[entry.type]).attr({
@@ -561,9 +561,9 @@ function CommunicationList() {
 				function () {
 					var html = [];
 
-					if (isFinite(entry.from)) html.push('<b>Von:</b> '+addresses2Text([entry.from]));
-					if (entry.to.length > 0 ) html.push('<b>An:</b> ' +addresses2Text( entry.to   ));
-					if (entry.subject       ) html.push('<b>Inhalt:</b> ' +entry.subject);
+					if (isFinite(entry.from)) html.push('<b>'+lang.word_From   +':</b> '+addresses2Text([entry.from]));
+					if (entry.to.length > 0 ) html.push('<b>'+lang.word_To     +':</b> '+addresses2Text( entry.to   ));
+					if (entry.subject       ) html.push('<b>'+lang.word_Content+':</b> '+entry.subject);
 					//if (entry.url           ) html.push('<b>Link:</b> <a href="' +entry.url+'">'+(entry.url.length > 20 ? entry.url.substr(0,19)+'…' : entry.url)+'</a>');
 
 					html = '<p>' + html.join('</p><p>') + '</p>';
@@ -581,7 +581,7 @@ function CommunicationList() {
 		function addresses2Text(addresses) {
 			return addresses.map(function (contactId) {
 				var contact = data.contacts[contactId];
-				return contact.label + (contact.nr ? ' Nr. '+contact.nr : '');
+				return contact.label + (contact.nr ? ' '+lang.word_number+' '+contact.nr : '');
 			}).join(', ');
 		}
 
@@ -632,12 +632,12 @@ function Calendar() {
 	var lastWeek = false;
 
 	var towns = [
-		{ x:8.54, y:47.38, color:[255,230,  0], title:'Zürich'   },
-		{ x:7.44, y:46.95, color:[255,  0, 23], title:'Bern'     },
-		{ x:7.59, y:47.56, color:[206,  0,186], title:'Basel'    },
-		{ x:6.15, y:46.20, color:[  5,  0,170], title:'Genf'     },
-		{ x:8.30, y:47.05, color:[  0,133,211], title:'Luzern'   },
-		{ x:6.63, y:46.52, color:[  0,166, 81], title:'Lausanne' }
+		{ x:8.54, y:47.38, color:[255,230,  0], title:lang.town_zuerich  },
+		{ x:7.44, y:46.95, color:[255,  0, 23], title:lang.town_bern     },
+		{ x:7.59, y:47.56, color:[206,  0,186], title:lang.town_basel    },
+		{ x:6.15, y:46.20, color:[  5,  0,170], title:lang.town_genf     },
+		{ x:8.30, y:47.05, color:[  0,133,211], title:lang.town_luzern   },
+		{ x:6.63, y:46.52, color:[  0,166, 81], title:lang.town_lausanne }
 	]
 
 	var initialized = false;
@@ -886,16 +886,16 @@ function Social () {
 					html = [];
 					
 					html.push('<p>');
-					html.push('<strong>Name:</strong> ' + contact.label + (contact.nr ? ' '+contact.nr : '') + '<br>');
-					html.push('<strong>Gruppe:</strong> ' + contact.org + '<br>');
+					html.push('<strong>'+lang.social_info_name     +':</strong> ' + contact.label     + (contact.nr ? ' '+contact.nr : '') + '<br>');
+					html.push('<strong>'+lang.social_info_org      +':</strong> ' + contact.org       + '<br>');
 
-					html.push('<strong>E-Mails an Balthasar:</strong> ' + contact.email_out + '<br>');
-					html.push('<strong>E-Mails von Balthasar:</strong> ' + contact.email_in + '<br>');
-					html.push('<strong>im CC von E-Mails an Balthasar:</strong> ' + contact.email_co + '<br>');
-					html.push('<strong>SMS an Balthasar:</strong> ' + contact.sms_out + '<br>');
-					html.push('<strong>SMS von Balthasar:</strong> ' + contact.sms_in + '<br>');
-					html.push('<strong>Telefonate an Balthasar:</strong> ' + contact.call_out + '<br>');
-					html.push('<strong>Telefonate von Balthasar:</strong> ' + contact.call_in);
+					html.push('<strong>'+lang.social_info_email_out+':</strong> ' + contact.email_out + '<br>');
+					html.push('<strong>'+lang.social_info_email_in +':</strong> ' + contact.email_in  + '<br>');
+					html.push('<strong>'+lang.social_info_email_co +':</strong> ' + contact.email_co  + '<br>');
+					html.push('<strong>'+lang.social_info_sms_out  +':</strong> ' + contact.sms_out   + '<br>');
+					html.push('<strong>'+lang.social_info_sms_in   +':</strong> ' + contact.sms_in    + '<br>');
+					html.push('<strong>'+lang.social_info_call_out +':</strong> ' + contact.call_out  + '<br>');
+					html.push('<strong>'+lang.social_info_call_in  +':</strong> ' + contact.call_in);
 					html.push('</p>');
 
 					var comSum = 0;
@@ -930,7 +930,7 @@ function Social () {
 					timeSlots = timeSlots.join(', ');
 
 					html.push('<p>');
-					html.push('<strong>Hauptkommunikationszeiten:</strong><br>'+timeSlots);
+					html.push('<strong>'+lang.social_info_maincomtimes+':</strong><br>'+timeSlots);
 					html.push('<div id="chart">'+bars.join('')+'</div>');
 					html.push('</p>');
 
