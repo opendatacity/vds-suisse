@@ -86,10 +86,6 @@ var data = {};
 data.cells = [];
 cells.forEach(function (cell) {
 	data.cells[cell.index] = {
-		/*
-		x0:    cell.x0,
-		y0:    cell.y0,
-		*/
 		x:     Math.round(cell.x*10000)/10000,
 		y:     Math.round(cell.y*10000)/10000,
 		acc:   Math.round(cell.acc),
@@ -135,9 +131,9 @@ data.contacts = contacts.map(function (contact) {
 		label: contact.label,
 		nr:    contact.nr,
 		org:   contact.org,
-		x:     contact.x,
-		y:     contact.y,
-		r:     contact.r
+		x:     Math.round(contact.x),
+		y:     Math.round(contact.y),
+		r:     Math.round(contact.r)
 	}
 });
 
