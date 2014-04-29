@@ -841,7 +841,7 @@ function Social () {
 				minZoom:0,
 				maxZoom: 6,
 				maxBounds: [
-					[-180, -180], //south west
+					[-240, -240], //south west
 					[ 180,  180]  //north east
 				],
 				fadeAnimation: false
@@ -860,7 +860,7 @@ function Social () {
 				if (!contact.r) return;
 				var x = +360*contact.x/16384 - 180;
 				var y = -360*contact.y/16384 + 180;
-				var r =  (360*contact.r/16384)*9.5;
+				var r = (360*contact.r/16384)*9.5;
 				var points = [];
 				for (var i = 0; i < circleLength; i++) {
 					var a = 2*Math.PI*i/circleLength;
@@ -872,7 +872,7 @@ function Social () {
 					fillOpacity: 0
 				});
 				marker.on('mouseover', function (e) {
-					popup = L.popup({closeButton:false,offset: L.point(0,3)});
+					popup = L.popup({closeButton:false,offset: L.point(0,0)});
 					popup.setLatLng([y+r,x]);
 					popup.setContent(contact.label + (contact.nr ? ' '+contact.nr : '') +' ('+contact.org+')');
 					popup.openOn(map);

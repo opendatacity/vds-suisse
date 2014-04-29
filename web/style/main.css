@@ -303,16 +303,15 @@ body {
 					font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 					font-size: 15px;
 					font-weight: normal;
-					line-height: 1.2em;
+					line-height: 1.1em;
 					text-align: left;
 				}
 					.explanation p {
-						margin: 5px 0px 0px 0px;
+						margin: 0px 0px 10px 0px;
 					}
 
 					.explanation .small {
 						font-size: 12px;
-						line-height: 1.1em;
 						opacity: 0.8;
 						font-weight: normal;
 					}
@@ -355,11 +354,10 @@ body {
 						color: inherit;
 					}
 
-		#middleSection.calendarView .map { right: 50%; }
+		#middleSection.calendarView #map { right: 50%; }
 		#middleSection.calendarView #rightList { display: none; }
 		#middleSection.calendarView #rightCalendar { display: block; }
 
-		#middleSection.socialView .map { right: 0px; }
 		#middleSection.socialView #map { display: none; }
 		#middleSection.socialView #socialMap { display: block; }
 		#middleSection.socialView #rightList { display: none; }
