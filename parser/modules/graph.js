@@ -378,6 +378,14 @@ exports.Graph = function () {
 		var contactLookup = {};
 		contacts.forEach(function (contact, index) {
 			contact.index = index;
+			contact.email_in  = 0;
+			contact.email_out = 0;
+			contact.email_co  = 0;
+			contact.sms_in    = 0;
+			contact.sms_out   = 0;
+			contact.call_in   = 0;
+			contact.call_out  = 0;
+			contact.hours     = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 			contactLookup[contact.lookup] = contact;
 		})
 
@@ -385,6 +393,29 @@ exports.Graph = function () {
 		events.forEach(function (event) {
 			event.from = cleanAddress(event.from);
 			event.to = event.to.map(function (address) { return cleanAddress(address) });
+			switch (event.type) {
+				case 'mail':
+					contacts[event.from].email_out++;
+					if (event.outBound) {
+						event.to.forEach(function (id) { contacts[id].email_in++ });
+					} else {
+						event.to.forEach(function (id) { contacts[id].email_co++ });
+					}
+				break;
+				case 'sms':
+					contacts[event.from].sms_out++;
+					event.to.forEach(function (id) { contacts[id].sms_in++ });
+				break;
+				case 'call':
+					contacts[event.from].call_out++;
+					event.to.forEach(function (id) { contacts[id].call_in++ });
+				break;
+			}
+
+			var hour = new Date(event.start*1000);
+			hour = hour.getHours();
+			contacts[event.from].hours[hour]++;
+			event.to.forEach(function (id) { contacts[id].hours[hour]++ });
 		})
 
 		return contacts;

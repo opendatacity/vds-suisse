@@ -128,12 +128,20 @@ data.events = events.map(function (event) {
 
 data.contacts = contacts.map(function (contact) {
 	return {
-		label: contact.label,
-		nr:    contact.nr,
-		org:   contact.org,
-		x:     Math.round(contact.x),
-		y:     Math.round(contact.y),
-		r:     Math.round(contact.r)
+		label:     contact.label,
+		nr:        contact.nr,
+		org:       contact.org,
+		x:         Math.round(contact.x),
+		y:         Math.round(contact.y),
+		r:         Math.round(contact.r),
+		email_in:  contact.email_in,
+		email_out: contact.email_out,
+		email_co:  contact.email_co,
+		sms_in:    contact.sms_in,
+		sms_out:   contact.sms_out,
+		call_in:   contact.call_in,
+		call_out:  contact.call_out,
+		hours:     contact.hours
 	}
 });
 
