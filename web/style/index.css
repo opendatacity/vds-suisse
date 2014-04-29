@@ -167,12 +167,7 @@ footer {
 	}
 
 	#share code {
-
-		display: block;
 		color: #333333;
-		margin-bottom: 10px;
-		padding: 10px;
 		white-space: normal;
 		overflow: auto;
-
 	}
