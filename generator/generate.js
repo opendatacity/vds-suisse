@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var languages = ['de'];
+var languages = ['de', 'ws'];
 
 var frameHtml = fs.readFileSync('templates/frame.html', 'utf8');
 var indexHtml = fs.readFileSync('templates/index.html', 'utf8');
