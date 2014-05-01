@@ -4,6 +4,17 @@ var scrollBarHeight = 48;
 var maxDays, timeStepMinutes, timeStepSeconds, maxMinutes, maxTimeIndex, dayLength, dayWidth;
 
 function initModules() {
+	function translate (text) {
+		if (text === undefined) return undefined;
+		var key = 'contact_'+text.toLowerCase().replace(/[^a-z]/g, '');
+		if (lang[key] === undefined) return text;
+		return lang[key];
+	}
+	data.contacts.forEach(function (contact) {
+		contact.label = translate(contact.label);
+		contact.org   = translate(contact.org);
+	})
+
 	maxDays = data.config.days;
 	timeStepSeconds = data.config.timeStepSeconds;
 	timeStepMinutes = data.config.timeStepSeconds/60;

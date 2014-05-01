@@ -96,7 +96,7 @@ $(function () {
 		if (element.requestFullScreen)       isFullScreen = function () { return document.fullScreen;         };
 		if (element.mozRequestFullScreen)    isFullScreen = function () { return document.mozFullScreen;      };
 		if (element.webkitRequestFullScreen) isFullScreen = function () { return document.webkitIsFullScreen; };
-
+		
 		if (isFullScreen) {
 			// function found
 
@@ -121,7 +121,7 @@ $(function () {
 			// fullscreen is not possible!
 
 			if (window.location != window.parent.location) {
-				window.open('frame_'+lang.code+'.html', '_blank')
+				window.open('frame_'+lang.lang_code+'.html', '_blank')
 			}
 		}
 	})
