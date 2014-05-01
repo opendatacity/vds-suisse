@@ -1,21 +1,35 @@
 var fs = require('fs');
 
-var languages = ['de', 'ws'];
+var languages = [
+	{code:'de'},
+	{code:'ws'},
+	{code:'en'}
+];
 
 var frameHtml = fs.readFileSync('templates/frame.html', 'utf8');
 var indexHtml = fs.readFileSync('templates/index.html', 'utf8');
 
-languages.forEach(function (code) {
-	var lang = JSON.parse(fs.readFileSync('languages/'+code+'.json', 'utf8'));
+languages.forEach(function (lang) {
+	lang.sourceFileName = 'languages/'+lang.code+'.json';
+	lang.indexFileName = '../web/index' + ((lang.code == 'de') ? '' : '_'+lang.code) + '.html';
+	lang.frameFileName = '../web/frame_' + lang.code + '.html';
+	lang.jsObjFileName = '../web/script/language_'+lang.code+'.js';
+	lang.dict = JSON.parse(fs.readFileSync(lang.sourceFileName, 'utf8'));
+})
 
-	translate(frameHtml, merge(lang.general, lang.frame), '../web/frame_'+code+'.html');
+validate(languages);
 
-	var indexFileName = (code == 'de') ? 'index.html' : 'index_'+code+'.html';
-	translate(indexHtml, merge(lang.general, lang.index), '../web/'+indexFileName);
+var languageList = languages.filter(function (lang) {
+	return !lang.hidden;
+})
 
-	var langJSFile = merge(lang.general, lang.script);
-	langJSFile = 'var lang = '+JSON.stringify(langJSFile, null, '\t');
-	fs.writeFileSync('../web/script/language_'+code+'.js', langJSFile, 'utf8');
+languages.forEach(function (lang) {
+	translate(frameHtml, merge(lang.dict.general, lang.dict.frame), lang.frameFileName);
+	
+	translate(indexHtml, merge(lang.dict.general, lang.dict.index), lang.indexFileName);
+
+	var langJSFile = 'var lang = '+JSON.stringify(merge(lang.dict.general, lang.dict.script), null, '\t');
+	fs.writeFileSync(lang.jsObjFileName, langJSFile, 'utf8');
 })
 
 function translate(html, language, file) {
@@ -36,3 +50,53 @@ function merge(obj1, obj2) {
 	Object.keys(obj2).forEach(function (key) { obj[key] = obj2[key] });
 	return obj;
 }
+
+function validate(list) {
+	var mainKeys = getKeys(list[0].dict);
+
+	list.forEach(function (lang) {
+		var diff = difference(mainKeys, getKeys(lang.dict))
+		if (diff) {
+			console.error('Fehler in "'+lang.sourceFileName+'"');
+			console.error('   '+diff.join('\n   '));
+		}
+	})
+}
+
+function getKeys(obj, prefix) {
+	var keys = [];
+	Object.keys(obj).forEach(function (key) {
+		keys.push(key);
+		if (typeof (obj[key]) === 'object') {
+			keys = keys.concat(getKeys(obj[key], key));
+		}
+	})
+
+	if (prefix) keys = keys.map(function (key) { return prefix+'.'+key });
+
+	return keys;
+}
+
+function difference(listA, listB) {
+	var values = {};
+
+	listA.forEach(function (value) {
+		if (values[value] === undefined) values[value] = {};
+		values[value].a = true;
+	})
+
+	listB.forEach(function (value) {
+		if (values[value] === undefined) values[value] = {};
+		values[value].b = true;
+	})
+
+	values = Object.keys(values).map(function (key) {
+		if (values[key].a === values[key].b) return false;
+		if (values[key].a) return '"'+key+'" fehlt';
+		if (values[key].b) return '"'+key+'" ist zu viel';
+	}).filter(function (a) { return a });
+
+	if (values.length == 0) return false;
+	return values;
+}
+
