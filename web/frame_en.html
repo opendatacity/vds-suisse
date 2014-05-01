@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=600, user-scalable=no, minimal-ui" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+		<title>Data retention in Switzerland</title>
+
+		<link rel="stylesheet" href="lib/leaflet/leaflet.css" />
+		<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="style/main.css" rel="stylesheet">
+		<link href="style/small.css" rel="stylesheet" media="(max-width: 800px)">
+
+		<!--[if lt IE 9]>
+		<script src="lib/ie/es5-shim.min.js"></script>
+		<script src="lib/ie/html5shiv.js"></script>
+		<![endif]-->
+		<script src="script/language_en.js"></script>
+		<script src="data/data.js"></script>
+		<script src="script/modules.js"></script>
+		<script src="lib/jquery-1.11.0.min.js"></script>
+		<script src="lib/leaflet/leaflet.js"></script>
+		<script src="lib/raphael-min.js"></script>
+		<script src="script/main.js"></script>
+	</head>
+	<body class="unselectable">
+		<div id="topSection">
+			<div id="tabList" class="tabButton active">List</div>
+			<div id="tabCalendar" class="tabButton">Calendar</div>
+			<div id="tabSocial" class="tabButton">Network</div>
+			<div id="topFullscreen" class="topButton"><i class="fa fa-arrows-alt"></i> <span>Full screen</span></div>
+			<div id="fullscreen-advice">Open application in full-screen mode.</div>
+		</div>
+		<div id="contentSection">
+			<div id="middleSection">
+				<div id="map" class="map"></div>
+				<div id="socialMap" class="map"></div>
+				<div id="rightList">
+					<div id="comWrapper">
+						<div id="comList"></div>
+						<div id="comDetails"></div>
+					</div>
+					<div id="comHairline">
+						<div class="explanation">
+							<p><strong>When and with whom has<br>Balthasar communicated?</strong></p>
+							<p class="small">Location and communcations can be calculated from the retained e-mail and call data.</p>
+						</div>
+					</div>
+				</div>
+				<div id="rightCalendar">
+					<div class="explanation" style="margin:20px 10px 20px 10px">
+						<p><strong>When was Balthasar in:</strong><br>
+							<span style="color:rgb(255,230,  0); font-weight:bold">Zurich</span>,
+							<span style="color:rgb(255,  0, 23); font-weight:bold">Bern</span>,
+							<span style="color:rgb(206,  0,186); font-weight:bold">Basel</span>,
+							<span style="color:rgb(  5,  0,170); font-weight:bold">Geneva</span>,
+							<span style="color:rgb(  0,133,211); font-weight:bold">Lucerne</span> or
+							<span style="color:rgb(  0,166, 81); font-weight:bold">Lausanne</span>?
+						<p>
+						<p class="small">The travel calendar can be calculated from the phone movement profile.</p>
+					</div>
+				</div>
+				<div id="rightSocialDetails">
+					<div class="explanation" style="margin-top:20px;margin-left:0px">
+						<p><strong>Who are Balthasar's<br>friends an colleagues?</strong></p>
+						<p class="small">A network of contacts can be plotted based on the retained email metadata, without any information about their content.</p>
+						<p class="small">Anyone who sends an e-mail to several colleagues simultaneously reveals that the colleagues know each other.</p>
+						<p class="small">Balthasar's entire personal environment, consisting of family, friends and colleagues, can be determined based on his 22'324 e-mails.</p>
+					</div>
+					<div id="socialDetails">
+					</div>
+				</div>
+			</div>
+			<div id="bottomSection">
+				<div id="bottomLeftControls">
+					<div id="infoText"></div>
+					<div id="playPauseButtons">
+						<span id="playButton"><i class="fa fa-play"></i></span>
+						<span id="pauseButton"><i class="fa fa-pause"></i></span>
+					</div>
+					<div id="speedButtons">
+						<div id="speedButton1" class="speedButton">&times;200</div>
+						<div id="speedButton2" class="speedButton active">&times;1000</div>
+						<div id="speedButton3" class="speedButton">&times;5000</div>
+					</div>
+				</div>
+				<div id="scrollContainer">
+					<canvas id="scrollCanvas"></canvas>
+					<img id="scrollImage" src="graphics/scrollbar.png">
+					<div id="scrollHairLine"></div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">Created by <a href="https://opendatacity.de/" target="_blank">OpenDataCity</a>. About the data source: <a href="http://www.digitale-gesellschaft.ch/vds" target="_blank">digiges.ch</a>. Application is licensed under <a href="http://creativecommons.org/licenses/by/3.0/de/" target="_blank">CC-BY 3.0</a>.</div>
+		<div style="display:none">
+			<img src="graphics/dot1.png">
+			<img src="graphics/dot2.png">
+			<img src="graphics/dot3.png">
+			<img src="graphics/dot4.png">
+			<img src="graphics/dot5.png">
+			<img src="graphics/dot6.png">
+			<img src="graphics/dot7.png">
+			<img src="graphics/dot8.png">
+			<img src="graphics/dot9.png">
+			<img src="graphics/dot10.png">
+			<img src="graphics/dot1retina.png">
+			<img src="graphics/dot2retina.png">
+			<img src="graphics/dot3retina.png">
+			<img src="graphics/dot4retina.png">
+			<img src="graphics/dot5retina.png">
+			<img src="graphics/dot6retina.png">
+			<img src="graphics/dot7retina.png">
+			<img src="graphics/dot8retina.png">
+			<img src="graphics/dot9retina.png">
+			<img src="graphics/dot10retina.png">
+		</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-38022006-10', 'opendatacity.de');
+            ga('send', 'pageview');
+        </script>
+	</body>
+</html>
