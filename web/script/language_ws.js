@@ -1,5 +1,6 @@
 var lang = {
 	"lang_code": "ws",
+	"lang_name": "---",
 	"title": "",
 	"town_zuerich": "",
 	"town_bern": "",

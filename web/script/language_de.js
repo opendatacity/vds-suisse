@@ -1,5 +1,6 @@
 var lang = {
 	"lang_code": "de",
+	"lang_name": "Deutsch",
 	"title": "Vorratsdatenspeicherung in der Schweiz",
 	"town_zuerich": "Zürich",
 	"town_bern": "Bern",

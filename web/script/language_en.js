@@ -1,5 +1,6 @@
 var lang = {
 	"lang_code": "en",
+	"lang_name": "English",
 	"title": "Data retention in Switzerland",
 	"town_zuerich": "Zurich",
 	"town_bern": "Bern",

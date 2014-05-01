@@ -2,8 +2,8 @@ var fs = require('fs');
 
 var languages = [
 	{code:'de'},
-	{code:'ws'},
-	{code:'en'}
+	{code:'en', hidden:true},
+	{code:'ws', hidden:true}
 ];
 
 var frameHtml = fs.readFileSync('templates/frame.html', 'utf8');
@@ -12,9 +12,11 @@ var indexHtml = fs.readFileSync('templates/index.html', 'utf8');
 languages.forEach(function (lang) {
 	lang.sourceFileName = 'languages/'+lang.code+'.json';
 	lang.indexFileName = '../web/index' + ((lang.code == 'de') ? '' : '_'+lang.code) + '.html';
+	lang.indexUrl      = 'index' + ((lang.code == 'de') ? '' : '_'+lang.code) + '.html';
 	lang.frameFileName = '../web/frame_' + lang.code + '.html';
 	lang.jsObjFileName = '../web/script/language_'+lang.code+'.js';
 	lang.dict = JSON.parse(fs.readFileSync(lang.sourceFileName, 'utf8'));
+	lang.label = lang.dict.general.lang_name;
 })
 
 validate(languages);
@@ -24,11 +26,17 @@ var languageList = languages.filter(function (lang) {
 })
 
 languages.forEach(function (lang) {
-	translate(frameHtml, merge(lang.dict.general, lang.dict.frame), lang.frameFileName);
+	var dict = merge(lang.dict.general, lang.dict.frame);
+	translate(frameHtml, dict, lang.frameFileName);
 	
-	translate(indexHtml, merge(lang.dict.general, lang.dict.index), lang.indexFileName);
+	var dict = merge(lang.dict.general, lang.dict.index);
+	dict.languagelist = languageList.map(function (otherlang) {
+		return (otherlang.code == lang.code) ? '<b>'+otherlang.label+'</b>' : '<a href="'+otherlang.indexUrl+'">'+otherlang.label+'</a>'
+	}).join(' ');
+	translate(indexHtml, dict, lang.indexFileName);
 
-	var langJSFile = 'var lang = '+JSON.stringify(merge(lang.dict.general, lang.dict.script), null, '\t');
+	var dict = merge(lang.dict.general, lang.dict.script);
+	var langJSFile = 'var lang = '+JSON.stringify(dict, null, '\t');
 	fs.writeFileSync(lang.jsObjFileName, langJSFile, 'utf8');
 })
 

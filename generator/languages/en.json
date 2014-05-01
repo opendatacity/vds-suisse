@@ -1,6 +1,7 @@
 {
 	"general": {
 		"lang_code": "en",
+		"lang_name": "English",
 		"title": "Data retention in Switzerland",
 		"town_zuerich": "Zurich",
 		"town_bern": "Bern",
@@ -27,6 +28,7 @@
 		"footer": "Created by <a href=\"https://opendatacity.de/\" target=\"_blank\">OpenDataCity</a>. About the data source: <a href=\"http://www.digitale-gesellschaft.ch/vds\" target=\"_blank\">digiges.ch</a>. Application is licensed under <a href=\"http://creativecommons.org/licenses/by/3.0/de/\" target=\"_blank\">CC-BY 3.0</a>."
 	},
 	"index": {
+		"other_languages": "Other languages",
 		"desc_long": "Balthasar Glättli, member of the National Council for The Green Party, has provided parts of his retained data of six months for this visualization. As a result, these retained data reveal what secret services and law inforcement call \"profile\" - a comprehensive picture of the entire life of the monitored person.",
 		"desc_short": "Visualized: Data retention in Switzerland",
 		"keywords": "Data retention, Switzerland, retained data",

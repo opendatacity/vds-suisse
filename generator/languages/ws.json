@@ -1,6 +1,7 @@
 {
 	"general": {
 		"lang_code": "ws",
+		"lang_name": "---",
 		"title": "",
 		"town_zuerich": "",
 		"town_bern": "",
@@ -27,6 +28,7 @@
 		"footer": ""
 	},
 	"index": {
+		"other_languages": "",
 		"desc_long": "",
 		"desc_short": "",
 		"keywords": "",

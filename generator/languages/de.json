@@ -1,6 +1,7 @@
 {
 	"general": {
 		"lang_code": "de",
+		"lang_name": "Deutsch",
 		"title": "Vorratsdatenspeicherung in der Schweiz",
 		"town_zuerich": "Zürich",
 		"town_bern": "Bern",
@@ -27,6 +28,7 @@
 		"footer": "Realisiert von <a href=\"https://opendatacity.de/\" target=\"_blank\">OpenDataCity</a>. Über die Datenquelle: <a href=\"http://www.digitale-gesellschaft.ch/vds\" target=\"_blank\">digiges.ch</a>. Anwendung steht unter <a href=\"http://creativecommons.org/licenses/by/3.0/de/\" target=\"_blank\">CC-BY 3.0</a>."
 	},
 	"index": {
+		"other_languages": "Andere Sprachen",
 		"desc_long": "Der grüne Nationalrat Balthasar Glättli hat einen Teil seiner Vorratsdaten aus sechs Monaten für diese Visualisierung zur Verfügung gestellt. Im Ergebnis ergeben diese Vorratsdaten das, was Geheimdienste und Strafverfolgungsbehörden als Profil bezeichnen – ein umfassendes Bild über das gesamte Leben der überwachten Person.",
 		"desc_short": "Visualiert: Vorratsdatenspeicherung in der Schweiz",
 		"keywords": "Vorratsdatenspeicherung, Schweiz, Vorratsdaten",
