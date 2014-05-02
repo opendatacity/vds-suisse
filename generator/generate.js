@@ -11,11 +11,15 @@ var indexHtml = fs.readFileSync('templates/index.html', 'utf8');
 
 languages.forEach(function (lang) {
 	lang.sourceFileName = 'languages/'+lang.code+'.json';
-	lang.indexFileName = '../web/index' + ((lang.code == 'de') ? '' : '_'+lang.code) + '.html';
-	lang.indexUrl      = 'index' + ((lang.code == 'de') ? '' : '_'+lang.code) + '.html';
-	lang.frameFileName = '../web/frame_' + lang.code + '.html';
-	lang.jsObjFileName = '../web/script/language_'+lang.code+'.js';
-	lang.dict = JSON.parse(fs.readFileSync(lang.sourceFileName, 'utf8'));
+	lang.indexFileName  = '../web/index' + ((lang.code == 'de') ? '' : '_'+lang.code) + '.html';
+	lang.indexUrl       = 'index' + ((lang.code == 'de') ? '' : '_'+lang.code) + '.html';
+	lang.frameFileName  = '../web/frame_' + lang.code + '.html';
+	lang.jsObjFileName  = '../web/script/language_'+lang.code+'.js';
+
+	var dict = fs.readFileSync(lang.sourceFileName, 'utf8');
+	dict = dict.replace(/\/\*.*?\*\//gm, '');
+	dict = JSON.parse(dict);
+	lang.dict = dict;
 	lang.label = lang.dict.general.lang_name;
 })
 
