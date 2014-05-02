@@ -1,8 +1,8 @@
 var fs = require('fs');
 
 var languages = [
+	{code:'en'},
 	{code:'de'},
-	{code:'en', hidden:true},
 	{code:'ws', hidden:true}
 ];
 
