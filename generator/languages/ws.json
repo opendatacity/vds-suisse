@@ -1,4 +1,5 @@
 {
+	/* Empty text fields - only for testing */
 	"general": {
 		"lang_code": "ws",
 		"lang_name": "---",
@@ -40,9 +41,9 @@
 		"info3": "",
 		"facts_and_stats": "",
 		"links_heading": "",
-		"link1": "",
-		"link2": "",
-		"link3": "",
+		"link_github": "",
+		"link_graphic_calendar": "",
+		"link_graphic_network": "",
 		"footer_left": "",
 		"footer_right": "",
 		"license_info": "",

@@ -72,9 +72,9 @@
 		
 		/* list of links */
 		"links_heading": "Further links:",
-		"link1": "The complete code is on GitHub: <a href=\"https://github.com/opendatacity/vds-suisse/\">github.com/opendatacity/vds-suisse</a>.",
-		"link2": "High resolution graphic of the <a href=\"download/calendar.png\">calendar</a>.",
-		"link3": "High resolution graphic of the <a href=\"download/network_4096.png\">social network</a>.",
+		"link_github": "The complete code is on GitHub: <a href=\"https://github.com/opendatacity/vds-suisse/\">github.com/opendatacity/vds-suisse</a>.",
+		"link_graphic_calendar": "High resolution graphic of the <a href=\"download/calendar.png\">calendar</a>.",
+		"link_graphic_network": "High resolution graphic of the <a href=\"download/network_4096.png\">social network</a>.",
 		
 		/* footer */
 		"footer_left": "Created by <a href=\"https://opendatacity.de/\">OpenDataCity</a>. The application is licensed under <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/3.0/\">CC-BY 3.0</a>.",
