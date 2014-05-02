@@ -44,7 +44,7 @@
 		"link2": "High resolution graphic of the <a href=\"download/calendar.png\">calendar</a>.",
 		"link3": "High resolution graphic of the <a href=\"download/network_4096.png\">social network</a>.",
 		"footer_left": "Created by <a href=\"https://opendatacity.de/\">OpenDataCity</a>. The application is licensed under <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/3.0/\">CC-BY 3.0</a>.",
-		"footer_right": "This page is analyzed with Google Analytics. The NSA may allready know that you're here. <a href=\"https://opendatacity.de/impressum/\" target=\"_blank\">Imprint</a>",
+		"footer_right": "This page is analyzed with Google Analytics. <a href=\"https://opendatacity.de/impressum/\" target=\"_blank\">Imprint</a>",
 		"license_info": "This application is licensed under <a target=\"_blank\" href=\"http://creativecommons.org/licenses/by/3.0\">CC-BY license</a> and may be embedded in blogs and other media:",
 		"created_by": "Provided by",
 		"embed_info": "For advanced users: You can define a pre-selected tab by adding a hash parameter to the URL<ul><li><code>#tab=calendar</code> The <a href=\"http://apps.opendatacity.de/vds/frame_en.html#tab=calendar\" target=\"_blank\">calendar view</a> will be displayed.</li><li><code>#tab=social</code> The <a href=\"http://apps.opendatacity.de/vds/frame_en.html#tab=social\" target=\"_blank\">social network</a> will be displayed.</li></ul>",
