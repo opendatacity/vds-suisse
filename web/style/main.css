@@ -598,12 +598,12 @@ body {
 	bottom: 0px;
 	font-size: 10px;
 	text-align: right;
-	color: #666;
+	color: #aaa;
 	line-height: 1em;
 }
 
 	#footer a {
-		color: #666;
+		color: #aaa;
 	}
 
 .unselectable {
