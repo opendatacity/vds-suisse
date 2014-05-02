@@ -16,6 +16,7 @@
 		"town_luzern": "Luzern",
 		"town_lausanne": "Lausanne"
 	},
+
 	/* Textbausteine, die in der App statisch verwendet werden */
 	"frame": {
 		/* Beschriftung der Reiter */
@@ -23,45 +24,72 @@
 		"tab_calendar": "Kalender",
 		"tab_social": "Netzwerk",
 
+		/* Vollbildschirm-Button */
 		"button_fullscreen": "Vollbild",
 		"button_fullscreen_info": "Anwendung im Vollbild-Modus öffnen.",
+
+		/* Erklärungstexte für "Listen-Darstellung" */
 		"text_map_head": "Wann und mit wem hat<br>Balthasar kommuniziert?",
 		"text_map_info": "Aus den E-Mail- und Telefon-Vorratsdaten<br>lassen sich Ort und Kommunikation berechnen.",
+
+		/* Erklärungstexte für "Kalender-Darstellung" */
 		"text_calendar_head": "Wann befand sich Balthasar in:",
 		"word_or": "oder",
 		"text_calendar_info": "Aus dem Telefon-Bewegungsprofil lässt sich der Reisekalender berechnen.",
+
+		/* Erklärungstexte für "Social-Network-Darstellung" */
 		"text_social_head": "Wer sind Balthasars<br>Freunde und Kollegen?",
 		"text_social_info1": "Mit den auf Vorrat gespeicherten E-Mail-Randdaten lässt sich ein Kontaktnetzwerk spinnen, ohne dass man die Inhalte der Mails kennen muss.",
 		"text_social_info2": "Wer eine E-Mail an mehrere Kollegen gleichzeitig verschickt, verrät, dass sich die Kollegen untereinander kennen.",
 		"text_social_info3": "Aus Balthasars 22'324 E-Mails lässt sich so sein komplettes Umfeld aus Familie, Freunden und Kollegen ermitteln.",
+		
+		/* Fußzeilen-Text */
 		"footer": "Realisiert von <a href=\"https://opendatacity.de/\" target=\"_blank\">OpenDataCity</a>. Über die Datenquelle: <a href=\"http://www.digitale-gesellschaft.ch/vds\" target=\"_blank\">digiges.ch</a>. Anwendung steht unter <a href=\"http://creativecommons.org/licenses/by/3.0/de/\" target=\"_blank\">CC-BY 3.0</a>."
 	},
+
 	/* Textbausteine, die auf der Startseite verwendet werden */
 	"index": {
+		/* Für die Sprachenauflistung oben */
 		"other_languages": "Andere Sprachen",
+
+		/* Beschreibungstexte für Suchmachinen */
 		"desc_long": "Der grüne Nationalrat Balthasar Glättli hat einen Teil seiner Vorratsdaten aus sechs Monaten für diese Visualisierung zur Verfügung gestellt. Im Ergebnis ergeben diese Vorratsdaten das, was Geheimdienste und Strafverfolgungsbehörden als Profil bezeichnen – ein umfassendes Bild über das gesamte Leben der überwachten Person.",
 		"desc_short": "Visualiert: Vorratsdatenspeicherung in der Schweiz",
 		"keywords": "Vorratsdatenspeicherung, Schweiz, Vorratsdaten",
+
+		/* Überschrift */
 		"heading": "Vorratsdaten&shy;speicherung in der Schweiz",
 		"subheading": "Das überwachte Leben von Nationalrat <a href=\"http://www.balthasar-glaettli.ch/\" target=\"_blank\">Balthasar Glättli</a>.",
+
+		/* Einbettungsbutton */
 		"embed": "Einbetten",
+
+		/* Infotexte */
 		"info1": "Der grüne Nationalrat <a href=\"http://www.balthasar-glaettli.ch/\" target=\"_blank\">Balthasar Glättli</a> hat einen Teil seiner Vorratsdaten aus sechs Monaten für diese Visualisierung <a href=\"https://opendatacity.de\">OpenDataCity</a> zur Verfügung gestellt. Im Ergebnis ergeben diese Vorratsdaten das, was Geheimdienste und Strafverfolgungsbehörden als Profil bezeichnen – ein umfassendes Bild über das gesamte Leben der überwachten Person.",
 		"info2": "Die Visualisierung baut dazu auf genau den Metadaten des Telefon- und Mail-Verkehrs auf, die im Rahmen der Vorratsdatenspeicherung erfasst werden. Weitere Hintergrundinformationen gibt es bei <a href=\"http://www.balthasar-glaettli.ch/vorratsdaten/\" target=\"_blank\">Balthasar Glättli</a> und der <a href=\"https://www.digitale-gesellschaft.ch/vds.html\" target=\"_blank\">Digitalen Gesellschaft Schweiz</a>.",
 		"info3": "Wir stellen die Visualisierung unter <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/3.0/de/\">CC-BY 3.0</a> zur Verfügung, so dass jedes Medium kostenlos die Anwendung einbetten und alle Grafiken verwenden kann.",
 		"facts_and_stats": "<strong>Weitere Fakten und Statistiken:</strong><ul><li>Die Mobilfunk- und E-Mail-Vorratsdaten umfassen einen <strong>Zeitraum von 6 Monaten</strong> (exakt 179 Tage).</li><li>In diesem Zeitraum wurde über das Mobiltelefon insgesamt <strong>7'112 Datenbank-Einträge</strong> erfasst. Davon 2'610 Einträge für Internetverbindungen (36.7%, 14.6 pro Tag), 3'085 SMS/MMS (43.4%, 17.2 pro Tag) und 1'417 Einträge für Telefonate (19.9%, 7.9 pro Tag)</li><li>Mit seinem Mobiltelefon hat Balthasar insgesamt 5'161'133'870 Bytes (<strong>5.2 GB</strong> - 28.8 MB pro Tag) <strong>Internettraffic</strong> verursacht. Davon wurden 979'745'187 Bytes (980 MB - 5.5 MB pro Tag) hochgeladen und 4'181'388'683 Bytes (4.2 GB - 23.4 MB pro Tag) runtergeladen.</li><li>Da mit jedem Telefonat, jeder SMS und jeder Internetverbindung auch der Ort des Mobiltelefons erfasst wird, können wir auch die <strong>Bewegung von Balthasar</strong> auswerten. Seine höchste Geschwindigkeiten betrug etwa 180 km/h während einer Zugfahrt am 09.04.2013 um 15:15. Insgesamt hat er während der 6 Monate eine Strecke von mindestens 16'000 km zurückgelegt.</li><li>Auch E-Mail-Metadaten werden im Rahmen der Vorratsdatenspeicherung erfasst. Innerhalb von 6 Monaten hat Balthasar insgesamt <strong>14'638 E-Mails empfangen</strong> (82 pro Tag) von etwa 6'500 absendenden Personen. Er selbst hat 1'654 E-Mails (9 pro Tag) an etwa 600 Personen versendet.</li></ul>",
+
+		/* Linkliste */
 		"links_heading": "Weitere Links:",
 		"link1": "Der vollständige Code befindet sich auf GitHub: <a href=\"https://github.com/opendatacity/vds-suisse/\">github.com/opendatacity/vds-suisse</a>.",
 		"link2": "Hochauflösende Grafik des <a href=\"download/calendar.png\">Kalenders</a>.",
 		"link3": "Hochauflösende Grafik des <a href=\"download/network_4096.png\">sozialen Netzwerks</a>.",
+
+		/* Fußzeile */
 		"footer_left": "Realisiert von <a href=\"https://opendatacity.de/\">OpenDataCity</a>. Anwendung steht unter <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/3.0/de/\">CC-BY 3.0</a>.",
 		"footer_right": "Diese Seite wird mit Google Analytics ausgewertet. <a href=\"https://opendatacity.de/impressum/\" target=\"_blank\">Impressum</a>",
+
+		/* Embed-Texte */
 		"license_info": "Diese Browser-App steht unter <a target=\"_blank\" href=\"http://creativecommons.org/licenses/by/3.0\">CC-BY-Lizenz</a> und darf gerne in Blogs und anderen Medien eingebettet werden:",
 		"created_by": "Ein Informationsangebot von",
 		"embed_info": "Für Profis: Zusätzlich lässt sich durch einen an die URL angehängten Hash-Parameter der vorausgewählte Tab definieren.<ul><li><code>#tab=calendar</code> Die <a href=\"http://apps.opendatacity.de/vds/frame_de.html#tab=calendar\" target=\"_blank\">Kalenderdarstellung</a> wird angezeigt.</li><li><code>#tab=social</code> Das <a href=\"http://apps.opendatacity.de/vds/frame_de.html#tab=social\" target=\"_blank\">Soziale Netzwerk</a> wird angezeigt.</li></ul>",
 		"close": "Schließen"
 	},
+
 	/* Textbausteine, die in der App dynamisch verwendet werden */
 	"script": {
+		/* Wochentage */
 		"weekday_short_mon": "Mo",
 		"weekday_short_tue": "Di",
 		"weekday_short_wed": "Mi",
@@ -69,17 +97,23 @@
 		"weekday_short_fri": "Fr",
 		"weekday_short_sat": "Sa",
 		"weekday_short_sun": "So",
+
+		/* Nachrichten-Typen */
 		"msg_type_fb": "Facebook-Post",
 		"msg_type_tw": "Tweet",
 		"msg_type_sm": "SMS %",
 		"msg_type_ca": "Anruf %",
 		"msg_type_ma": "E-Mail %",
+
+		/* Textbausteine für rechte Listendarstellung */
 		"word_from": "von",
 		"word_to": "an",
 		"word_From": "Von",
 		"word_To": "An",
 		"word_Content": "Inhalt",
 		"word_number": "Nr.",
+
+		/* Textbausteine für rechte Socialnetwork-Darstellung */
 		"social_info_name": "Name",
 		"social_info_org": "Gruppe",
 		"social_info_email_out": "E-Mails an Balthasar",
@@ -90,6 +124,8 @@
 		"social_info_call_out": "Telefonate an Balthasar",
 		"social_info_call_in": "Telefonate von Balthasar",
 		"social_info_maincomtimes": "Hauptkommunikationszeiten",
+
+		/* Begriffe zur Beschreibung von Kontakten und Kontaktgruppen */
 		"contact_adlethorensgoumaz": "Adèle Thorens Goumaz",
 		"contact_arztrztin": "Arzt/Ärztin",
 		"contact_assistentin": "Assistent/in",
