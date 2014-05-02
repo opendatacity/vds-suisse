@@ -1,8 +1,14 @@
 {
+	/* general text blocks that are used everywhere */
 	"general": {
 		"lang_code": "en",
+
+		/* name of the language */
 		"lang_name": "English",
+
 		"title": "Data retention in Switzerland",
+
+		/* names of the 6 most important cities */
 		"town_zuerich": "Zurich",
 		"town_bern": "Bern",
 		"town_basel": "Basel",
@@ -10,47 +16,80 @@
 		"town_luzern": "Lucerne",
 		"town_lausanne": "Lausanne"
 	},
+
+	/* text blocks that are used statically throughout the app */
 	"frame": {
+		/* tab labels */
 		"tab_map": "List",
 		"tab_calendar": "Calendar",
 		"tab_social": "Network",
+
+		/* full screen button */
 		"button_fullscreen": "Full screen",
 		"button_fullscreen_info": "Open application in full-screen mode.",
+
+		/* explanatory text for "list view" */
 		"text_map_head": "When and with whom has<br>Balthasar communicated?",
 		"text_map_info": "Location and communcations can be calculated from the retained e-mail and call data.",
+		
+		/* explenatory text for "calendar view" */
 		"text_calendar_head": "When was Balthasar in:",
 		"word_or": "or",
 		"text_calendar_info": "The travel calendar can be calculated from the phone movement profile.",
+		
+		/* explanatory text for "social network view" */
 		"text_social_head": "Who are Balthasar's<br>friends and colleagues?",
 		"text_social_info1": "A network of contacts can be plotted based on the retained email metadata, without any information about their content.",
 		"text_social_info2": "Anyone who sends an e-mail to several colleagues simultaneously reveals that the colleagues know each other.",
 		"text_social_info3": "Balthasar's entire personal environment, consisting of family, friends and colleagues, can be determined based on his 22'324 e-mails.",
+		
+		/* footer text */
 		"footer": "Created by <a href=\"https://opendatacity.de/\" target=\"_blank\">OpenDataCity</a>. About the data source: <a href=\"http://www.digitale-gesellschaft.ch/dr\" target=\"_blank\">digiges.ch</a>. Application is licensed under <a href=\"http://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">CC-BY 3.0</a>."
 	},
+
+	/* text blocks that are used on the homepage */
 	"index": {
+		/* For the list of languages in the top */
 		"other_languages": "Other languages",
+
+		/* description for search engines */
 		"desc_long": "Balthasar Glättli, member of the National Council for The Green Party, has provided parts of his retained data of six months for this visualization. As a result, these retained data reveal what secret services and law inforcement call \"profile\" - a comprehensive picture of the entire life of the monitored person.",
 		"desc_short": "Visualized: Data retention in Switzerland",
 		"keywords": "Data retention, Switzerland, retained data",
+
+		/* heading */
 		"heading": "Data retention in Switzerland",
 		"subheading": "The monitored life of National Councilor <a href=\"http://www.balthasar-glaettli.ch/\" target=\"_blank\">Balthasar Glättli</a>.",
+		
+		/* embed button */
 		"embed": "Embed",
+
+		/* info texts */
 		"info1": "<a href=\"http://www.balthasar-glaettli.ch/\" target=\"_blank\">Balthasar Glättli</a>, member of the National Council for The Green Party, has provided <a href=\"https://opendatacity.de\">OpenDataCity</a> with parts of his retained data of six month for this visualization. As a result, these retained data reveal what secret services and law inforcement call \"profile\" - a comprehensive picture of the entire life of the monitored person.",
 		"info2": "The visualization is based on the same metadata of the telephone and mail traffic, that are recorded as part of the data retention. For further background information please visit the websites of <a href=\"http://www.balthasar-glaettli.ch/vorratsdaten/\" target=\"_blank\">Balthasar Glättli</a> and <a href=\"https://www.digitale-gesellschaft.ch/dr.html \"target=\"_blank \">Digital society Switzerland</a>.",
 		"info3": "We provide this visualization under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/3.0/\">CC-BY 3.0</a> license, so everyone (newspapers, blogs, etc.) can use the graphics and embed the application freely.",
 		"facts_and_stats": "<strong>Additional facts and statistics:</strong><ul><li>The retained e-mail and mobile communication data cover a <strong>period of 6 month</strong> (exactly 179 days).</li><li>During this period a total of <strong>7'112 database entries</strong> on the mobile phone were recorded. Of these, 2'610 entries for Internet connections (36.7%, 14.6 per Day), 3'085 SMS/MMS (43.4%, 17.2 per day) and 1'417 entries for calls (19.9%, 7.9 per day)</li><li>Balthasar caused a total of 5'161'133'870 Bytes (<strong>5.2 GB</strong> - 28.8 MB per day) <strong>Internet traffic</strong> with his mobile phone. Of which 979'745'187 Bytes (980 MB - 5.5 MB per day) were uploaded and 4'181'388'683 Bytes (4.2 GB - 23.4 MB per day) were downloaded.</li><li>As the location of the mobile phone is detected with every phone call, every text message and every Internet connection, we can analyze <strong>Balthasar's movement</strong>. His highest speed was about 180 km/h during a train ride on 09.04.2013 at 15:15. Overall, he has traveled a distance of at least 16'000 km during the 6 months.</li><li>E-mail metadata are recorded too as part of the data retention. Within 6 months Balthasar has received a total of <strong>14'638 E-Mails</strong> (82 per day) from about 6'500 people. He has sent 1'654 E-Mails (9 per day) to 600 people.</li></ul>",
+		
+		/* list of links */
 		"links_heading": "Further links:",
 		"link1": "The complete code is on GitHub: <a href=\"https://github.com/opendatacity/vds-suisse/\">github.com/opendatacity/vds-suisse</a>.",
 		"link2": "High resolution graphic of the <a href=\"download/calendar.png\">calendar</a>.",
 		"link3": "High resolution graphic of the <a href=\"download/network_4096.png\">social network</a>.",
+		
+		/* footer */
 		"footer_left": "Created by <a href=\"https://opendatacity.de/\">OpenDataCity</a>. The application is licensed under <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/3.0/\">CC-BY 3.0</a>.",
 		"footer_right": "This page is analyzed with Google Analytics. <a href=\"https://opendatacity.de/impressum/\" target=\"_blank\">Imprint</a>",
+		
+		/* embed texts */
 		"license_info": "This application is licensed under <a target=\"_blank\" href=\"http://creativecommons.org/licenses/by/3.0\">CC-BY license</a> and may be embedded in blogs and other media:",
 		"created_by": "Provided by",
 		"embed_info": "For advanced users: You can define a pre-selected tab by adding a hash parameter to the URL<ul><li><code>#tab=calendar</code> The <a href=\"http://apps.opendatacity.de/vds/frame_en.html#tab=calendar\" target=\"_blank\">calendar view</a> will be displayed.</li><li><code>#tab=social</code> The <a href=\"http://apps.opendatacity.de/vds/frame_en.html#tab=social\" target=\"_blank\">social network</a> will be displayed.</li></ul>",
 		"close": "Close"
 	},
+
+	/* text blocks that are used dynamically throuout the app */
 	"script": {
+		/* days of the week */
 		"weekday_short_mon": "Mon",
 		"weekday_short_tue": "Tue",
 		"weekday_short_wed": "Wed",
@@ -58,17 +97,23 @@
 		"weekday_short_fri": "Fri",
 		"weekday_short_sat": "Sat",
 		"weekday_short_sun": "Sun",
+		
+		/* message types */
 		"msg_type_fb": "Facebook post",
 		"msg_type_tw": "Tweet",
 		"msg_type_sm": "SMS %",
 		"msg_type_ca": "Call %",
 		"msg_type_ma": "Email %",
+		
+		/* text blocks for list view on the right */
 		"word_from": "from",
 		"word_to": "to",
 		"word_From": "From",
 		"word_To": "To",
 		"word_Content": "Content",
 		"word_number": "No.",
+
+		/* text blocks for social network view on the right */
 		"social_info_name": "Name",
 		"social_info_org": "Group",
 		"social_info_email_out": "Emails to Balthasar",
@@ -79,6 +124,8 @@
 		"social_info_call_out": "Calls to Balthasar",
 		"social_info_call_in": "Calls from Balthasar",
 		"social_info_maincomtimes": "Main time of communication",
+		
+		/* words for describing contacts and groups of contacts */
 		"contact_adlethorensgoumaz": "Adèle Thorens Goumaz",
 		"contact_arztrztin": "Doctor",
 		"contact_assistentin": "Assistant",
