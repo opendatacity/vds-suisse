@@ -1,8 +1,14 @@
 {
+	/* Generelle Textbausteine, die überall verwendet werden */
 	"general": {
 		"lang_code": "de",
+
+		/* Name der Sprache */
 		"lang_name": "Deutsch",
+		
 		"title": "Vorratsdatenspeicherung in der Schweiz",
+
+		/* Namen der 6 wichtigsten Städte */
 		"town_zuerich": "Zürich",
 		"town_bern": "Bern",
 		"town_basel": "Basel",
@@ -10,10 +16,13 @@
 		"town_luzern": "Luzern",
 		"town_lausanne": "Lausanne"
 	},
+	/* Textbausteine, die in der App statisch verwendet werden */
 	"frame": {
+		/* Beschriftung der Reiter */
 		"tab_map": "Liste",
 		"tab_calendar": "Kalender",
 		"tab_social": "Netzwerk",
+
 		"button_fullscreen": "Vollbild",
 		"button_fullscreen_info": "Anwendung im Vollbild-Modus öffnen.",
 		"text_map_head": "Wann und mit wem hat<br>Balthasar kommuniziert?",
@@ -27,6 +36,7 @@
 		"text_social_info3": "Aus Balthasars 22'324 E-Mails lässt sich so sein komplettes Umfeld aus Familie, Freunden und Kollegen ermitteln.",
 		"footer": "Realisiert von <a href=\"https://opendatacity.de/\" target=\"_blank\">OpenDataCity</a>. Über die Datenquelle: <a href=\"http://www.digitale-gesellschaft.ch/vds\" target=\"_blank\">digiges.ch</a>. Anwendung steht unter <a href=\"http://creativecommons.org/licenses/by/3.0/de/\" target=\"_blank\">CC-BY 3.0</a>."
 	},
+	/* Textbausteine, die auf der Startseite verwendet werden */
 	"index": {
 		"other_languages": "Andere Sprachen",
 		"desc_long": "Der grüne Nationalrat Balthasar Glättli hat einen Teil seiner Vorratsdaten aus sechs Monaten für diese Visualisierung zur Verfügung gestellt. Im Ergebnis ergeben diese Vorratsdaten das, was Geheimdienste und Strafverfolgungsbehörden als Profil bezeichnen – ein umfassendes Bild über das gesamte Leben der überwachten Person.",
@@ -50,6 +60,7 @@
 		"embed_info": "Für Profis: Zusätzlich lässt sich durch einen an die URL angehängten Hash-Parameter der vorausgewählte Tab definieren.<ul><li><code>#tab=calendar</code> Die <a href=\"http://apps.opendatacity.de/vds/frame_de.html#tab=calendar\" target=\"_blank\">Kalenderdarstellung</a> wird angezeigt.</li><li><code>#tab=social</code> Das <a href=\"http://apps.opendatacity.de/vds/frame_de.html#tab=social\" target=\"_blank\">Soziale Netzwerk</a> wird angezeigt.</li></ul>",
 		"close": "Schließen"
 	},
+	/* Textbausteine, die in der App dynamisch verwendet werden */
 	"script": {
 		"weekday_short_mon": "Mo",
 		"weekday_short_tue": "Di",
