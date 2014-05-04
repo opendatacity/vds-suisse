@@ -1,4 +1,4 @@
-Help us to translate the app to as many languages as possible!
+Help us to translate the app into as many languages as possible!
 
 All you have to do is to translate [en.json](https://github.com/opendatacity/vds-suisse/blob/master/generator/languages/en.json) into e.g. french and push it as new fr.json.
 
