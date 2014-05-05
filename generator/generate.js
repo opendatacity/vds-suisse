@@ -3,6 +3,7 @@ var fs = require('fs');
 var languages = [
 	{code:'en'},
 	{code:'de'},
+	{code:'fr'},
 	{code:'ws', hidden:true}
 ];
 
