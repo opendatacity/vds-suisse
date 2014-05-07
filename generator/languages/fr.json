@@ -29,12 +29,12 @@
 		"button_fullscreen_info": "Lancer l'application en mode plein écran.",
 
 		/* explanatory text for "list view" */
-		"text_map_head": "Quant et avec qui<br>Balthasar communique?",
-		"text_map_info": "Le lieu et la communication peut être déduit des données conservées des e-mails et des appels.",
+		"text_map_head": "Quand et avec qui<br>Balthasar communique?",
+		"text_map_info": "Le lieu et la communication peuvent être déduits des données conservées des e-mails et des appels.",
 		
 		/* explenatory text for "calendar view" */
 		"text_calendar_head": "Quand Balthasar se trouvait à:",
-		"word_or": "or",
+		"word_or": "ou",
 		"text_calendar_info": "Le calendrier des déplacements se déduit du profil des mouvements du téléphone.",
 		
 		/* explanatory text for "social network view" */
@@ -53,22 +53,22 @@
 		"other_languages": "Autres langues",
 
 		/* description for search engines */
-		"desc_long": "Balthasar Glättli, conseiller national du groupe des Verts, a mis à disposition une partie des données collectées pendant 6 mois pour cette visualisation. Le résultat est ce que les services secrets et les autoritées pénales appellent un \"profil\" - une image complète de la vie d'une personne sous surveillance.",
+		"desc_long": "Balthasar Glättli, conseiller national du groupe des Verts, a mis à disposition une partie des données collectées pendant 6 mois pour cette visualisation. Le résultat est ce que les services secrets et les autorités pénales appellent un \"profil\" - une image complète de la vie d'une personne sous surveillance.",
 		"desc_short": "Visualisation: conservation des données personnelles en Suisse",
 		"keywords": "conservation des données, Suisse, métadonnées personnelles conservées",
 
 		/* heading */
 		"heading": "Conservation des données personnelles en Suisse",
-		"subheading": "La vie surveillée du conseiller national Balthasar Glättli.",
+		"subheading": "La vie sous surveillance du conseiller national Balthasar Glättli.",
 		
 		/* embed button */
 		"embed": "Intégrer",
 
 		/* info texts */
-		"info1": "<a href=\"http://www.balthasar-glaettli.ch/\" target=\"_blank\">Balthasar Glättli</a>, conseiller national du groupe des Verts, a mis à disposition de <a href=\"https://opendatacity.de\">OpenDataCity</a> une partie des données collectées pendant 6 mois pour cette visualisation. Le résultat est ce que les services secrets et les autoritées pénales appellent un \"profil\" - une image complète de la vie d'une personne sous surveillance.",
+		"info1": "<a href=\"http://www.balthasar-glaettli.ch/\" target=\"_blank\">Balthasar Glättli</a>, conseiller national du groupe des Verts, a mis à disposition de <a href=\"https://opendatacity.de\">OpenDataCity</a> une partie des données collectées pendant 6 mois pour cette visualisation. Le résultat est ce que les services secrets et les autorités pénales appellent un \"profil\" - une image complète de la vie d'une personne sous surveillance.",
 		"info2": "Cette visualisation est basée sur le même type de métadonnées du trafic e-mail et téléphonique dont la sauvegarde des données personnelles fait l'objet. Pour plus d'informations, consultez les informations de notre partenaire <a href=\"https://www.digitale-gesellschaft.ch/cdp.html \"target=\"_blank \">Société numérique suisse</a>.",
-		"info3": "Nous mettons à disposition cette visualisation sous licence <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/3.0/\">CC-BY 3.0</a> de manière à ce que quiconque (journaux, blogs, etc) puissent intégrer l'application et utiliser les graphiques librement.",
-		"facts_and_stats": "<strong>Informations et statistiques:</strong><ul><li>Les informations conservées sur les e-mails et les communications mobiles couvrent une <strong>période de 6 mois</strong> (179 jours exactement).</li><li>Durant cette période, un total de <strong>7'112 entrées</strong> ont été enregistrées sur le téléphone mobile. Il s'agit de 2'610 entrées concernant les connexions Internet (36.7%, 14.6 par jour), 3'085 SMS/MMS (43.4%, 17.2 par jour) et 1'417 entrées pour des appels (19.9%, 7.9 par jour)</li><li>Balthasar a provoqué du <strong>trafic Internet</strong> comptant pour 5'161'133'870 octets (<strong>5.2 GB</strong> - 28.8 MB par jour) sur son téléphone mobile. De ces octets, 979'745'187 (980 MB - 5.5 MB par jour) étaient du trafic montant et 4'181'388'683 Bytes (4.2 GB - 23.4 MB par jour) du trafic descendant.</li><li>Comme la position du mobile est détectée à chaque appel, chaque message et chaque connexion Internet, il est possible d'analyser les <strong>déplacements de Balthasar</strong>. Sa vitesse la plus grande était d'environ 180 km/h pendant un voyage en train le 9.4.2013 à 15:15. Globalement, il a voyagé au moins 16'000 km pendant ces 6 mois.</li><li>Les métadonnées du courrier électronique ont été également enregistrées. En 6 mois, Balthasar a reçu un total de <strong>14'638 e-mails</strong> (82 par jour) de 6'500 personnes. Il a envoyé 1'654 E-Mails (9 par jour) à 600 personnes.</li></ul>",
+		"info3": "Nous mettons à disposition cette visualisation sous licence <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/3.0/\">CC-BY 3.0</a> de manière à ce que quiconque (journaux, blogs, etc) puisse intégrer l'application et utiliser les graphiques librement.",
+		"facts_and_stats": "<strong>Informations et statistiques:</strong><ul><li>Les informations conservées sur les e-mails et les communications mobiles couvrent une <strong>période de 6 mois</strong> (179 jours exactement).</li><li>Durant cette période, un total de <strong>7'112 entrées</strong> ont été enregistrées sur le téléphone mobile. Il s'agit de 2'610 entrées concernant les connexions Internet (36.7%, 14.6 par jour), 3'085 SMS/MMS (43.4%, 17.2 par jour) et 1'417 entrées pour des appels (19.9%, 7.9 par jour)</li><li>Balthasar a provoqué du <strong>trafic Internet</strong> comptant pour 5'161'133'870 octets (<strong>5.2 GB</strong> - 28.8 MB par jour) sur son téléphone mobile. De ces octets, 979'745'187 (980 MB - 5.5 MB par jour) étaient du trafic montant et 4'181'388'683 octets (4.2 GB - 23.4 MB par jour) du trafic descendant.</li><li>Comme la position du mobile est détectée à chaque appel, chaque message et chaque connexion Internet, il est possible d'analyser les <strong>déplacements de Balthasar</strong>. Sa vitesse la plus grande était d'environ 180 km/h pendant un voyage en train le 9.4.2013 à 15:15. Globalement, il a voyagé au moins 16'000 km pendant ces 6 mois.</li><li>Les métadonnées du courrier électronique ont été également enregistrées. En 6 mois, Balthasar a reçu un total de <strong>14'638 e-mails</strong> (82 par jour) de 6'500 personnes. Il a envoyé 1'654 e-mails (9 par jour) à 600 personnes.</li></ul>",
 		
 		/* list of links */
 		"links_heading": "Plus de liens:",
