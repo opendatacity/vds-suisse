@@ -29,6 +29,10 @@ validate(languages);
 var languageList = languages.filter(function (lang) {
 	return !lang.hidden;
 })
+languageList.push({
+	label:'Other language',
+	indexUrl:'https://github.com/opendatacity/vds-suisse/tree/master/generator/languages'
+})
 
 languages.forEach(function (lang) {
 	var dict = merge(lang.dict.general, lang.dict.frame);
@@ -37,7 +41,7 @@ languages.forEach(function (lang) {
 	var dict = merge(lang.dict.general, lang.dict.index);
 	dict.languagelist = languageList.map(function (otherlang) {
 		return (otherlang.code == lang.code) ? '<b>'+otherlang.label+'</b>' : '<a href="'+otherlang.indexUrl+'">'+otherlang.label+'</a>'
-	}).join(' ');
+	}).join(', ');
 	translate(indexHtml, dict, lang.indexFileName);
 
 	var dict = merge(lang.dict.general, lang.dict.script);
