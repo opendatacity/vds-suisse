@@ -1,0 +1,186 @@
+{
+/* general text blocks that are used everywhere */
+"general": {
+"lang_code": "es",
+
+/* name of the language */
+"lang_name": "Español",
+
+"title": "Retención de datos en Suiza",
+
+/* names of the 6 most important cities */
+"town_zuerich": "Zúrich",
+"town_bern": "Bern",
+"town_basel": "Basilea",
+"town_genf": "Ginebra",
+"town_luzern": "Lucerna",
+"town_lausanne": "Lausana"
+},
+
+/* text blocks that are used statically throughout the app */
+"frame": {
+/* tab labels */
+"tab_map": "Lista",
+"tab_calendar": "Calendario",
+"tab_social": "Red",
+
+/* full screen button */
+"button_fullscreen": "Pantalla completa",
+"button_fullscreen_info": "Abrir aplicación en mondo pantalla completa.",
+
+/* explanatory text for "list view" */
+"text_map_head": "Cuándo y con quién se ha <br> comunicado Balthasar?",
+"text_map_info": "La localización y comunicaciones se pueden calcular a partir los datos retenidos sobre llamadas y correos electrónicos.",
+
+/* explenatory text for "calendar view" */
+"text_calendar_head": "Cuándo estuvo Balthasar en:",
+"word_or": "o",
+"text_calendar_info": "El calendario de viajes se puede calcular a partir del perfil de movimiento del teléfono.",
+
+/* explanatory text for "social network view" */
+"text_social_head": "Quiénes son los/las <br>amigos/as y colegas de Balthasar?",
+"text_social_info1": "La red de contactos se pueden trazar a partir de los metadatos retenidos sobre correo electrónico, sin ningún tipo de información sobre su contenido mismo.",
+"text_social_info2": "Cualquier persona que envía un correo electrónico a varios colegas revela al mismo tiempo que los colegas se conocen entre sí.",
+"text_social_info3": "Todo el entorno personal de Balthasar, consistente en la familia, amigos/as y colegas, se puede determinar en base a sus 22.324 correos electrónicos.",
+
+/* footer text */
+"footer": "Creado por <a href=\"https://opendatoscity.de/\" target=\"_blank\">OpenDataCity</a>. Sobre la fuente de datos: <a href=\"http://www.digitale-gesellschaft.ch/dr\" target=\"_blank\">digiges.ch</a>. Esta aplicación está disponible bajo licencia <a href=\"http://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">CC-BY 3.0</a>."
+},
+
+/* text blocks that are used on the homepagina */
+"index": {
+/* For the list of languages in the top */
+"other_languages": "Otros idiomas",
+
+/* description for search engines */
+"desc_long": "Balthasar Glättli, miembro del Consejo Nacional del Partido Verde, ha proporcionado parte de sus datos retenidos durante seis meses para esta visualización. Como resultado, estos datos retenidos revelan lo que los servicios secretos y las fuerzas y cuerpos de seguridad llaman \" perfil \" - una imagen completa de toda la vida de la persona monitorizada." ,
+"desc_short": "Visualized: Retención de datos en Suiza",
+"keywords": "Retención de datos, Suiza, datos retenidos",
+
+/* heading */
+"heading": "Retención de datos en Suiza",
+"subheading": "La vida monitorizada del consejero nacional Balthasar Glättli.",
+
+/* embed button */
+"embed": "Embed",
+
+/* info texts */
+"info1": "<a href=\"http://www.balthasar-glaettli.ch/\" target=\"_blank\">Balthasar Glättli</a>, miembro del Consejo Nacional del Partido Verde en Suiza, ha contribuido <a href=\"https://opendatoscity.de\">OpenDataCity</a> con parte de sus datos retenidos durante seis meses para esta visualización. Como resultado, estos datos retenidos revelan lo que los servicios secretos y fuerzas y cuerpos de seguridad llaman \" perfil \" - una imagen completa de toda la vida de la persona monitorizada.",
+"info2": "Los visualización está basada en los mismos metadatos sobre teléfono y tráfico de correo electrónico que son grabados como parte de la retención de datos. Para más informacion visite los sitios web de nuestro socio del proyecto <a href=\"https://www.digitale-gesellschaft.ch/dr.html \"target=\"_blank \">Sociedad Digital Suiza</a>.",
+"info3": "Ofrecemos esta visualizazión bajo licencia <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/3.0/\">CC-BY 3.0</a>, por lo que todo el mundo (periódicos, blogs, etc.) puede integrar la aplicación y usar los gráficos libremente.",
+"facts_and_stats": "<strong>Datos y estadísticas adicionales:</strong><ul><li>Los datos retenidos sobre comunicaciones móviles y correo electrónico cubren un período de 6 meses <strong> </strong> (exactamente 179 días).</li><li> Durante este período se registró un total de <strong>7.112 entradas en la base de datos</strong> sobre el teléfono móvil. De éstas, 2610 entradas corresponden a conexiones a Internet (36,7%, 14,6 por día) 3.085 a SMS/MMS (43,4%, 17,2 por día) y 1.417 entradas corresponden a llamadas (19,9% , 7,9 por día)</li><li>Balthasar generó un total de 5.161.133.870 bytes (<strong>5.2 GB</strong> - 28,8 MB por día) de <strong>tráfico Internet</strong> con su teléfono móvil. De los cuales 979.745.187 bytes (980 MB - 5.5 MB por día) fueron subidas y 4.181.388.683 Bytes (4.2 GB - 23.4 MB por día) fueron descargas</li><li> Como la localización del teléfono móvil se detecta con cada llamada telefónica, cada mensaje de texto y cada conexión a Internet, podemos analizar <strong> el movimiento de Balthasar </strong>. Su velocidad máxima fue de 180 Km/h durante un viaje en tren el 04/09/2013 a las 15:15. En total, ha recorrido una distancia de por lo menos 16.000 Km durante los 6 meses. </li> <li> Los metadatos sobre correo electrónico se registran también como parte de la retención de datos. Durante 6 meses Balthasar ha recibido un total de <strong>14.638 correos electrónicos</strong> (82 por día) de alrededor de 6.500 personas. Él envió 1.654 correos electrónicos (9 por día) a 600 personas.</li></ul>",
+
+/* list of links */
+"links_heading": "Más enlaces:",
+"link_github": "El código completo está en GitHub: <a href=\"https://github.com/opendatoscity/vds-suisse/\">github.com/opendatoscity/vds-suisse</a>.",
+"link_graphic_calendar": "Gráfico alta resolution del <a href=\"download/calendar.png\">calendario</a>.",
+"link_graphic_network": "Gráfico alta resolution de la <a href=\"download/network_4096.png\">red social</a>.",
+"link_translation": "Ayúdanos a traducir esta aplicación en otros idiomas: <a href=\"https://github.com/opendatoscity/vds-suisse/tree/master/generator/languages\">github.com/opendatoscity/vds-suisse/.../languages</a>.",
+
+/* footer */
+"footer_left": "Creado por <a href=\"https://opendatoscity.de/\">OpenDataCity</a>. Esta aplicación está disponible bajo licencia <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/3.0/\">CC-BY 3.0</a>.",
+"footer_right": "Esta página es analizada con Google Analytics. <a href=\"https://opendatoscity.de/impressum/\" target=\"_blank\">Aviso legal</a>",
+
+/* embed texts */
+"license_info": "Esta aplicación está disponible bajo <a target=\"_blank\" href=\"http://creativecommons.org/licenses/by/3.0\">licencia CC-BY</a> y puede ser integrada en blogs y otros medios de comunicación:",
+"created_by": "Producido por",
+"embed_info": "Para usuarios/as avanzadas: Se puede definir una pestaña pre-seleccionada añadiendo un parámetro a la dirección web <ul><li><code>#tab=calendar</code> Para mostrar la <a href=\"http://apps.opendatoscity.de/vds/frame_en.html#tab=calendar\" target=\"_blank\">vista calendario</a>.</li><li><code>#tab=social</code> Para mostrar la <a href=\"http://apps.opendatoscity.de/vds/frame_en.html#tab=social\" target=\"_blank\">red social</a>.</li></ul>",
+"close": "Cerrar"
+},
+
+/* text blocks that are used dynamically throuout the app */
+"script": {
+/* days of the week */
+"weekday_short_mon": "L",
+"weekday_short_tue": "M",
+"weekday_short_wed": "X",
+"weekday_short_thu": "J",
+"weekday_short_fri": "V",
+"weekday_short_sat": "S",
+"weekday_short_sun": "D",
+
+/* message types */
+"msg_type_fb": "Entrada Facebook",
+"msg_type_tw": "Tweet",
+"msg_type_sm": "SMS %",
+"msg_type_ca": "Llamada %",
+"msg_type_ma": "Correo electrónico %",
+
+/* text blocks for list view on the right */
+"word_from": "de",
+"word_to": "a",
+"word_From": "De",
+"word_To": "A",
+"word_Content": "Contenido",
+"word_number": "Num.",
+
+/* text blocks for social network view on the right */
+"social_info_name": "Nombre",
+"social_info_org": "Grupo",
+"social_info_email_out": "Correos electrónicos a Balthasar",
+"social_info_email_in": "Correos electrónicos de Balthasar",
+"social_info_email_co": "Balthasar en copia de correos electrónicos",
+"social_info_sms_out": "SMS a Balthasar",
+"social_info_sms_in": "SMS de Balthasar",
+"social_info_call_out": "Llamadas a Balthasar",
+"social_info_call_in": "Llamadas de Balthasar",
+"social_info_maincomtimes": "Tiempo principal de comunicación",
+
+/* words for describing contacts and groups of contacts */
+"contact_adlethorensgoumaz": "Adèle Thorens Goumaz",
+"contact_arztrztin": "Médico/a",
+"contact_assistentin": "Asistente",
+"contact_asylchmailingliste": "Lista de correo asyl.ch",
+"contact_asylchnewsletter": "Boletín informativo asyl.ch",
+"contact_balthasarglttli": "Balthasar Glättli",
+"contact_brigittemarti": "Brigitte Marti",
+"contact_bundesrat": "Consejo federal",
+"contact_digigesmailingliste": "Lista de correo digiges",
+"contact_diverse": "varios",
+"contact_doodlenewsletter": "Boletín informativo doodle",
+"contact_facebooknewsletter": "Boletín informativo Facebook",
+"contact_factschnewsletter": "Boletín informativo facts.ch",
+"contact_familie": "Familia",
+"contact_gemeinderat": "Consejo local",
+"contact_googlealerts": "Alertas Google",
+"contact_googlecalendar": "Calendario Google",
+"contact_googlenewsletter": "Boletín informativo Google",
+"contact_grne": "Partido Verde",
+"contact_hyperalertsnewsletter": "boletín informativo hyperalerts",
+"contact_journalistin": "Periodista",
+"contact_kantonsrat": "Consejo de cantón",
+"contact_medien": "Medios de comunicacion",
+"contact_mediendienstezuerichch": "mediendienste@zuerich.ch",
+"contact_minlimartipartnerin": "Min Li Marti (pareja)",
+"contact_miriambehrens": "Miriam Behrens",
+"contact_mutter": "Madre",
+"contact_nationalrat": "Counsejo nacional",
+"contact_netzwochechnewsletter": "boletín informativo netzwoche.ch",
+"contact_newsadminchnewsletter": "boletín informativo news.admin.ch",
+"contact_newsaktuellch": "newsaktuell.ch",
+"contact_ngo": "NGO",
+"contact_ngomieterrecht": "ONG tenant-right",
+"contact_ngomigrationasyl": "ONG migration/asylum",
+"contact_nzznewsletter": "boletín informativo NZZ",
+"contact_parlamentarierin": "Miembro del Parlamento",
+"contact_parlamentsnewsletter": "Boletín informativo Parlamento",
+"contact_person": "Persona",
+"contact_pfarrer": "Sacerdote",
+"contact_politik": "Política",
+"contact_politnetznewsletter": "Boletín informativo Politnetz",
+"contact_rechtsanwalt": "Abogado",
+"contact_ronorpnetnewsletter": "Boletín informativo ronorp.net",
+"contact_sonstigerkontakt": "Otro contacto",
+"contact_stadtrat": "Ayuntamiento",
+"contact_stnderat": "Consejo de los Estados",
+"contact_swissconsortiumnewsletter": "Boletín informativo swissconsortium",
+"contact_tamedianewsletter": "Boletín informativo Tamedia",
+"contact_twitter": "Twitter",
+"contact_uelileuenberger": "Ueli Leuenberger",
+"contact_universitt": "Universidad",
+"contact_vater": "Padre",
+"contact_verteiler": "Lista de correo",
+"contact_wordpresscomnewsletter": "Boletín informativo wordpress.com",
+"contact_xingcomnewsletter": "Boletín informativo xing.com"
+}
+}
