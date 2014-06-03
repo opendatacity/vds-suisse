@@ -4,6 +4,7 @@ var languages = [
 	{code:'en'},
 	{code:'de'},
 	{code:'fr'},
+	{code:'es'},
 	{code:'ws', hidden:true}
 ];
 

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=600, user-scalable=no, minimal-ui" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+		<title>Retención de datos en Suiza</title>
+
+		<link rel="stylesheet" href="lib/leaflet/leaflet.css" />
+		<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="style/main.css" rel="stylesheet">
+		<link href="style/small.css" rel="stylesheet" media="(max-width: 800px)">
+
+		<!--[if lt IE 9]>
+		<script src="lib/ie/es5-shim.min.js"></script>
+		<script src="lib/ie/html5shiv.js"></script>
+		<![endif]-->
+		<script src="script/language_es.js"></script>
+		<script src="data/data.js"></script>
+		<script src="script/modules.js"></script>
+		<script src="lib/jquery-1.11.0.min.js"></script>
+		<script src="lib/leaflet/leaflet.js"></script>
+		<script src="lib/raphael-min.js"></script>
+		<script src="script/main.js"></script>
+	</head>
+	<body class="unselectable">
+		<div id="topSection">
+			<div id="tabList" class="tabButton active">Lista</div>
+			<div id="tabCalendar" class="tabButton">Calendario</div>
+			<div id="tabSocial" class="tabButton">Red</div>
+			<div id="topFullscreen" class="topButton"><i class="fa fa-arrows-alt"></i> <span>Pantalla completa</span></div>
+			<div id="fullscreen-advice">Abrir aplicación en mondo pantalla completa.</div>
+		</div>
+		<div id="contentSection">
+			<div id="middleSection">
+				<div id="map" class="map"></div>
+				<div id="socialMap" class="map"></div>
+				<div id="rightList">
+					<div id="comWrapper">
+						<div id="comList"></div>
+						<div id="comDetails"></div>
+					</div>
+					<div id="comHairline">
+						<div class="explanation">
+							<p><strong>Cuándo y con quién se ha <br> comunicado Balthasar?</strong></p>
+							<p class="small">La localización y comunicaciones se pueden calcular a partir los datos retenidos sobre llamadas y correos electrónicos.</p>
+						</div>
+					</div>
+				</div>
+				<div id="rightCalendar">
+					<div class="explanation" style="margin:20px 10px 20px 10px">
+						<p><strong>Cuándo estuvo Balthasar en:</strong><br>
+							<span style="color:rgb(255,230,  0); font-weight:bold">Zúrich</span>,
+							<span style="color:rgb(255,  0, 23); font-weight:bold">Bern</span>,
+							<span style="color:rgb(206,  0,186); font-weight:bold">Basilea</span>,
+							<span style="color:rgb(  5,  0,170); font-weight:bold">Ginebra</span>,
+							<span style="color:rgb(  0,133,211); font-weight:bold">Lucerna</span> o
+							<span style="color:rgb(  0,166, 81); font-weight:bold">Lausana</span>?
+						<p>
+						<p class="small">El calendario de viajes se puede calcular a partir del perfil de movimiento del teléfono.</p>
+					</div>
+				</div>
+				<div id="rightSocialDetails">
+					<div class="explanation" style="margin-top:20px;margin-left:0px">
+						<p><strong>Quiénes son los/las <br>amigos/as y colegas de Balthasar?</strong></p>
+						<p class="small">La red de contactos se pueden trazar a partir de los metadatos retenidos sobre correo electrónico, sin ningún tipo de información sobre su contenido mismo.</p>
+						<p class="small">Cualquier persona que envía un correo electrónico a varios colegas revela al mismo tiempo que los colegas se conocen entre sí.</p>
+						<p class="small">Todo el entorno personal de Balthasar, consistente en la familia, amigos/as y colegas, se puede determinar en base a sus 22.324 correos electrónicos.</p>
+					</div>
+					<div id="socialDetails">
+					</div>
+				</div>
+			</div>
+			<div id="bottomSection">
+				<div id="bottomLeftControls">
+					<div id="infoText"></div>
+					<div id="playPauseButtons">
+						<span id="playButton"><i class="fa fa-play"></i></span>
+						<span id="pauseButton"><i class="fa fa-pause"></i></span>
+					</div>
+					<div id="speedButtons">
+						<div id="speedButton1" class="speedButton">&times;200</div>
+						<div id="speedButton2" class="speedButton active">&times;1000</div>
+						<div id="speedButton3" class="speedButton">&times;5000</div>
+					</div>
+				</div>
+				<div id="scrollContainer">
+					<canvas id="scrollCanvas"></canvas>
+					<img id="scrollImage" src="graphics/scrollbar.png">
+					<div id="scrollHairLine"></div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">Creado por <a href="https://opendatoscity.de/" target="_blank">OpenDataCity</a>. Sobre la fuente de datos: <a href="http://www.digitale-gesellschaft.ch/dr" target="_blank">digiges.ch</a>. Esta aplicación está disponible bajo licencia <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC-BY 3.0</a>.</div>
+		<div style="display:none">
+			<img src="graphics/dot1.png">
+			<img src="graphics/dot2.png">
+			<img src="graphics/dot3.png">
+			<img src="graphics/dot4.png">
+			<img src="graphics/dot5.png">
+			<img src="graphics/dot6.png">
+			<img src="graphics/dot7.png">
+			<img src="graphics/dot8.png">
+			<img src="graphics/dot9.png">
+			<img src="graphics/dot10.png">
+			<img src="graphics/dot1retina.png">
+			<img src="graphics/dot2retina.png">
+			<img src="graphics/dot3retina.png">
+			<img src="graphics/dot4retina.png">
+			<img src="graphics/dot5retina.png">
+			<img src="graphics/dot6retina.png">
+			<img src="graphics/dot7retina.png">
+			<img src="graphics/dot8retina.png">
+			<img src="graphics/dot9retina.png">
+			<img src="graphics/dot10retina.png">
+		</div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-38022006-10', 'opendatacity.de');
+            ga('send', 'pageview');
+        </script>
+	</body>
+</html>
