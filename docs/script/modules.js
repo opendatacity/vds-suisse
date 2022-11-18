@@ -305,7 +305,7 @@ function Map() {
 	}).setView([47, 7.5], 7);
 
 	// add an OpenStreetMap tile layer
-	L.tileLayer('//{s}.tilt.odcdn.de/suisse/{z}/{x}/{y}.png', {
+	L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a>'
 	}).addTo(map);
 
